@@ -4,7 +4,7 @@ using Orneholm.PEAccountingNet.Models;
 
 namespace Orneholm.PEAccountingNet
 {
-    public class PeaAuthenticationApi
+    public class PeaAuthenticationApi : IPeaAuthenticationApi
     {
         private readonly IPeaApiHttpClient _httpClient;
 

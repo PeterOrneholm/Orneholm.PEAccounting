@@ -2,12 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.1.0</Version>
+    <Version>0.1.1</Version>
     <Authors>Peter Örneholm</Authors>
     <Company>Orneholm</Company>
     <Copyright>Peter Örneholm</Copyright>
     <PackageProjectUrl>https://github.com/PeterOrneholm/peaccounting-net/</PackageProjectUrl>
     <RepositoryUrl></RepositoryUrl>
+    <Description>API wrapper for p:e accounting (https://www.accounting.pe/) built in .NET Standard based on the offical documentation (https://my.accounting.pe/api/v1/doc).</Description>
   </PropertyGroup>
 
 </Project>
