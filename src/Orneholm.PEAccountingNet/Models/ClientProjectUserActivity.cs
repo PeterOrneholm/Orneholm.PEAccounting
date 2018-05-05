@@ -4,7 +4,7 @@ namespace Orneholm.PEAccountingNet.Models
 {
     public class ClientProjectUserActivity
     {
-        public int? ActivityId { get; set; }
+        public int ActivityId { get; set; }
         public long? Price { get; set; }
         public decimal? DimensionUserPercentage { get; set; }
 
@@ -12,7 +12,7 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new ClientProjectUserActivity
             {
-                ActivityId = native.activity?.id,
+                ActivityId = native.activity.id,
                 Price = native.priceSpecified ? (long?)native.price : null,
                 DimensionUserPercentage = native.dimensionuserpercentageSpecified ? (decimal?)native.dimensionuserpercentage : null
             };

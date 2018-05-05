@@ -4,7 +4,7 @@ namespace Orneholm.PEAccountingNet.Models
 {
     public class ClientProjectActivity
     {
-        public int? ActivityId { get; set; }
+        public int ActivityId { get; set; }
 
         public long? Price { get; set; }
 
@@ -12,7 +12,7 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new ClientProjectActivity
             {
-                ActivityId = native.activity?.id,
+                ActivityId = native.activity.id,
                 Price = native.priceSpecified ? (long?)native.price : null
             };
         }

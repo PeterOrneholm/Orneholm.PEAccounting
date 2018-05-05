@@ -6,7 +6,7 @@ namespace Orneholm.PEAccountingNet.Models
 {
     public class ClientProjectUser
     {
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
         public List<ClientProjectUserActivity> UserActivities { get; set; }
 
@@ -14,7 +14,7 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new ClientProjectUser
             {
-                UserId = native.user?.id,
+                UserId = native.user.id,
                 UserActivities = native.activity?.Select(ClientProjectUserActivity.FromNative).ToList() ?? new List<ClientProjectUserActivity>()
             };
         }

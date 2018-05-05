@@ -27,7 +27,7 @@ namespace Orneholm.PEAccountingNet.Models
         public bool UseAllUsers { get; set; }
         public List<ClientProjectUser> Users { get; set; }
 
-        private List<int?> LeadUserIds { get; set; }
+        private List<int> LeadUserIds { get; set; }
 
         private List<FixedPricePlannedInvoice> FixedPricePlannedInvoices { get; set; }
         private List<ClientProjectWriteOff> WriteOffs { get; set; }
@@ -59,7 +59,7 @@ namespace Orneholm.PEAccountingNet.Models
                 UseAllUsers = native.allusers,
                 Users = native.user?.Select(ClientProjectUser.FromNative).ToList() ?? new List<ClientProjectUser>(),
 
-                LeadUserIds = native.leads?.Select(x => x.user?.id).Where(x => x != null).ToList() ?? new List<int?>(),
+                LeadUserIds = native.leads?.Select(x => x.user.id).ToList() ?? new List<int>(),
 
                 FixedPricePlannedInvoices = native.fixedpriceplannedinvoice?.Select(FixedPricePlannedInvoice.FromNative).ToList() ?? new List<FixedPricePlannedInvoice>(),
                 WriteOffs = native.writeoff?.Select(ClientProjectWriteOff.FromNative).ToList() ?? new List<ClientProjectWriteOff>(),
