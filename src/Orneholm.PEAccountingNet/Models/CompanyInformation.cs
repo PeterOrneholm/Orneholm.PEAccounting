@@ -12,7 +12,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public static CompanyInformation FromNative(companyinformation native)
         {
-            return new CompanyInformation()
+            return new CompanyInformation
             {
                 Name = native.name,
                 OrgNo = native.orgno,
