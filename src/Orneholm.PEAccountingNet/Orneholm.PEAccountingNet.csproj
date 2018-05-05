@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.1.0</Version>
+    <Authors>Peter Örneholm</Authors>
+    <Company>Orneholm</Company>
+    <Copyright>Peter Örneholm</Copyright>
+    <PackageProjectUrl>https://github.com/PeterOrneholm/peaccounting-net/</PackageProjectUrl>
+    <RepositoryUrl></RepositoryUrl>
   </PropertyGroup>
 
 </Project>
