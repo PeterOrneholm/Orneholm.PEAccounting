@@ -1,0 +1,3770 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- Elements -->
+
+	<xs:element name="company-information">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="company-information"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="company-message">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="company-message"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="clients">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="clients"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-agreements">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-agreements"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-agreement">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-agreement"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-delivery-types">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="client-delivery-type" minOccurs="0" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+
+							<!-- The name of the delivery type. To use when specifying one for clients and client invoices -->
+							<xs:element name="name" type="xs:string"/>
+
+							<!--
+												 True if this is the default delivery type that will be used for clients and client invoices
+												 if none is specified.
+												 -->
+							<xs:element name="default" type="xs:boolean"/>
+
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="company">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="company"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-month-report-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-month-report-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-month-report-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-month-report-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-month-report-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-month-report-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-article-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-article-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-run-create">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-run-create"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-runs">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-runs"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-user-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-user-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-user-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-user-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-user-writable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-user-writable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-schedules-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-schedules-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-rolling-schedule-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-rolling-schedule-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-fixed-schedule-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-fixed-schedule-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-user-schedule-metadatas">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-user-schedule-metadatas"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="bank-accounts">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="bank-accounts"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="bank-transactions">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="bank-transactions"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="products">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="products"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="product">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="product"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="projects">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="projects"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dimensions">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="dimensions"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dimension-entries">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="dimension-entries"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="dimension-entry-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="dimension-entry-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="project">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="project"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="projects-metadata">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="projects-metadata"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="suppliers">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="suppliers"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="supplier">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="supplier"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-invoices">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-invoices"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-invoice">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-invoice"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-invoice-payment-writable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-invoice-payment-writable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="supplier-invoices">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="supplier-invoices"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="supplier-invoice">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="supplier-invoice"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="supplier-invoice-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="supplier-invoice-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="supplier-invoice-bundle-create-result">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="nr" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="users">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="users"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="user">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="user"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="accesses">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="accesses"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="access">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="access"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-event">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-event"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="payroll-events">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="payroll-events"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-invoice-templates">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-invoice-templates"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-invoice-template">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-invoice-template"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="accounting-year-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="accounting-year-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="accounting-year-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="accounting-year-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="voucher-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="voucher-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="vouchers-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="vouchers-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="voucher-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="voucher-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="update-client-agreement">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="client-agreement" type="client-agreement"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="update-client-agreement-result">
+		<xs:complexType>
+			<xs:sequence>
+				<!-- The revision nr of the created revision -->
+				<xs:element name="revision-nr" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="exchange-rate">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="from-currency" type="xs:string"/>
+				<xs:element name="to-currency" type="xs:string"/>
+				<xs:element name="rate" type="xs:decimal"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="account-metadata">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="account-metadata"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="account-metadatas">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="account-metadatas"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="activity-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="activity-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="activity-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="activity-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="event-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="event-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="event-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="event-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="event-writable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="event-writable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-project-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-project-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-project-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-project-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="client-project-writeable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="client-project-writeable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="user-authentication">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="user-authentication"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="tokens">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tokens"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="token">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="token"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="accessible-companies">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="accessible-companies"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-file-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-file-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-entry-form">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-entry-form"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-entry-form-defaults">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-entry-form-defaults"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-entry-readables">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-entry-readables"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-entry-readable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-entry-readable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-entry-writable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-entry-writable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="expense-writable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="expense-writable"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="translations">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="translations"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="vouchers-detailed">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="paged-result">
+					<xs:sequence>
+						<xs:element name="voucher" type="voucher-detailed" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="created">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="saved">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="deleted">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="error">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="message" type="xs:string"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="ok">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="id" type="xs:int"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="report">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="report"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- Types -->
+
+	<xs:complexType name="translations">
+		<xs:sequence>
+			<xs:element name="translation" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string"/>
+						<xs:element name="value" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-writable">
+		<xs:sequence>
+			<xs:element name="expense-entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="expense-entry" minOccurs="1" maxOccurs="unbounded"
+									type="expense-entry-reference"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-entry-writable">
+		<xs:sequence>
+			<xs:element name="expense-file" type="expense-file-reference"/>
+			<xs:element name="company-card" type="company-card-reference" minOccurs="0"/>
+			<xs:element name="expense-type" type="expense-type-reference"/>
+			<xs:element name="persons" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="digital" type="xs:boolean"/>
+			<xs:element name="amount" type="xs:long"/>
+			<xs:element name="vat" type="xs:long"/>
+			<xs:element name="currency-type" type="xs:string"/>
+			<xs:element name="country-code" type="xs:string"/>
+			<xs:element name="dimension-entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension-entry" type="dimension-entry-reference" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="re-invoicing" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="client-project" type="client-project-reference"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-entry-readables">
+		<xs:sequence>
+			<xs:element name="expense-entry" type="expense-entry-readable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-entry-readable">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="expense-nr" type="xs:int" minOccurs="0"/>
+			<xs:element name="expense-file" type="expense-file-reference"/>
+			<xs:element name="company-card" type="company-card-readable" minOccurs="0"/>
+			<xs:element name="expense-type" type="expense-type-readable"/>
+			<xs:element name="persons">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="name" type="xs:string" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="digital" type="xs:boolean"/>
+			<xs:element name="amount" type="xs:long"/>
+			<xs:element name="vat" type="xs:long"/>
+			<xs:element name="currency-type" type="xs:string"/>
+			<xs:element name="currency-rate" type="xs:decimal"/>
+			<xs:element name="country-code" type="xs:string"/>
+			<xs:element name="registration-date" type="xs:dateTime"/>
+			<xs:element name="dimension-entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension-entry" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="xs:int"/>
+									<xs:element name="name" type="xs:string"/>
+									<xs:element name="dimension">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="id" type="xs:int"/>
+												<xs:element name="name" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="re-invoicing">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="client-project" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="xs:int"/>
+									<xs:element name="name" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-entry-form">
+		<xs:sequence>
+			<xs:element name="company-cards">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="company-card" type="company-card-readable" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="expense-types">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="expense-type" type="expense-type-readable" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="currency-types">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="currency-type" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="countries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="country" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="code" type="xs:string"/>
+									<xs:element name="vat-percentages">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="vat-percentage" type="xs:decimal" minOccurs="0"
+															maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="dimensions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="xs:int"/>
+									<xs:element name="name" type="xs:string"/>
+									<xs:element name="required" type="xs:boolean"/>
+									<xs:element name="entries">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="entry" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="id" type="xs:int"/>
+															<xs:element name="name" type="xs:string"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="re-invoicing">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="client-project" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="xs:int"/>
+									<xs:element name="name" type="xs:string"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-entry-form-defaults">
+		<xs:sequence>
+			<xs:element name="company-card" type="company-card-readable" minOccurs="0"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="type" type="expense-type-readable" minOccurs="0"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="digital" type="xs:boolean"/>
+			<xs:element name="currency-type" type="xs:string"/>
+			<xs:element name="country-code" type="xs:string"/>
+			<xs:element name="dimensions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="xs:int"/>
+									<xs:element name="name" type="xs:string"/>
+									<xs:element name="entry">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="id" type="xs:int"/>
+												<xs:element name="name" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-type-readable">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="classification" type="expense-type-classification"/>
+			<xs:element name="dimensions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="id" type="xs:int"/>
+									<xs:element name="name" type="xs:string"/>
+									<xs:element name="entry">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="id" type="xs:int"/>
+												<xs:element name="name" type="xs:string"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-file-readables">
+		<xs:sequence>
+			<xs:element name="expense-file" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:int"/>
+						<xs:element name="description" type="xs:string"/>
+						<xs:element name="filename" type="xs:string"/>
+						<xs:element name="thumbnail" type="xs:hexBinary"/>
+						<xs:element name="registration-date" type="xs:dateTime"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-readables">
+		<xs:sequence>
+			<xs:element name="expense" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:int"/>
+						<xs:element name="nr" type="xs:int"/>
+						<xs:element name="date" type="xs:date"/>
+						<xs:element name="company-card" type="company-card-readable" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>
+									This element id deprecated. As a single expense can contain entries with different company-cards.
+									See expense-entry-readable for its actual company-card value.
+									Value here is unspecified if multiple company-cards in expense.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="amount" type="xs:long"/>
+						<xs:element name="currency-type" type="xs:string"/>
+						<!--When payment has been done thru an extra payout only-->
+						<xs:element name="reimbursed" type="xs:boolean"/>
+						<!-- For all types of payouts -->
+						<xs:element name="paid" type="xs:boolean"/>
+						<xs:element name="entries" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="company-card-readable">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="user-authentication">
+		<xs:sequence>
+			<xs:element name="email" type="xs:string"/>
+			<xs:element name="password" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tokens">
+		<xs:sequence>
+			<xs:element name="token" type="token" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="token">
+		<xs:sequence>
+			<xs:element name="company">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="id" type="xs:int"/>
+						<xs:element name="name" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="value" type="xs:string"/>
+			<xs:element name="main" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accessible-companies">
+		<xs:sequence>
+			<xs:element name="accessible-company" type="accessible-company" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accessible-company">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="active" type="xs:boolean"/>
+			<xs:element name="main" type="xs:boolean"/>
+			<xs:element name="token" type="xs:string"/>
+			<xs:element name="accesses">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" type="access-type" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="account-metadatas">
+		<xs:sequence>
+			<xs:element name="account" type="account-metadata" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="account-metadata">
+		<xs:sequence>
+			<xs:element name="accountNr" type="xs:int"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="in-balance" type="xs:long"/>
+			<xs:element name="out-balance" type="xs:long"/>
+			<xs:element name="debit-count" type="xs:int"/>
+			<xs:element name="credit-count" type="xs:int"/>
+			<xs:element name="disabled" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-event">
+		<xs:sequence>
+			<!-- Ignored when writing, set when reading -->
+			<xs:element name="id" type="xs:int" minOccurs="0"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="hours" type="xs:decimal"/>
+			<xs:element name="type" type="payroll-event-type"/>
+			<xs:element name="child" type="xs:string" minOccurs="0"/>
+			<xs:element name="comment" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-events">
+		<xs:sequence>
+			<xs:element name="payroll-event" type="payroll-event" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-templates">
+		<xs:sequence>
+			<xs:element name="client-invoice-template" type="client-invoice-template" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-template">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accounting-year-readables">
+		<xs:sequence>
+			<xs:element name="accounting-year-readable" type="accounting-year-readable" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accounting-year-readable">
+		<xs:sequence>
+			<xs:element name="start-date" type="xs:date"/>
+			<xs:element name="end-date" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="voucher-readable">
+		<xs:sequence>
+			<xs:element name="serie" type="xs:string"/>
+			<xs:element name="number" type="xs:int"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="turnover" type="xs:long"/>
+			<xs:element name="transactions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transaction" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+
+									<xs:element name="account-nr" type="xs:int"/>
+
+									<xs:element name="vat-code" type="vat-code-type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>
+												Vat code used for this transaction.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="amount" type="xs:long"/>
+									<xs:element name="dimension-entries">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="dimension-entry" minOccurs="0" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="id" type="dimension-entry-reference"/>
+															<xs:element name="amount" type="xs:long"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="currency-amounts">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="currency-amount" minOccurs="1" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="currency-type" type="xs:string"/>
+															<xs:element name="amount" type="xs:long"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="vouchers-readable">
+		<xs:sequence>
+			<xs:element name="voucher-readable" type="voucher-readable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="voucher-writeable">
+		<xs:sequence>
+			<xs:element name="serie" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="comments" type="xs:string"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="transactions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transaction" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+
+									<xs:element name="account-nr" type="xs:int"/>
+
+									<xs:element name="vat-code" type="vat-code-type" nillable="true" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>
+												Vat code used for this transaction, or null if none. If at least
+												one transaction in the voucher has this element, all transactions
+												will be vat coded according to the given definition. If no transactions
+												have this element, vat codes will be assigned automatically based
+												on account number.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="amount" type="xs:long"/>
+
+									<xs:choice minOccurs="0">
+
+										<xs:annotation>
+											<xs:documentation>
+												Optional dimension information for this transaction. Usage of
+												project-element is deprecated, please use dimensions instead.
+											</xs:documentation>
+										</xs:annotation>
+
+										<xs:element name="project" type="project-reference"/>
+										<xs:element name="dimensions" type="dimensions-distribution"/>
+
+									</xs:choice>
+
+									<xs:choice minOccurs="0">
+
+										<xs:annotation>
+											<xs:documentation>
+												Optional currency information for this transaction. One of the
+												elements should be used.
+											</xs:documentation>
+										</xs:annotation>
+
+										<xs:element name="currency-type" type="xs:string">
+											<xs:annotation>
+												<xs:documentation>
+													Currency that amount on transaction is specified in. The actual
+													accounting amount will then be automatically determined using
+													the exchange rate on the voucher's date.
+												</xs:documentation>
+											</xs:annotation>
+										</xs:element>
+
+										<xs:element name="currency-amount">
+											<xs:annotation>
+												<xs:documentation>
+													Explicit currency amount information for this transaction. Amount
+													on transaction is implicitely assumed to be in the accounting
+													currency.
+												</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="currency-type" type="xs:string"/>
+													<xs:element name="amount" type="xs:long"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+
+									</xs:choice>
+
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="files">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="filename" type="xs:string"/>
+									<xs:element name="data" type="xs:hexBinary"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="voucher-detailed">
+		<xs:sequence>
+
+			<xs:element name="serie" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The serie that this voucher belongs to.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="number" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>
+						The voucher's number in its given serie. Two vouchers in the same serie can not have
+						the same number within the same accounting year.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="description" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						The description of the voucher
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="date" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>
+						The voucher's transaction date
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="transactions">
+				<xs:annotation>
+					<xs:documentation>
+						The transactions associated with this voucher.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transaction" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+
+									<xs:element name="account-nr" type="xs:int">
+										<xs:annotation>
+											<xs:documentation>
+												The account number for this transaction.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="vat-code" type="vat-code-type" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>
+												Vat code used for this transaction.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="amount" type="xs:long">
+										<xs:annotation>
+											<xs:documentation>
+												The accounting amount for this transaction.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="references">
+										<xs:annotation>
+											<xs:documentation>
+												The set of references associated with this transaction, always at least
+												one. On a reference,
+												further detailed information will be found, such as currency amount and
+												any dimension entries.
+											</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="reference" minOccurs="1" maxOccurs="unbounded">
+													<xs:complexType>
+														<xs:sequence>
+
+															<xs:element name="type">
+																<xs:annotation>
+																	<xs:documentation>
+																		The type of this reference, e.g. where does this
+																		reference point?
+																	</xs:documentation>
+																</xs:annotation>
+																<xs:complexType>
+																	<xs:choice>
+																		<xs:element name="client-invoice-row"
+																					type="client-invoice-row-reference"/>
+																		<xs:element name="expense-entry"
+																					type="expense-entry-reference"/>
+																		<xs:element name="supplier-invoice-account"
+																					type="supplier-invoice-account-reference"/>
+																		<xs:element name="none">
+																			<xs:annotation>
+																				<xs:documentation>
+																					No specific reference, the
+																					transaction itself is the reference.
+																					This is the
+																					default case.
+																				</xs:documentation>
+																			</xs:annotation>
+																			<xs:complexType/>
+																		</xs:element>
+																		<xs:element name="other">
+																			<xs:complexType/>
+																		</xs:element>
+																	</xs:choice>
+																</xs:complexType>
+															</xs:element>
+
+															<xs:element name="amount" type="xs:long">
+																<xs:annotation>
+																	<xs:documentation>
+																		The accounting amount for this reference. The
+																		sum of all reference amounts is guranteed to
+																		be equal to the transaction's amount.
+																	</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+
+															<xs:element name="currency-amount" type="currency-amount"/>
+
+															<xs:element name="dimension-entries">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element name="dimension-entry" minOccurs="0"
+																					maxOccurs="unbounded">
+																			<xs:complexType>
+																				<xs:sequence>
+																					<xs:element name="id"
+																								type="xs:int"/>
+																					<xs:element name="dimension"
+																								type="dimension-reference"/>
+																					<xs:element name="amount"
+																								type="xs:long"/>
+																					<xs:element name="currency-amount"
+																								type="currency-amount"/>
+																				</xs:sequence>
+																			</xs:complexType>
+																		</xs:element>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="currency-amount">
+		<xs:sequence>
+			<xs:element name="currency-type" type="xs:string"/>
+			<xs:element name="amount" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-user-readables">
+		<xs:sequence>
+			<xs:element name="payroll-user-readable" type="payroll-user-readable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-user-readable">
+		<xs:sequence>
+			<xs:element name="user" type="user-reference"/>
+			<xs:element name="ssn" type="xs:string"/>
+			<xs:element name="address1" type="xs:string"/>
+			<xs:element name="address2" type="xs:string"/>
+			<xs:element name="zip-code" type="xs:string"/>
+			<xs:element name="state" type="xs:string"/>
+			<!-- ISO 3166-1 alpha-2 code -->
+			<xs:element name="country-code" type="xs:string"/>
+			<xs:element name="phone" type="xs:string"/>
+			<xs:element name="tax-table" type="xs:int"/>
+			<xs:element name="tax-table-column" type="xs:int"/>
+			<xs:element name="tax-percentage" type="xs:decimal"/>
+			<xs:element name="one-time-tax-percentage" type="xs:decimal"/>
+			<xs:element name="clearing-nr" type="xs:string"/>
+			<xs:element name="account-nr" type="xs:string"/>
+			<xs:element name="employment-start-date" type="xs:date"/>
+			<xs:element name="employment-end-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="travel-reimbursement-per-mile" type="xs:long"/>
+			<xs:element name="monthly-salary" type="xs:long"/>
+			<xs:element name="hourly-salary" type="xs:long"/>
+			<xs:element name="provision" type="xs:boolean"/>
+			<xs:element name="month-report-strategy" type="payroll-user-month-report-strategy"/>
+
+			<xs:element name="schedules">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="schedule" type="payroll-user-schedule" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="dimension-entries">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension-entry" type="dimension-entry-reference"
+									minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-user-writable">
+		<xs:sequence>
+
+			<!--
+			Only non-null fields will be updated/set. When creating a new payroll-user, the following fields
+			are required. Remaining will be set with default values.
+			* ssn
+			* employment-start-date
+			-->
+
+			<xs:element name="ssn" type="xs:string" minOccurs="0"/>
+			<xs:element name="address1" type="xs:string" minOccurs="0"/>
+			<xs:element name="address2" type="xs:string" minOccurs="0"/>
+			<xs:element name="zip-code" type="xs:string" minOccurs="0"/>
+			<xs:element name="state" type="xs:string" minOccurs="0"/>
+			<!-- ISO 3166-1 alpha-2 code -->
+			<xs:element name="country-code" type="xs:string" minOccurs="0"/>
+			<xs:element name="phone" type="xs:string" minOccurs="0"/>
+			<xs:element name="tax-table" type="xs:int" minOccurs="0"/>
+			<xs:element name="tax-table-column" type="xs:int" minOccurs="0"/>
+			<xs:element name="tax-percentage" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="one-time-tax-percentage" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="clearing-nr" type="xs:string" minOccurs="0"/>
+			<xs:element name="account-nr" type="xs:string" minOccurs="0"/>
+			<xs:element name="employment-start-date" type="xs:date" minOccurs="0"/>
+
+			<!--
+			 Wrapped element in order to be able to distinguish between the cases
+			 "remove existing value" and "leave existing value unmodified"
+			 -->
+			<xs:element name="employment-end-date" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="employment-end-date" type="xs:date" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="travel-reimbursement-per-mile" type="xs:long" minOccurs="0"/>
+			<xs:element name="monthly-salary" type="xs:long" minOccurs="0"/>
+			<xs:element name="hourly-salary" type="xs:long" minOccurs="0"/>
+			<xs:element name="provision" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="month-report-strategy" type="payroll-user-month-report-strategy" minOccurs="0"/>
+
+			<!-- Skip to leave current schedules as is -->
+			<xs:element name="schedules" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+
+						<!-- Overwrites existing schedules, Ie 0 occurs clears all schedules -->
+						<xs:element name="schedule" type="payroll-user-schedule" minOccurs="0"
+									maxOccurs="unbounded"/>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Skip to leave current dimension entries as is -->
+			<xs:element name="dimension-entries" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension-entry" type="dimension-entry-reference"
+									minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-user-schedule">
+		<xs:sequence>
+			<xs:element name="schedule" type="payroll-schedule-reference"/>
+			<xs:element name="start-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="end-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="comment" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-run-create">
+		<xs:sequence>
+
+			<!-- The desired payment date -->
+			<xs:element name="payment-date" type="xs:date"/>
+
+			<!-- All payouts to include in this run -->
+			<xs:element name="payouts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payout" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+
+									<!-- The user for this payout. Referenced user must have an existing payroll agreement -->
+									<xs:element name="user" type="user-reference"/>
+									<xs:element name="project" type="project-reference" minOccurs="0"/>
+									<xs:element name="period-start" type="xs:date"/>
+									<xs:element name="period-end" type="xs:date"/>
+
+									<xs:element name="articles">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="benefit" type="payroll-payout-article"
+															minOccurs="0"
+															maxOccurs="unbounded"/>
+												<xs:element name="salary" type="payroll-payout-article"
+															minOccurs="0"
+															maxOccurs="unbounded"/>
+												<xs:element name="provision" type="payroll-payout-article"
+															minOccurs="0"
+															maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-runs">
+		<xs:sequence>
+			<xs:element name="payroll-run" type="payroll-run" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-run">
+		<xs:sequence>
+
+			<xs:element name="id" type="xs:int"/>
+			<!-- Set one run has been paid -->
+			<xs:element name="nr" type="xs:int" minOccurs="0"/>
+			<xs:element name="payment-date" type="xs:date"/>
+
+			<xs:element name="payouts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="payout" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="user" type="user-reference"/>
+									<xs:element name="project" type="project-reference" minOccurs="0"/>
+									<xs:element name="period-start" type="xs:date"/>
+									<xs:element name="period-end" type="xs:date"/>
+									<xs:element name="gross" type="xs:long"/>
+									<xs:element name="benefits" type="xs:long"/>
+									<xs:element name="payout" type="xs:long"/>
+									<xs:element name="tax" type="xs:long"/>
+									<xs:element name="social-fees" type="xs:long"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="paid" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="user" type="user-reference"/>
+						<xs:element name="datetime" type="xs:dateTime"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-payout-article">
+		<xs:sequence>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="quantity" type="xs:decimal"/>
+			<xs:element name="price" type="xs:long"/>
+			<xs:element name="project" type="project-reference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-month-report-writeable">
+		<xs:sequence>
+
+			<!-- Skip to leave current provision as is -->
+			<xs:element name="provisions" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+
+						<!-- Overwrites existing provisions, Ie 0 occurs clears all provisions -->
+						<xs:element name="provision" type="payroll-month-report-provision" minOccurs="0"
+									maxOccurs="unbounded"/>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Skip to leave current articles as is -->
+			<xs:element name="articles" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+
+						<!-- Overwrites existing articles, Ie 0 occurs clears all articles -->
+						<xs:element name="article" type="payroll-month-report-article" minOccurs="0"
+									maxOccurs="unbounded"/>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-month-report-readables">
+		<xs:sequence>
+			<xs:element name="payroll-month-report-readable" type="payroll-month-report-readable" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-month-report-readable">
+		<xs:sequence>
+
+			<xs:element name="user" type="user-reference"/>
+			<xs:element name="year" type="xs:int"/>
+
+			<!-- January = 0, December = 11 -->
+			<xs:element name="month" type="xs:int"/>
+
+			<xs:element name="provisions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="provision" type="payroll-month-report-provision" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="notes" type="xs:string"/>
+
+			<xs:element name="gross" type="xs:long"/>
+			<xs:element name="benefits" type="xs:long"/>
+			<xs:element name="payout" type="xs:long"/>
+			<xs:element name="tax" type="xs:long"/>
+			<xs:element name="social-fees" type="xs:long"/>
+
+			<xs:element name="articles">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="article" type="payroll-month-report-article" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="approved" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="user" type="user-reference"/>
+						<xs:element name="datetime" type="xs:dateTime"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="certified" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="user" type="user-reference"/>
+						<xs:element name="datetime" type="xs:dateTime"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-month-report-provision">
+		<xs:sequence>
+			<xs:element name="amount" type="xs:long"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="project" type="project-reference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-month-report-article">
+		<xs:sequence>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="article" type="payroll-article-reference"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="quantity" type="xs:decimal"/>
+			<xs:element name="price" type="xs:long"/>
+			<xs:element name="unit" type="payroll-unit-type"/>
+			<xs:element name="period" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="start" type="xs:date"/>
+						<xs:element name="end" type="xs:date"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="project" type="project-reference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-article-readables">
+		<xs:sequence>
+			<xs:element name="payroll-article-readable" type="payroll-article-readable" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-article-readable">
+		<xs:sequence>
+			<xs:element name="id" type="payroll-article-reference"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-schedules-readable">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="rolling-schedule" type="payroll-rolling-schedule-readable"/>
+			<xs:element name="fixed-schedule" type="payroll-fixed-schedule-readable"/>
+		</xs:choice>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-rolling-schedule-writeable">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+
+			<!-- Skip to leave current intervals as is -->
+			<xs:element name="intervals" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+
+						<!-- Overwrites existing intervals, Ie 0 occurs clears all intervals -->
+						<xs:element name="interval" type="payroll-rolling-schedule-interval" minOccurs="0"
+									maxOccurs="unbounded"/>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-rolling-schedule-readable">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+
+			<xs:element name="weeks" type="xs:int"/>
+			<xs:element name="hours-per-week" type="xs:decimal"/>
+			<xs:element name="level-of-employment" type="xs:decimal"/>
+			<xs:element name="usage-count" type="xs:int" minOccurs="0"/>
+			<xs:element name="editable" type="xs:boolean"/>
+
+			<xs:element name="intervals">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="interval" type="payroll-rolling-schedule-interval" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-fixed-schedule-writeable">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="hours-per-week" type="xs:decimal" minOccurs="0"/>
+			<xs:element name="level-of-employment" type="xs:decimal" minOccurs="0"/>
+
+			<!-- Skip to leave current intervals as is -->
+			<xs:element name="intervals" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+
+						<!-- Overwrites existing intervals, Ie 0 occurs clears all intervals -->
+						<xs:element name="interval" type="payroll-fixed-schedule-interval" minOccurs="0"
+									maxOccurs="unbounded"/>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-fixed-schedule-readable">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="hours-per-week" type="xs:decimal"/>
+			<xs:element name="level-of-employment" type="xs:decimal"/>
+
+			<xs:element name="usage-count" type="xs:int" minOccurs="0"/>
+			<xs:element name="editable" type="xs:boolean"/>
+
+			<xs:element name="intervals">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="interval" type="payroll-fixed-schedule-interval" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-rolling-schedule-interval">
+		<xs:sequence>
+			<xs:element name="day" type="xs:int"/>
+
+			<xs:element name="hours" type="xs:decimal"/>
+			<xs:element name="type" type="payroll-schedule-interval-type"/>
+			<xs:element name="comment" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-fixed-schedule-interval">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+
+			<xs:element name="hours" type="xs:decimal"/>
+			<xs:element name="type" type="payroll-schedule-interval-type"/>
+			<xs:element name="comment" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-user-schedule-metadatas">
+		<xs:sequence>
+			<xs:element name="payroll-user-schedule-metadata" type="payroll-user-schedule-metadata" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-user-schedule-metadata">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="level-of-employment" type="xs:decimal"/>
+			<xs:element name="gross-hours" type="xs:decimal"/>
+			<xs:element name="net-hours" type="xs:decimal"/>
+			<xs:element name="actual-hours" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="company-information">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="orgno" type="xs:string"/>
+			<xs:element name="accounting-currency" type="xs:string"/>
+			<xs:element name="bankgiro" type="xs:long" minOccurs="0"/>
+			<xs:element name="supplier-invoice-email" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="company-message">
+		<xs:sequence>
+
+			<xs:element name="subject" type="xs:string"/>
+			<xs:element name="message" type="xs:string"/>
+
+			<xs:element name="files">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="filename" type="xs:string"/>
+									<xs:element name="data" type="xs:hexBinary"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="clients">
+		<xs:sequence>
+			<xs:element name="client" type="client" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client">
+		<xs:sequence>
+
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="contact" type="xs:string"/>
+			<xs:element name="address" type="address"/>
+			<xs:element name="email" type="xs:string"/>
+
+			<!-- The client's ISO 3166-1 alpha-2 code -->
+			<xs:element name="country-code" type="xs:string"/>
+
+			<!-- deprecated, set to 0 -->
+			<xs:element name="accountnr" type="xs:int"/>
+			<xs:element name="payment-days" type="xs:int"/>
+			<xs:element name="orgno" type="xs:string"/>
+			<xs:element name="phone" type="xs:string"/>
+			<xs:element name="user" type="user-reference"/>
+
+			<!-- When creating, leave empty to use default delivery. When saving, leave empty to leave original value unchanged. -->
+			<xs:element name="delivery-type" type="xs:string" minOccurs="0"/>
+
+			<xs:element name="vat-nr" type="xs:string" minOccurs="0"/>
+			<xs:element name="gln" type="xs:string" minOccurs="0"/>
+
+			<xs:element name="template" type="client-invoice-template-reference" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>
+						Optional template to use as default when creating new client invoices with the client. When
+						reading, this
+						value is always set, where "null" means "use a reasonable default template". When writing,
+						omitting this
+						value will set it to "null" when creating, and leave it unchanged with updating.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="approver" type="user-reference" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>
+						Optional approver to use as default when creating new client invoices with the client. When
+						writing, omitting this value will set it to "none" when creating, and leave it unchanged with
+						updating.
+						When updating, set to null to explicitely clear any previously set value.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="dimension-entries" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Omitting this element will leave dimension-entries unchanged when updating
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension-entry" type="dimension-entry-reference"
+									minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Whether this client is considered active or not -->
+			<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="projects">
+		<xs:sequence>
+			<xs:element name="project" type="project" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="project">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="start-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="end-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="projects-metadata">
+		<xs:sequence>
+			<xs:element name="project" type="project-metadata" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="project-metadata">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="revenue" type="xs:long"/>
+			<xs:element name="cost" type="xs:long"/>
+			<xs:element name="profit" type="xs:long"/>
+			<xs:element name="margin" type="xs:decimal"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimensions">
+		<xs:sequence>
+			<xs:element name="dimension" type="dimension" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimension">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Value, if set, must be unique.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="active" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimension-entries">
+		<xs:sequence>
+			<xs:element name="dimension-entry" type="dimension-entry" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimension-entry">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Value, if set, must be unique within its dimension
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="start-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="end-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimension-entry-writeable">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="foreign-id" type="xs:string" minOccurs="0"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="start-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="end-date" type="xs:date" minOccurs="0"/>
+			<xs:element name="active" type="xs:boolean"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="company">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bank-accounts">
+		<xs:sequence>
+			<xs:element name="bank-account" type="bank-account" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bank-account">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="currency" type="xs:string"/>
+			<xs:element name="bic" type="xs:string"/>
+			<xs:element name="iban" type="xs:string"/>
+			<xs:element name="bankgiro" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bank-transactions">
+		<xs:sequence>
+			<xs:element name="bank-transaction" type="bank-transaction" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bank-transaction">
+		<xs:sequence>
+			<xs:element name="id" type="bank-transaction-reference"/>
+			<xs:element name="bank-account" type="bank-account-reference"/>
+			<xs:element name="company" type="company"/>
+			<xs:element name="transaction-date" type="xs:date"/>
+			<xs:element name="amount" type="xs:long"/>
+			<xs:element name="remaining-amount" type="xs:long"/>
+			<xs:element name="reference" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="deleted" type="xs:boolean"/>
+			<xs:element name="deleted-date" type="xs:date"/>
+			<xs:element name="comments" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="comment" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="files" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="filename" type="xs:string"/>
+									<xs:element name="data" type="xs:hexBinary"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="suppliers">
+		<xs:sequence>
+			<xs:element name="supplier" type="supplier" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="address" type="address"/>
+			<xs:element name="email" type="xs:string"/>
+			<xs:element name="plusgiro" type="xs:long"/>
+			<xs:element name="bankgiro" type="xs:long"/>
+			<!-- Format: [\d\w]+-[\d\w]+ -->
+			<xs:element name="iban" type="xs:string"/>
+			<!-- your-reference -->
+			<xs:element name="user" type="user-reference" minOccurs="0"/>
+			<xs:element name="our-reference" type="xs:string" minOccurs="0"/>
+			<!-- ISO 3166-1 alpha-2 code -->
+			<xs:element name="country-code" type="xs:string" minOccurs="0"/>
+			<xs:element name="vat-nr" type="xs:string" minOccurs="0"/>
+			<xs:element name="account-nr" type="xs:int" minOccurs="0"/>
+			<xs:element name="bank-account" type="bank-account-reference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="users">
+		<xs:sequence>
+			<xs:element name="user" type="user" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="user">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string" minOccurs="0"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="email" type="xs:string"/>
+			<xs:element name="active" type="xs:boolean"/>
+			<xs:element name="dimension-entry" type="dimension-entry-reference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accesses">
+		<xs:sequence>
+			<xs:element name="access" type="access" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="access">
+		<xs:sequence>
+			<xs:element name="type" type="access-type"/>
+			<xs:element name="registration-user" type="user-reference" minOccurs="0"/>
+			<xs:element name="registration-datetime" type="xs:dateTime" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoices">
+		<xs:sequence>
+			<xs:element name="client-invoice" type="client-invoice" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice">
+		<xs:sequence>
+
+			<!-- The invoice's internal identifier in PE. Unique within a given company. Non-writable. -->
+			<xs:element name="id" type="xs:int"/>
+			<!-- The invoice's number, set when invoice is certified. Otherwise 0. Non-writable. -->
+			<xs:element name="invoice-nr" type="xs:int"/>
+
+			<!--
+				Used when creating a credit invoice. Specify invoice number of debit invoice in order to create
+				proper association. Required for all credit invoices.
+			-->
+			<xs:element name="debit-invoice-nr" type="xs:int" minOccurs="0"/>
+
+			<!--
+				List of invoices that was used to credit this invoice. Ignored when writing
+			-->
+			<xs:element name="credit-invoices" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="client-invoice" type="client-invoice-reference" minOccurs="0"
+									maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="foreign-id" type="xs:string"/>
+
+			<!-- Mandatory element, but can be empty string -->
+			<xs:element name="po-nr" type="xs:string"/>
+			<xs:element name="client-ref" type="client-reference"/>
+
+			<!-- Optional. If not set, a template will be automatically assigned -->
+			<xs:element name="client-invoice-template-ref" type="client-invoice-template-reference" minOccurs="0"/>
+
+			<xs:element name="your-reference" type="xs:string"/>
+
+			<!-- Using 0 will result in no reference being set -->
+			<xs:element name="our-reference" type="user-reference"/>
+
+			<!-- Using 0 will result in no reference being set -->
+			<xs:element name="approver" type="user-reference"/>
+
+			<xs:element name="invoice-address" type="address"/>
+			<xs:element name="invoice-email" type="xs:string"/>
+			<xs:element name="delivery-name" type="xs:string"/>
+			<xs:element name="delivery-address" type="address"/>
+			<xs:element name="delivery-email" type="xs:string"/>
+			<xs:element name="invoice-date" type="xs:date"/>
+			<xs:element name="due-date" type="xs:date"/>
+
+			<!-- Mandatory element, but can be empty string -->
+			<xs:element name="delivery-date" type="xs:date"/>
+
+			<!-- Period used for accrual. -->
+			<xs:element name="period" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="start-date" type="xs:date"/>
+						<xs:element name="end-date" type="xs:date"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="currency" type="xs:string"/>
+
+			<!-- If not specified, the latest available currency rate will be used -->
+			<xs:element name="currency-rate" type="xs:decimal" minOccurs="0"/>
+
+			<!-- Whether this invoice has been certified or not. Read-only -->
+			<xs:element name="certified" type="xs:boolean"/>
+
+			<!-- Whether this invoice has been sent at least once or not. Read-only -->
+			<xs:element name="sent" type="xs:boolean"/>
+
+			<xs:element name="notes" type="xs:string" minOccurs="0"/>
+
+			<!-- When creating, leave empty to use default delivery. When saving, leave empty to leave original value unchanged. -->
+			<xs:element name="delivery-type" type="xs:string" minOccurs="0"/>
+
+			<xs:element name="gln" type="xs:string" minOccurs="0"/>
+
+			<!-- When creating, leave empty to use client vat-nr. When saving leave empty to leave original value unchanged -->
+			<xs:element name="vat-nr" type="xs:string" minOccurs="0"/>
+
+			<!--
+				The ISO 3166-1 alpha-2 code for sales turnover for the client invoice
+				When creating, leave empty to use client country code. When saving leave empty to leave original value unchanged
+			-->
+			<xs:element name="country-code" type="xs:string" minOccurs="0"/>
+
+			<!-- Set when reading invoices created from client agreements. Ignored when creating/updating. -->
+			<xs:element name="client-agreement-ref" type="client-agreement-reference" minOccurs="0"/>
+
+			<!-- In cent, will be 0 for non certified invoices. Read-only -->
+			<xs:element name="remaining" type="xs:long"/>
+
+			<xs:element name="last-payment-date" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The last date, if any, that this invoice had a payment registered.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<!-- A disabled invoice means it has been deleted by a user. -->
+			<xs:element name="disabled" type="xs:boolean"/>
+			<xs:element name="automatic-actions-disabled" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="automatic-actions-message" type="xs:string" minOccurs="0"/>
+
+			<xs:element name="fields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="field" type="field" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="approved" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="user" type="user-reference"/>
+						<xs:element name="registration-date" type="xs:dateTime"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!--
+				When saving/updating, do not include this element to "leave existing files as they are". If element
+			 	is present, files will be replaced with content. Specifically, a <files>-element with zero files
+			 	will delete any existing.
+			 	-->
+			<xs:element name="files" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="filename" type="xs:string"/>
+									<xs:element name="data" type="xs:hexBinary"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="rows">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="row" type="client-invoice-row" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-row">
+		<xs:sequence>
+
+			<xs:element name="id" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Unique identifier for this row, read only value. Can be safely ignored
+						when creating or updating client invoices.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="quantity" type="xs:decimal"/>
+
+			<!-- In cent -->
+			<xs:element name="price" type="xs:long"/>
+
+			<!-- Deprecated when writing, always derived from account configuration -->
+			<xs:element name="vat" type="xs:decimal"/>
+
+			<xs:element name="product" type="product-reference"/>
+			<xs:element name="unit" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+
+			<!-- Deprecated when writing, always derived from product reference configuration -->
+			<xs:element name="account-nr" type="xs:int"/>
+
+			<!-- Deprecated - use dimension-entries instead - Will be removed in the future -->
+			<xs:element name="project" type="project-reference" minOccurs="0"/>
+
+			<xs:element name="dimensions" type="dimensions-distribution" minOccurs="0"/>
+
+			<!-- Period used for accrual. -->
+			<xs:element name="period" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="start-date" type="xs:date"/>
+						<xs:element name="end-date" type="xs:date"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="delivery-date" type="xs:date" minOccurs="0"/>
+
+			<xs:element name="discount" minOccurs="0">
+				<xs:complexType>
+					<xs:choice>
+						<!-- In cent -->
+						<xs:element name="absolute" type="xs:long"/>
+						<xs:element name="percentage" type="xs:decimal"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="fields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="field" type="field" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="accruals" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="accrual" type="accrual" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-payment-writable">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="invoice-amount" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>
+						The amount in the invoice's currency that this payment represents. If the invoice's
+						currency is the same as the company's accounting currency, this amount and
+						accounting amount must always be equal.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="accounting-amount" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>
+						The accounting amount that this payment represents. If the invoice's
+						currency is the same as the company's accounting currency, thus amount and
+						invoice amount must be equal.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="transactions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="transaction" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="account-nr" type="xs:int"/>
+									<xs:element name="amount" type="xs:long"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="files">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="file" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="filename" type="xs:string"/>
+									<xs:element name="data" type="xs:hexBinary"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier-invoices">
+		<xs:sequence>
+			<xs:element name="supplier-invoice" type="supplier-invoice" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier-invoice-writeable">
+		<xs:sequence>
+
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="supplier" type="supplier-reference"/>
+
+			<xs:element name="bank-account" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						The bank account that should be used as debtor for this supplier invoice. If none is given,
+						a suitable bank account will automatically be chosen. This is an optional field only
+						relevant if payments are performed from different bank accounts. If unsure, please leave
+						empty.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="bankgiro" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>
+									Select bank account associated with the given bankgiro.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="reference" type="bank-account-reference">
+							<xs:annotation>
+								<xs:documentation>
+									Select bank account with the given identifier.
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="your-reference" type="user-reference" minOccurs="0"/>
+			<xs:element name="our-reference" type="xs:string"/>
+
+			<xs:element name="deposit-account">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="type" type="supplier-invoice-deposit-account-type"/>
+						<xs:element name="nr" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="invoice-date" type="xs:date"/>
+			<xs:element name="due-date" type="xs:date"/>
+			<xs:element name="payment-date" type="xs:date"/>
+			<!-- In cent -->
+			<xs:element name="amount" type="xs:long"/>
+			<!-- In cent -->
+			<xs:element name="vat" type="xs:long"/>
+			<xs:element name="currency" type="xs:string"/>
+			<xs:element name="currency-rate" type="xs:decimal"/>
+			<xs:element name="po-nr" type="xs:string"/>
+			<xs:element name="reference-nr" type="xs:string"/>
+			<xs:element name="ocr" type="xs:string"/>
+			<xs:element name="reminder-type" type="supplier-invoice-reminder-type" minOccurs="0"/>
+
+			<!-- Only PDF files are currently accepted -->
+			<xs:element name="files">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="file" minOccurs="1" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="filename" type="xs:string"/>
+									<xs:element name="data" type="xs:hexBinary"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="accounts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="account" minOccurs="1" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="account-nr" type="xs:int"/>
+
+									<xs:element name="vat-code" type="vat-code-type" nillable="true" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>
+												Vat code used for this account. If omitted, default vat code
+												from account will be used. If null this account will not have vat code.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="amount" type="xs:long"/>
+
+									<!-- Deprecated - use dimension-entries instead - Will be removed in the future -->
+									<xs:element name="project" type="project-reference" minOccurs="0"/>
+
+									<!-- May only be used for result accounts -->
+									<xs:element name="dimension-entries" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="dimension-entry" type="dimension-entry-reference"
+															minOccurs="0" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+
+									<!-- Period used for accrual, may only be used for result accounts -->
+									<xs:element name="period" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="start-date" type="xs:date"/>
+												<xs:element name="end-date" type="xs:date"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="client-invoice-relations" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="client-invoice-id" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier-invoice">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="supplier-ref" type="supplier-reference"/>
+			<xs:element name="bank-account-ref" type="bank-account-reference" minOccurs="0"/>
+			<xs:element name="your-reference" type="user-reference" minOccurs="0"/>
+			<xs:element name="our-reference" type="xs:string"/>
+			<xs:element name="deposit-account-type" type="xs:string"/>
+			<xs:element name="deposit-account-nr" type="xs:string"/>
+			<xs:element name="invoice-date" type="xs:date"/>
+			<xs:element name="due-date" type="xs:date"/>
+			<!-- In cent -->
+			<xs:element name="amount" type="xs:long"/>
+			<!-- In cent -->
+			<xs:element name="vat" type="xs:long"/>
+			<xs:element name="currency" type="xs:string"/>
+			<xs:element name="currency-rate" type="xs:decimal"/>
+			<xs:element name="po-nr" type="xs:string"/>
+			<xs:element name="reference-nr" type="xs:string"/>
+			<xs:element name="ocr" type="xs:string"/>
+			<xs:element name="payment-date" type="xs:date"/>
+			<xs:element name="certified" type="xs:boolean"/>
+			<xs:element name="reminder-type" type="supplier-invoice-reminder-type"/>
+			<!-- In cent -->
+			<xs:element name="remaining" type="xs:long"/>
+			<xs:element name="accounts">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="account" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+
+									<xs:element name="id" type="xs:int" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>
+												Unique identifier for this account, read only value. Can be safely
+												ignored
+												when creating or updating supplier invoices.
+											</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+
+									<xs:element name="account-nr" type="xs:int"/>
+									<xs:element name="vat-code" type="vat-code-type" nillable="true"/>
+									<xs:element name="amount" type="xs:long"/>
+									<xs:element name="dimension-entries" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="dimension-entry" type="dimension-entry-reference"
+															minOccurs="0" maxOccurs="unbounded"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="period" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="start-date" type="xs:date"/>
+												<xs:element name="end-date" type="xs:date"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<!-- ISO 3166-1 alpha-2 code -->
+			<xs:element name="country-code" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="products">
+		<xs:sequence>
+			<xs:element name="product" type="product" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="product">
+		<xs:sequence>
+
+			<xs:element name="id" type="xs:int"/>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="name" type="xs:string"/>
+
+			<xs:element name="type" type="purchase-type" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Optional when creating/updating. Default value will be used if not set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="unit" type="xs:string"/>
+			<xs:element name="price" type="xs:long"/>
+
+			<xs:element name="ean" type="xs:long">
+				<xs:annotation>
+					<xs:documentation>
+						Deprecated and no longer used
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="dimension-entries" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="dimension-entry" type="dimension-entry-reference"
+									minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<xs:element name="account-nr" type="xs:int" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Optional when creating/updating. Default value will be used if not set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="vat-percentage" type="xs:decimal" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Vat percentage used for domestic sales using this product.
+						Optional when creating/updating. Default value will be used if not set
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<xs:element name="accounts" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Deprecated, se will still be used to set account-nr, if it is not set.
+						For backwards compatibility.
+
+						When reading all elements will have value of account-nr.
+
+						Optional when creating/updating. Default values will be used if not set.
+					</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<!-- Optional when creating/updating. Default value will be used if not set -->
+						<xs:element name="se" type="xs:int" minOccurs="0"/>
+						<!-- Optional when creating/updating. Default value will be used if not set -->
+						<xs:element name="eu" type="xs:int" minOccurs="0"/>
+						<!-- Optional when creating/updating. Default value will be used if not set -->
+						<xs:element name="export" type="xs:int" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-agreements">
+		<xs:sequence>
+			<xs:element name="client-agreement" type="client-agreement" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-agreement">
+		<xs:sequence>
+
+			<!-- The identifier for this agreement -->
+			<xs:element name="id" type="xs:int"/>
+
+			<xs:element name="foreign-id" type="xs:string"/>
+
+			<!-- The revision of the agreement -->
+			<xs:element name="revision-nr" type="xs:int"/>
+
+			<!-- The client associated with this agreement -->
+			<xs:element name="client-ref" type="client-reference"/>
+
+			<!-- The description of the agreement -->
+			<xs:element name="description" type="xs:string"/>
+
+			<xs:element name="start-date" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						This field is deprecated and is no longer used. When creating or updating an agreement, this
+						field is ignored. When reading an agreement, its value will always be identical to
+						start-invoice-date.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+
+			<!--
+							  The date from which invoices should start to be generated. Used mainly for agreements that were
+							  started before being created in PE.
+							  -->
+			<xs:element name="start-invoice-date" type="xs:date"/>
+
+			<!--
+												 The agreement's end date.
+											 -->
+			<xs:element name="end-date" type="xs:date" nillable="true"/>
+
+			<xs:element name="your-reference" type="xs:string"/>
+			<xs:element name="our-reference" type="user-reference" nillable="true"/>
+			<xs:element name="approver" type="user-reference" nillable="true"/>
+
+			<xs:element name="currency" type="xs:string"/>
+
+			<xs:element name="payment-days" type="xs:int"/>
+
+			<!--
+											 How often the client should be invoiced in months. Typical values are
+											 1, 3, 6 and 12
+											 -->
+			<xs:element name="invoice-interval-months" type="xs:int"/>
+
+			<!-- Invoice strategy to use -->
+			<xs:element name="invoice-day" type="invoice-day"/>
+
+			<xs:element name="po-nr" type="xs:string"/>
+
+			<!-- Accrual configuration, if applicable. Optional. -->
+			<xs:element name="accrual-configuration" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="accrual-account-nr" type="xs:int"/>
+						<xs:element name="revenue-account-nr" type="xs:int"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- True if this agreement has been deleted, otherwise false -->
+			<xs:element name="deleted" type="xs:boolean"/>
+
+			<xs:element name="fields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="field" type="field" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Rows that will only appear on the first invoice -->
+			<xs:element name="first-invoice-rows">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="row" type="client-agreement-row" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+			<!-- Rows that will appear on every invoice -->
+			<xs:element name="recurring-rows">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="row" type="client-agreement-row" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-agreement-row">
+		<xs:sequence>
+			<xs:element name="quantity" type="xs:decimal"/>
+			<!-- In cent -->
+			<xs:element name="price" type="xs:long"/>
+			<xs:element name="product" type="product-reference" minOccurs="0"/>
+			<xs:element name="unit" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+			<xs:element name="discount" minOccurs="0">
+				<xs:complexType>
+					<xs:choice>
+						<!-- In cent -->
+						<xs:element name="absolute" type="xs:long"/>
+						<xs:element name="percentage" type="xs:decimal"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="fields" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="field" type="field" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="activity-readables">
+		<xs:sequence>
+			<xs:element name="activity-readable" type="activity-readable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="activity-readable">
+		<xs:sequence>
+			<xs:element name="id" type="activity-reference"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="event-readables">
+		<xs:sequence>
+			<xs:element name="event-readable" type="event-readable" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="event-readable">
+		<xs:sequence>
+			<xs:element name="id" type="event-reference"/>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="user" type="user-reference"/>
+			<xs:element name="activity" type="activity-reference"/>
+			<xs:element name="client-project" type="client-project-reference" minOccurs="0"/>
+			<xs:element name="child" type="xs:string" minOccurs="0"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="hours" type="xs:decimal"/>
+			<xs:element name="comment" type="xs:string"/>
+			<xs:element name="internal-comment" type="xs:string"/>
+
+			<!-- Deprecated - use status instead - Will be removed in the future -->
+			<xs:element name="approved" type="xs:boolean"/>
+
+			<xs:element name="status" type="event-status"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="event-writable">
+		<xs:sequence>
+			<xs:element name="foreign-id" type="xs:string"/>
+			<xs:element name="user" type="user-reference"/>
+			<xs:element name="activity" type="activity-reference"/>
+			<xs:element name="client-project" type="client-project-reference" minOccurs="0"/>
+			<xs:element name="child" type="xs:string" minOccurs="0"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="hours" type="xs:decimal"/>
+			<xs:element name="comment" type="xs:string"/>
+			<xs:element name="internal-comment" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-readables">
+		<xs:sequence>
+			<xs:element name="client-project-readable" type="client-project-readable" minOccurs="0"
+						maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-readable">
+		<xs:sequence>
+			<xs:element name="id" type="client-project-reference"/>
+			<xs:element name="client" type="client-reference" minOccurs="0"/>
+			<xs:element name="broker-client" type="client-reference" minOccurs="0"/>
+			<xs:element name="fixed-price" type="xs:boolean"/>
+			<xs:element name="number" type="xs:string"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="active" type="xs:boolean"/>
+			<xs:element name="comment" type="xs:string"/>
+			<xs:element name="budget-hours" type="xs:decimal"/>
+			<xs:element name="budget-amount" type="xs:long"/>
+			<xs:element name="incoming-invoiced-amount" type="xs:long"/>
+			<xs:element name="incoming-invoiced-vat-amount" type="xs:long"/>
+			<xs:element name="all-activities" type="xs:boolean"/>
+			<xs:element name="activity" type="client-project-activity" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="all-users" type="xs:boolean"/>
+			<xs:element name="user" type="client-project-user" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="leads" type="lead" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="fixed-price-planned-invoice" type="fixed-price-planned-invoice" minOccurs="0"
+						maxOccurs="unbounded"/>
+			<xs:element name="write-off" type="client-project-write-off" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="dimension-entry" type="dimension-entry-reference" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-writeable">
+		<xs:sequence>
+			<xs:element name="client" type="client-reference" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Can only be set when creating new project
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="broker-client" type="client-reference" minOccurs="0" nillable="true">
+				<xs:annotation>
+					<xs:documentation>
+						Optional client to use as client instead of "normal" client when creating new client invoices
+						from the project. Omitting this value will set it to default when creating,
+						and leave it unchanged when updating. Setting to null explicitely clears the value.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="fixed-price" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>
+						Can only be set when creating new project
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="number" type="xs:string"/>
+			<xs:element name="name" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>
+						Can only be set when creating new project
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="comment" type="xs:string"/>
+			<xs:element name="budget-hours" type="xs:decimal"/>
+			<xs:element name="budget-amount" type="xs:long"/>
+			<xs:element name="incoming-invoiced-amount" type="xs:long"/>
+			<xs:element name="incoming-invoiced-vat-amount" type="xs:long"/>
+			<xs:element name="all-activities" type="xs:boolean"/>
+			<xs:element name="activity" type="client-project-activity" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="all-users" type="xs:boolean"/>
+			<xs:element name="user" type="client-project-user" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="leads" type="lead" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimensions-distribution">
+		<xs:sequence>
+			<xs:element name="dimension-entry" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+
+						<xs:element name="id" type="xs:int"/>
+
+						<!-- If not specified, defaults to 1 (100%) -->
+						<xs:element name="percentage" type="xs:decimal" minOccurs="0"/>
+
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="activity-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-activity">
+		<xs:sequence>
+			<xs:element name="activity" type="activity-reference"/>
+			<xs:element name="price" type="xs:long" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-user-activity">
+		<xs:sequence>
+			<xs:element name="activity" type="activity-reference"/>
+			<xs:element name="price" type="xs:long" minOccurs="0"/>
+			<xs:element name="dimension-user-percentage" type="xs:decimal" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-user">
+		<xs:sequence>
+			<xs:element name="user" type="user-reference"/>
+			<xs:element name="activity" type="client-project-user-activity" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="lead">
+		<xs:sequence>
+			<xs:element name="user" type="user-reference"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="fixed-price-planned-invoice">
+		<xs:sequence>
+			<xs:element name="invoice-date" type="xs:date"/>
+			<xs:element name="client-invoice" type="client-invoice-reference" minOccurs="0"/>
+			<xs:element name="row" type="fixed-price-planned-invoice-row" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="fixed-price-planned-invoice-row">
+		<xs:sequence>
+			<xs:element name="product" type="product-reference"/>
+			<xs:element name="quantity" type="xs:decimal"/>
+			<xs:element name="unit" type="xs:string"/>
+			<xs:element name="price" type="xs:long"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-project-write-off">
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="amount" type="xs:long"/>
+			<xs:element name="accounting-amount" type="xs:long"/>
+			<xs:element name="description" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="event-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="event-status">
+		<xs:sequence>
+			<xs:element name="type" type="event-status-type"/>
+			<xs:element name="registration-user" type="user-reference"/>
+			<xs:element name="registration-date" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="user-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-article-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-agreement-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-template-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="client-invoice-row-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier-invoice-account-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bank-account-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="bank-transaction-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="supplier-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="product-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="project-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimension-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="dimension-entry-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-file-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-entry-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="expense-type-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="company-card-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="payroll-schedule-reference">
+		<xs:sequence>
+			<xs:element name="id" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="address">
+		<xs:sequence>
+			<xs:element name="address1" type="xs:string"/>
+			<xs:element name="address2" type="xs:string"/>
+			<xs:element name="zip-code" type="xs:string"/>
+			<xs:element name="state" type="xs:string"/>
+			<xs:element name="country" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="field">
+		<xs:sequence>
+			<!-- Set when reading, ignored when creating/updating -->
+			<xs:element name="name" type="xs:string" minOccurs="0"/>
+			<!-- Alias uniquely identifies a field -->
+			<xs:element name="alias" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="accrual">
+		<xs:sequence>
+			<xs:element name="month" type="xs:string"/>
+			<xs:element name="sum" type="xs:long"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:simpleType name="invoice-day">
+		<xs:restriction base="xs:string">
+			<!-- Invoices will be created on the first day of each period -->
+			<xs:enumeration value="INVOICE_AT_START"/>
+			<!-- Invoices will be created so that the due day matches the first day of the period -->
+			<xs:enumeration value="PAY_AT_START"/>
+			<!-- Invoices will be created on the last day of each period -->
+			<xs:enumeration value="INVOICE_AT_END"/>
+			<!-- Invoices will be created on the start of the month before the month that encapsulates interval start -->
+			<xs:enumeration value="INVOICE_AT_START_MONTH"/>
+			<!-- Invoices will be created on the start of the month after the month that encapsulates interval end -->
+			<xs:enumeration value="INVOICE_AT_END_MONTH"/>
+			<!-- Invoice one day prior to the period start -->
+			<xs:enumeration value="INVOICE_ONE_DAY_PRIOR_TO_PERIOD_START"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="payroll-user-month-report-strategy">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DontCreate"/>
+			<xs:enumeration value="Create"/>
+			<xs:enumeration value="CreateApproveSelf"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="supplier-invoice-deposit-account-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BankGiro"/>
+			<xs:enumeration value="PlusGiro"/>
+			<!-- Format: [\d\w]+-[\d\w]+ -->
+			<xs:enumeration value="Iban"/>
+			<!-- Format: \d+-\d+ -->
+			<xs:enumeration value="BankAccount"/>
+			<xs:enumeration value="Other"/>
+			<!-- Format: [\d\w]+-[\d\w]+-[\d\w]+ -->
+			<xs:enumeration value="InternationalBankAccountWithRouting"/>
+			<!-- Format: [\d\w]+-[\d]+ -->
+			<xs:enumeration value="InternationalBankAccountWithAccountNumber"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="supplier-invoice-reminder-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="None"/>
+			<xs:enumeration value="Reminder"/>
+			<xs:enumeration value="DebtCollection"/>
+			<xs:enumeration value="Enforcement"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="payroll-event-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Sick"/>
+			<xs:enumeration value="Vacation"/>
+			<xs:enumeration value="LeaveOfAbsence"/>
+			<xs:enumeration value="LeaveOfAbsenceVacationEarned"/>
+			<xs:enumeration value="WorkHour"/>
+			<xs:enumeration value="ParentalLeave"/>
+			<xs:enumeration value="Childcare"/>
+			<xs:enumeration value="CloseRelativeCare"/>
+			<xs:enumeration value="PaternityLeave"/>
+			<xs:enumeration value="Furlough"/>
+			<xs:enumeration value="OtherLeave"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="payroll-unit-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Generic"/>
+			<xs:enumeration value="Mile"/>
+			<xs:enumeration value="Hour"/>
+			<xs:enumeration value="Day"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="payroll-schedule-interval-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Work"/>
+			<xs:enumeration value="WorkReduced"/>
+			<xs:enumeration value="WorkFree"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="access-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ClientAgreementOwn"/>
+			<xs:enumeration value="ClientInvoice"/>
+			<xs:enumeration value="ClientInvoiceCertifyOwn"/>
+			<xs:enumeration value="ClientInvoiceOwn"/>
+			<xs:enumeration value="ClientProjectOwn"/>
+			<xs:enumeration value="Dimensions"/>
+			<xs:enumeration value="Expenses"/>
+			<xs:enumeration value="ExpensesOwn"/>
+			<xs:enumeration value="ExpensesPay"/>
+			<xs:enumeration value="ExternalAccountant"/>
+			<xs:enumeration value="Payroll"/>
+			<xs:enumeration value="PayrollOwn"/>
+			<xs:enumeration value="PayrollPay"/>
+			<xs:enumeration value="Responsible"/>
+			<xs:enumeration value="ResponsibleRead"/>
+			<xs:enumeration value="ResultreportOwn"/>
+			<xs:enumeration value="SupplierInvoice"/>
+			<xs:enumeration value="SupplierInvoiceCreate"/>
+			<xs:enumeration value="SupplierInvoicePay"/>
+			<xs:enumeration value="Timereport"/>
+			<xs:enumeration value="TimereportOwn"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="vat-code-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="_3FEU"/>
+			<xs:enumeration value="_3VEU"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="BVMB"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="FTEU"/>
+			<xs:enumeration value="HFS"/>
+			<xs:enumeration value="I"/>
+			<xs:enumeration value="IT"/>
+			<xs:enumeration value="ITEU"/>
+			<xs:enumeration value="ITGLOB"/>
+			<xs:enumeration value="IVGLOB"/>
+			<xs:enumeration value="IV"/>
+			<xs:enumeration value="IVEU"/>
+			<xs:enumeration value="MF"/>
+			<xs:enumeration value="MP1"/>
+			<xs:enumeration value="MP2"/>
+			<xs:enumeration value="MP3"/>
+			<xs:enumeration value="MP4"/>
+			<xs:enumeration value="OTTU"/>
+			<xs:enumeration value="R1"/>
+			<xs:enumeration value="R2"/>
+			<xs:enumeration value="U1"/>
+			<xs:enumeration value="U2"/>
+			<xs:enumeration value="U3"/>
+			<xs:enumeration value="U4"/>
+			<xs:enumeration value="UEU1"/>
+			<xs:enumeration value="UEU2"/>
+			<xs:enumeration value="UEU3"/>
+			<xs:enumeration value="UEU4"/>
+			<xs:enumeration value="UOS1"/>
+			<xs:enumeration value="UOS2"/>
+			<xs:enumeration value="UOS3"/>
+			<xs:enumeration value="UOS4"/>
+			<xs:enumeration value="UVFU1"/>
+			<xs:enumeration value="UVFU2"/>
+			<xs:enumeration value="UVFU3"/>
+			<xs:enumeration value="UVFU4"/>
+			<xs:enumeration value="UT"/>
+			<xs:enumeration value="UTFU1"/>
+			<xs:enumeration value="UTFU2"/>
+			<xs:enumeration value="UTFU3"/>
+			<xs:enumeration value="UTFU4"/>
+			<xs:enumeration value="VTEU"/>
+			<xs:enumeration value="OETEU"/>
+			<xs:enumeration value="INGEN"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="expense-type-classification">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Basic"/>
+			<xs:enumeration value="Representation"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="event-status-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Open"/>
+			<xs:enumeration value="Approved"/>
+			<xs:enumeration value="Certified"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="purchase-type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Goods"/>
+			<xs:enumeration value="Services"/>
+			<xs:enumeration value="DigitalServices"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="paged-result">
+		<xs:attribute name="offset" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>
+					The offset into the full result that this page represents, 0-indexed.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="limit" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>
+					The size that this page was limited to. May have been automatically adjusted compared to user input.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="size" type="xs:int">
+			<xs:annotation>
+				<xs:documentation>
+					The full size.
+				</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+
+	<xs:complexType name="report" abstract="true">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="company" type="company"/>
+			<xs:element name="headers" type="report-header" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="sections" type="report-section" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="report-header">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="value" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="report-section" abstract="true">
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-simple-table">
+		<xs:complexContent>
+			<xs:extension base="report-section">
+				<xs:sequence>
+					<xs:element name="objects" type="report-section-simple-table-object" minOccurs="0"
+								maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-simple-table-object" abstract="true">
+		<xs:sequence>
+			<xs:element name="items" type="report-section-model-item" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-header">
+		<xs:complexContent>
+			<xs:extension base="report-section-simple-table-object">
+				<xs:sequence>
+					<xs:element name="item" type="report-section-model-item"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-header-row">
+		<xs:complexContent>
+			<xs:extension base="report-section-simple-table-object"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-item-row">
+		<xs:complexContent>
+			<xs:extension base="report-section-simple-table-object"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-footer-row">
+		<xs:complexContent>
+			<xs:extension base="report-section-simple-table-object"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-item" abstract="true">
+		<xs:sequence>
+			<xs:element name="value" type="xs:anyType"/>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-bigdecimal-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-currency-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-date-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-number-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-percentage-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-string-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="report-section-model-yearmonth-item">
+		<xs:complexContent>
+			<xs:extension base="report-section-model-item"/>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

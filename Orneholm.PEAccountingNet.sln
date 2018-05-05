@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2043
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet", "src\Orneholm.PEAccountingNet\Orneholm.PEAccountingNet.csproj", "{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9560BE3A-8121-42D0-9ABA-5EA20D746CAB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B8DE222B-30F0-41C4-9679-A32580DBDE5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orneholm.PEAccountingNet.Tests", "test\Orneholm.PEAccountingNet.Tests\Orneholm.PEAccountingNet.Tests.csproj", "{31461B9E-A99A-4613-AD27-8A30F47F9B29}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{26DA93F5-6917-41BB-B66A-12514D6B6DF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orneholm.PEAccountingNet.ConsoleAppSamle", "samples\Orneholm.PEAccountingNet.ConsoleAppSamle\Orneholm.PEAccountingNet.ConsoleAppSamle.csproj", "{7F9148FC-779D-417F-B8BA-F88D9776D1CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D2D1423-49A7-45BD-82BA-281069F8C452}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F9148FC-779D-417F-B8BA-F88D9776D1CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F9148FC-779D-417F-B8BA-F88D9776D1CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F9148FC-779D-417F-B8BA-F88D9776D1CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F9148FC-779D-417F-B8BA-F88D9776D1CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87} = {9560BE3A-8121-42D0-9ABA-5EA20D746CAB}
+		{31461B9E-A99A-4613-AD27-8A30F47F9B29} = {B8DE222B-30F0-41C4-9679-A32580DBDE5C}
+		{7F9148FC-779D-417F-B8BA-F88D9776D1CA} = {26DA93F5-6917-41BB-B66A-12514D6B6DF7}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C65CB752-5558-4100-A1D5-E5853F1DE027}
+	EndGlobalSection
+EndGlobal
