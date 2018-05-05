@@ -64,7 +64,7 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
             var result = await api.GetClientsAsync();
             foreach (var item in result)
             {
-                Console.WriteLine($"{item.name} ({item.id}): {item.vatnr}");
+                Console.WriteLine($"{item.Name} ({item.Id}): {item.OrgNo}");
             }
         }
 

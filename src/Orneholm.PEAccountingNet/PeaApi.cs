@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Models;
 using Orneholm.PEAccountingNet.Models.Native;
 
 namespace Orneholm.PEAccountingNet
@@ -21,63 +22,41 @@ namespace Orneholm.PEAccountingNet
 
         // Company
 
-        public async Task<companyinformation> GetCompanyInfoAsync()
+        public async Task<CompanyInformation> GetCompanyInfoAsync()
         {
-            return await _httpClient.GetAsync<companyinformation>("/info");
+            return await GetItemResultAsync<companyinformation, CompanyInformation>("/info", CompanyInformation.FromNative);
         }
 
         // Users
 
-        public async Task<user> GetMyUserAsync()
+        public async Task<User> GetMyUserAsync()
         {
-            return await _httpClient.GetAsync<user>("/user/me");
+            return await GetItemResultAsync<user, User>("/user/me", User.FromNative);
         }
 
-        public async Task<IEnumerable<user>> GetUsersAsync()
+        public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            return await GetCompanyListResultAsync<users, user>("/user", x => x.user);
+            return await GetListResultAsync<users, user, User>("/user", x => x.user, User.FromNative);
         }
 
-        public async Task<user> GetUserAsync(int userId)
+        public async Task<User> GetUserAsync(int userId)
         {
-            return await _httpClient.GetAsync<user>($"/user/{userId}");
+            return await GetItemResultAsync<user, User>($"/user/{userId}", User.FromNative);
         }
 
 
         // Clients
 
-        public async Task<IEnumerable<client>> GetClientsAsync()
+        public async Task<IEnumerable<Client>> GetClientsAsync()
         {
-            return await GetCompanyListResultAsync<clients, client>("/client", x => x.client);
+            return await GetListResultAsync<clients, client, Client>("/client", x => x.client, Client.FromNative);
         }
-
-
-        // Suppliers
-
-        public async Task<IEnumerable<supplier>> GetSuppliersAsync()
-        {
-            return await GetCompanyListResultAsync<suppliers, supplier>("/supplier", x => x.supplier);
-        }
-
-
-        // Products
-
-        public async Task<IEnumerable<product>> GetProductsAsync()
-        {
-            return await GetCompanyListResultAsync<products, product>("/product", x => x.product);
-        }
-
-        public async Task<product> GetProductAsync(int productId)
-        {
-            return await _httpClient.GetAsync<product>($"/product/{productId}");
-        }
-
 
         // Projects
 
         public async Task<IEnumerable<project>> GetProjectsAsync()
         {
-            return await GetCompanyListResultAsync<projects, project>("/project", x => x.project);
+            return await GetListResultAsync<projects, project>("/project", x => x.project);
         }
 
 
@@ -85,7 +64,7 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<clientprojectreadable>> GetClientProjectsAsync()
         {
-            return await GetCompanyListResultAsync<clientprojectreadables, clientprojectreadable>("/client-project", x => x.clientprojectreadable);
+            return await GetListResultAsync<clientprojectreadables, clientprojectreadable>("/client-project", x => x.clientprojectreadable);
         }
 
         public async Task<clientprojectreadable> GetClientProjectAsync(int clientProjectId)
@@ -101,7 +80,7 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         public async Task<IEnumerable<expensereadablesExpense>> GetExpensesAsync()
         {
-            return await GetCompanyListResultAsync<expensereadables, expensereadablesExpense>("/expense", x => x.expense);
+            return await GetListResultAsync<expensereadables, expensereadablesExpense>("/expense", x => x.expense);
         }
 
         /// <summary>
@@ -109,7 +88,7 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         public async Task<IEnumerable<expensereadablesExpense>> SearchExpensesAsync(string query)
         {
-            return await GetCompanyListResultAsync<expensereadables, expensereadablesExpense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense);
+            return await GetListResultAsync<expensereadables, expensereadablesExpense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense);
         }
 
         /// <remarks>All receipts in the expense must have the same payment type (either private expense or corporate credit card expense).</remarks>
@@ -120,12 +99,12 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<expensefilereadablesExpensefile>> GetExpenseFilesAsync()
         {
-            return await GetCompanyListResultAsync<expensefilereadables, expensefilereadablesExpensefile>("/expense/file/open", x => x.expensefile);
+            return await GetListResultAsync<expensefilereadables, expensefilereadablesExpensefile>("/expense/file/open", x => x.expensefile);
         }
 
         public async Task<IEnumerable<expenseentryreadable>> GetExpenseEntriesAsync()
         {
-            return await GetCompanyListResultAsync<expenseentryreadables, expenseentryreadable>("/expense/entry/open", x => x.expenseentry);
+            return await GetListResultAsync<expenseentryreadables, expenseentryreadable>("/expense/entry/open", x => x.expenseentry);
         }
 
         public async Task<expenseentryreadable> GetExpenseEntryAsync(int expenseEntryId)
@@ -138,7 +117,7 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<activityreadable>> GetActivitiesAsync()
         {
-            return await GetCompanyListResultAsync<activityreadables, activityreadable>("/activity", x => x.activityreadable);
+            return await GetListResultAsync<activityreadables, activityreadable>("/activity", x => x.activityreadable);
         }
 
         public async Task<activityreadable> GetActivityAsync(int activityId)
@@ -151,7 +130,7 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<eventreadable>> GetEventsAsync()
         {
-            return await GetCompanyListResultAsync<eventreadables, eventreadable>("/event", x => x.eventreadable);
+            return await GetListResultAsync<eventreadables, eventreadable>("/event", x => x.eventreadable);
         }
 
         public async Task<eventreadable> GetEventAsync(int eventId)
@@ -172,10 +151,27 @@ namespace Orneholm.PEAccountingNet
 
         // Helpers
 
-        private async Task<IEnumerable<TItem>> GetCompanyListResultAsync<TResult, TItem>(string url, Func<TResult, IEnumerable<TItem>> projection)
+        private async Task<TItem> GetItemResultAsync<TNativeItem, TItem>(string url, Func<TNativeItem, TItem> transformItem)
+        {
+            var result = await _httpClient.GetAsync<TNativeItem>(url);
+            if (result == null)
+            {
+                return default(TItem);
+            }
+
+            return transformItem(result);
+        }
+
+        private async Task<IEnumerable<TNativeItem>> GetListResultAsync<TResult, TNativeItem>(string url, Func<TResult, IEnumerable<TNativeItem>> getValue)
         {
             var result = await _httpClient.GetAsync<TResult>(url);
-            return PeaApiHelpers.TransformListResult(result, projection);
+            return PeaApiHelpers.TransformListResult(result, getValue);
+        }
+
+        private async Task<IEnumerable<TItem>> GetListResultAsync<TResult, TNativeItem, TItem>(string url, Func<TResult, IEnumerable<TNativeItem>> getValue, Func<TNativeItem, TItem> transformItem)
+        {
+            var result = await _httpClient.GetAsync<TResult>(url);
+            return PeaApiHelpers.TransformListResult(result, getValue, transformItem);
         }
     }
 }

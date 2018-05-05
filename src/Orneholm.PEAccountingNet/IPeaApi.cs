@@ -1,19 +1,17 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Models;
 using Orneholm.PEAccountingNet.Models.Native;
 
 namespace Orneholm.PEAccountingNet
 {
     public interface IPeaApi
     {
-        Task<companyinformation> GetCompanyInfoAsync();
-        Task<user> GetMyUserAsync();
-        Task<IEnumerable<user>> GetUsersAsync();
-        Task<user> GetUserAsync(int userId);
-        Task<IEnumerable<client>> GetClientsAsync();
-        Task<IEnumerable<supplier>> GetSuppliersAsync();
-        Task<IEnumerable<product>> GetProductsAsync();
-        Task<product> GetProductAsync(int productId);
+        Task<CompanyInformation> GetCompanyInfoAsync();
+        Task<User> GetMyUserAsync();
+        Task<IEnumerable<User>> GetUsersAsync();
+        Task<User> GetUserAsync(int userId);
+        Task<IEnumerable<Client>> GetClientsAsync();
         Task<IEnumerable<project>> GetProjectsAsync();
         Task<IEnumerable<clientprojectreadable>> GetClientProjectsAsync();
         Task<clientprojectreadable> GetClientProjectAsync(int clientProjectId);
