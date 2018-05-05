@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Orneholm.PEAccountingNet.Models;
+using Orneholm.PEAccountingNet.Models.Native;
 
 namespace Orneholm.PEAccountingNet
 {

@@ -49,9 +49,9 @@ A console application with showing a few usecases is available in [Samples](samp
 ## Regenerating models
 The models are auto generated using [xsd.exe](https://docs.microsoft.com/en-us/dotnet/standard/serialization/xml-schema-definition-tool-xsd-exe) with the [XSD source from p:e accoutning](https://my.accounting.pe/api/v1/xsd).
 
-To generate new classes, download a new version of the XSD, place it in /models and run the following command from [Developer Command Prompt for Visual Studio](https://docs.microsoft.com/en-us/dotnet/framework/tools/developer-command-prompt-for-vs).
+To generate new classes, download a new version of the XSD, place it in /Models/Native and run the following command from [Developer Command Prompt for Visual Studio](https://docs.microsoft.com/en-us/dotnet/framework/tools/developer-command-prompt-for-vs).
 ```
-xsd Models.xsd /c /n:Orneholm.PEAccountingNet.Models
+xsd NativeModels.xsd /c /n:Orneholm.PEAccountingNet.Models.Native
 ```
 
 # Todo
