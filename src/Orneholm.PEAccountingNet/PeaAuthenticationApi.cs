@@ -18,6 +18,7 @@ namespace Orneholm.PEAccountingNet
         }
 
         // Authenticate
+
         public async Task<IEnumerable<accessiblecompany>> GetAccessibleCompaniesAsync(string email, string password)
         {
             var result = await _httpClient.PostAsync<userauthentication, accessiblecompanies>("/access/authenticate", new userauthentication()

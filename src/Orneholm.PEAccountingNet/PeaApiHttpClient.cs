@@ -35,12 +35,14 @@ namespace Orneholm.PEAccountingNet
             _httpClient = httpClient;
         }
 
+
         public async Task<T> GetAsync<T>(string url)
         {
             var httpResponseMessage = await _httpClient.GetAsync(CleanUrl(url));
             EnsureSuccess(httpResponseMessage);
             return await GetDeserializedResponseAsync<T>(httpResponseMessage.Content);
         }
+
 
         public async Task<TResult> PostAsync<TRequest, TResult>(string url, TRequest request)
         {
@@ -56,6 +58,7 @@ namespace Orneholm.PEAccountingNet
             );
         }
 
+
         public async Task<TResult> PutAsync<TRequest, TResult>(string url, TRequest request)
         {
             return await PostPutAsync<TRequest, TResult>(url, request,
@@ -70,6 +73,7 @@ namespace Orneholm.PEAccountingNet
             );
         }
 
+
         public async Task<T> DeleteAsync<T>(string url)
         {
             var httpResponseMessage = await _httpClient.DeleteAsync(CleanUrl(url));
@@ -81,21 +85,23 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<TResult> PostPutAsync<TRequest, TResult>(string url, TRequest request, Func<string, HttpContent, Task<HttpResponseMessage>> httpRequest)
         {
-            var requestXml = SerializeXml(request);
-            var httpContent = new StringContent(requestXml);
-
-            var httpResponseMessage = await httpRequest(CleanUrl(url), httpContent);
-            EnsureSuccess(httpResponseMessage);
+            var httpResponseMessage = await GetHttpResponse<TRequest>(url, request, httpRequest);
             return await GetDeserializedResponseAsync<TResult>(httpResponseMessage.Content);
         }
 
         public async Task PostPutAsync<TRequest>(string url, TRequest request, Func<string, HttpContent, Task<HttpResponseMessage>> httpRequest)
+        {
+            await GetHttpResponse(url, request, httpRequest);
+        }
+
+        private async Task<HttpResponseMessage> GetHttpResponse<TRequest>(string url, TRequest request, Func<string, HttpContent, Task<HttpResponseMessage>> httpRequest)
         {
             var requestXml = SerializeXml(request);
             var httpContent = new StringContent(requestXml);
 
             var httpResponseMessage = await httpRequest(CleanUrl(url), httpContent);
             EnsureSuccess(httpResponseMessage);
+            return httpResponseMessage;
         }
 
         private void EnsureSuccess(HttpResponseMessage httpResponseMessage)

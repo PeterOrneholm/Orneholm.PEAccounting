@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Models;
 
@@ -44,6 +43,7 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.GetAsync<user>($"/user/{userId}");
         }
 
+
         // Clients
 
         public async Task<IEnumerable<client>> GetClientsAsync()
@@ -51,12 +51,14 @@ namespace Orneholm.PEAccountingNet
             return await GetCompanyListResultAsync<clients, client>("/client", x => x.client);
         }
 
+
         // Suppliers
 
         public async Task<IEnumerable<supplier>> GetSuppliersAsync()
         {
             return await GetCompanyListResultAsync<suppliers, supplier>("/supplier", x => x.supplier);
         }
+
 
         // Products
 
@@ -70,12 +72,14 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.GetAsync<product>($"/product/{productId}");
         }
 
+
         // Projects
 
         public async Task<IEnumerable<project>> GetProjectsAsync()
         {
             return await GetCompanyListResultAsync<projects, project>("/project", x => x.project);
         }
+
 
         // Client projects
 
@@ -88,6 +92,7 @@ namespace Orneholm.PEAccountingNet
         {
             return await _httpClient.GetAsync<clientprojectreadable>($"/client-project/{clientProjectId}");
         }
+
 
         // Expenses
 
@@ -128,6 +133,7 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.GetAsync<expenseentryreadable>($"/expense/entry/expense/{expenseEntryId}");
         }
 
+
         // Activities
 
         public async Task<IEnumerable<activityreadable>> GetActivitiesAsync()
@@ -139,6 +145,7 @@ namespace Orneholm.PEAccountingNet
         {
             return await _httpClient.GetAsync<activityreadable>($"/activity/{activityId}");
         }
+
 
         // Events
 
@@ -162,31 +169,13 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.DeleteAsync<deleted>($"/event/{eventId}");
         }
 
+
         // Helpers
 
         private async Task<IEnumerable<TItem>> GetCompanyListResultAsync<TResult, TItem>(string url, Func<TResult, IEnumerable<TItem>> projection)
         {
             var result = await _httpClient.GetAsync<TResult>(url);
             return PeaApiHelpers.TransformListResult(result, projection);
-        }
-    }
-
-    internal static class PeaApiHelpers
-    {
-        public static IEnumerable<TItem> TransformListResult<TResult, TItem>(TResult result, Func<TResult, IEnumerable<TItem>> projection)
-        {
-            if (result == null)
-            {
-                return Enumerable.Empty<TItem>();
-            }
-
-            var items = projection(result);
-            if (items == null)
-            {
-                return Enumerable.Empty<TItem>();
-            }
-
-            return items;
         }
     }
 }
