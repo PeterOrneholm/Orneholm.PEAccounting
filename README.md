@@ -43,7 +43,7 @@ foreach (var clientProject in clientProjects)
 
 ### Sample
 
-A console application with samples is available in /samples/Orneholm.PEAccountingNet.ConsoleAppSamle.
+A console application with showing a few usecases is available in [Samples](samples/Orneholm.PEAccountingNet.ConsoleAppSamle).
 
 
 ## Regenerating models
