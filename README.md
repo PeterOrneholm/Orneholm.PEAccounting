@@ -22,19 +22,23 @@ foreach (var company in companies)
 ```
 
 ### Data API
+
+*Example:*
 ```csharp
+var api = new PeaApi(company.id, company.token);
+
 // List clients
-var result = await api.GetClientsAsync();
-foreach (var item in result)
+var clients = await api.GetClientsAsync();
+foreach (var client in clients)
 {
-    Console.WriteLine($"{item.name} ({item.id}): {item.vatnr}");
+    Console.WriteLine($"{client.name} ({client.id}): {client.vatnr}");
 }
 
 // List client projects
-var result = await api.GetClientProjectsAsync();
-foreach (var item in result)
+var clientProjects = await api.GetClientProjectsAsync();
+foreach (var clientProject in clientProjects)
 {
-    Console.WriteLine($"{item.name} ({item.id.id}): {item.comment}");
+    Console.WriteLine($"{clientProject.name} ({clientProject.id.id}): {clientProject.comment}");
 }
 ```
 
@@ -56,7 +60,7 @@ This project is in a very early release and will have breaking changes before re
 Pull requests are welcome.
 
 - [x] Initial release
-- [ ] Publish to NuGet
+- [x] Publish to NuGet
 - [ ] Unit tests
 - [ ] CI/CD pipeline
 - [ ] Add missing API:s
