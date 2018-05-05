@@ -24,24 +24,24 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<CompanyInformation> GetCompanyInfoAsync()
         {
-            return await GetSingleAsync<companyinformation, CompanyInformation>("/info", CompanyInformation.FromNative);
+            return await _httpClient.GetSingleAsync<companyinformation, CompanyInformation>("/info", CompanyInformation.FromNative);
         }
 
         // Users
 
         public async Task<User> GetMyUserAsync()
         {
-            return await GetSingleAsync<user, User>("/user/me", User.FromNative);
+            return await _httpClient.GetSingleAsync<user, User>("/user/me", User.FromNative);
         }
 
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
-            return await GetListAsync<users, user, User>("/user", x => x.user, User.FromNative);
+            return await _httpClient.GetListAsync<users, user, User>("/user", x => x.user, User.FromNative);
         }
 
         public async Task<User> GetUserAsync(int userId)
         {
-            return await GetSingleAsync<user, User>($"/user/{userId}", User.FromNative);
+            return await _httpClient.GetSingleAsync<user, User>($"/user/{userId}", User.FromNative);
         }
 
 
@@ -49,14 +49,14 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<Client>> GetClientsAsync()
         {
-            return await GetListAsync<clients, client, Client>("/client", x => x.client, Client.FromNative);
+            return await _httpClient.GetListAsync<clients, client, Client>("/client", x => x.client, Client.FromNative);
         }
 
         // Projects
 
         public async Task<IEnumerable<Project>> GetProjectsAsync()
         {
-            return await GetListAsync<projects, project, Project>("/project", x => x.project, Project.FromNative);
+            return await _httpClient.GetListAsync<projects, project, Project>("/project", x => x.project, Project.FromNative);
         }
 
 
@@ -64,12 +64,12 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<ClientProject>> GetClientProjectsAsync()
         {
-            return await GetListAsync<clientprojectreadables, clientprojectreadable, ClientProject>("/client-project", x => x.clientprojectreadable, ClientProject.FromNative);
+            return await _httpClient.GetListAsync<clientprojectreadables, clientprojectreadable, ClientProject>("/client-project", x => x.clientprojectreadable, ClientProject.FromNative);
         }
 
         public async Task<ClientProject> GetClientProjectAsync(int clientProjectId)
         {
-            return await GetSingleAsync<clientprojectreadable, ClientProject>($"/client-project/{clientProjectId}", ClientProject.FromNative);
+            return await _httpClient.GetSingleAsync<clientprojectreadable, ClientProject>($"/client-project/{clientProjectId}", ClientProject.FromNative);
         }
 
 
@@ -80,7 +80,7 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         public async Task<IEnumerable<Expense>> GetExpensesAsync()
         {
-            return await GetListAsync<expensereadables, expensereadablesExpense, Expense>("/expense", x => x.expense, Expense.FromNative);
+            return await _httpClient.GetListAsync<expensereadables, expensereadablesExpense, Expense>("/expense", x => x.expense, Expense.FromNative);
         }
 
         /// <summary>
@@ -88,19 +88,19 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         public async Task<IEnumerable<Expense>> SearchExpensesAsync(string query)
         {
-            return await GetListAsync<expensereadables, expensereadablesExpense, Expense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense, Expense.FromNative);
+            return await _httpClient.GetListAsync<expensereadables, expensereadablesExpense, Expense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense, Expense.FromNative);
         }
 
         // Activities
 
         public async Task<IEnumerable<Activity>> GetActivitiesAsync()
         {
-            return await GetListAsync<activityreadables, activityreadable, Activity>("/activity", x => x.activityreadable, Activity.FromNative);
+            return await _httpClient.GetListAsync<activityreadables, activityreadable, Activity>("/activity", x => x.activityreadable, Activity.FromNative);
         }
 
         public async Task<Activity> GetActivityAsync(int activityId)
         {
-            return await GetSingleAsync<activityreadable, Activity>($"/activity/{activityId}", Activity.FromNative);
+            return await _httpClient.GetSingleAsync<activityreadable, Activity>($"/activity/{activityId}", Activity.FromNative);
         }
 
 
@@ -108,81 +108,22 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<Event>> GetEventsAsync()
         {
-            return await GetListAsync<eventreadables, eventreadable, Event>("/event", x => x.eventreadable, Event.FromNative);
+            return await _httpClient.GetListAsync<eventreadables, eventreadable, Event>("/event", x => x.eventreadable, Event.FromNative);
         }
 
         public async Task<Event> GetEventAsync(int eventId)
         {
-            return await GetSingleAsync<eventreadable, Event>($"/event/{eventId}", Event.FromNative);
+            return await _httpClient.GetSingleAsync<eventreadable, Event>($"/event/{eventId}", Event.FromNative);
         }
 
-        public async Task CreateEventAsync(eventwritable eventItem)
+        public async Task CreateEventAsync(EventCreate eventItem)
         {
-            await _httpClient.PutAsync("/event/", eventItem);
+            await _httpClient.PutAsync("/event/", eventItem.ToNative());
         }
 
         public async Task<Deleted> DeleteEventAsync(int eventId)
         {
-            return await DeleteAsync<deleted, Deleted>($"/event/{eventId}", Deleted.FromNative);
-        }
-
-
-        // Helpers
-
-        private async Task<TItem> GetSingleAsync<TNativeItem, TItem>(string url, Func<TNativeItem, TItem> transformItem)
-        {
-            var result = await _httpClient.GetAsync<TNativeItem>(url);
-            if (result == null)
-            {
-                return default(TItem);
-            }
-
-            return transformItem(result);
-        }
-
-        private async Task<TItem> PutAsync<TRequest, TNativeItem, TItem>(string url, TRequest request, Func<TNativeItem, TItem> transformItem)
-        {
-            var result = await _httpClient.PutAsync<TRequest, TNativeItem>(url, request);
-            if (result == null)
-            {
-                return default(TItem);
-            }
-
-            return transformItem(result);
-        }
-
-        private async Task<TItem> Post<TRequest, TNativeItem, TItem>(string url, TRequest request, Func<TNativeItem, TItem> transformItem)
-        {
-            var result = await _httpClient.PostAsync<TRequest, TNativeItem>(url, request);
-            if (result == null)
-            {
-                return default(TItem);
-            }
-
-            return transformItem(result);
-        }
-
-        private async Task<TItem> DeleteAsync<TNativeItem, TItem>(string url, Func<TNativeItem, TItem> transformItem)
-        {
-            var result = await _httpClient.DeleteAsync<TNativeItem>(url);
-            if (result == null)
-            {
-                return default(TItem);
-            }
-
-            return transformItem(result);
-        }
-
-        private async Task<IEnumerable<TNativeItem>> GetListAsync<TResult, TNativeItem>(string url, Func<TResult, IEnumerable<TNativeItem>> getValue)
-        {
-            var result = await _httpClient.GetAsync<TResult>(url);
-            return PeaApiHelpers.TransformListResult(result, getValue);
-        }
-
-        private async Task<IEnumerable<TItem>> GetListAsync<TResult, TNativeItem, TItem>(string url, Func<TResult, IEnumerable<TNativeItem>> getValue, Func<TNativeItem, TItem> transformItem)
-        {
-            var result = await _httpClient.GetAsync<TResult>(url);
-            return PeaApiHelpers.TransformListResult(result, getValue, transformItem);
+            return await _httpClient.DeleteAsync<deleted, Deleted>($"/event/{eventId}", Deleted.FromNative);
         }
     }
 }
