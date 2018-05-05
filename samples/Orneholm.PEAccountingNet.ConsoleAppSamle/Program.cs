@@ -24,21 +24,40 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
             Console.WriteLine("Login:");
             Console.WriteLine("-------------------------------");
             var companies = (await GetCompaniesAsync()).ToList();
+            await PlotSectionAsync("You have access to",
+                () => Task.FromResult(companies.AsEnumerable()),
+                x => $"{x.Name} ({x.Id}): {x.Token}");
+
             var mainCompany = companies.First(x => x.IsMain);
-
-            Console.WriteLine();
-            Console.WriteLine("You have access to:");
-            Console.WriteLine("-------------------------------");
-            foreach (var company in companies)
-            {
-                Console.WriteLine($"{company.Name} ({company.Id}): {company.Token}");
-            }
-
             var api = new PeaApi(mainCompany.Id, mainCompany.Token);
 
-            await PlotClientsAsync(api);
-            await PlotClientProjectsAsync(api);
-            await PlotActivitiesAsync(api);
+            await PlotSectionAsync("Users",
+                () => api.GetUsersAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Email}");
+
+            await PlotSectionAsync("Projects",
+                () => api.GetProjectsAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Description}");
+
+            await PlotSectionAsync("Clients",
+                () => api.GetClientsAsync(),
+                x => $"{x.Name} ({x.Id}): {x.OrgNo}");
+
+            await PlotSectionAsync("Client projects",
+                () => api.GetClientProjectsAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Comment}");
+
+            await PlotSectionAsync("Activities",
+                () => api.GetActivitiesAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Description}");
+
+            await PlotSectionAsync("Events",
+                () => api.GetEventsAsync(),
+                x => $"{x.Date} ({x.Id}): {x.Hours} h, {x.Comment}");
+
+            await PlotSectionAsync("Expenses",
+                () => api.GetExpensesAsync(),
+                x => $"{x.Date} ({x.Id}): {x.Amount} {x.CurrencyType}, Nr: {x.Nr}");
 
             Console.ReadLine();
         }
@@ -56,39 +75,16 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
 
             return companies;
         }
-        private static async Task PlotClientsAsync(IPeaApi api)
-        {
-            Console.WriteLine();
-            Console.WriteLine("Clients:");
-            Console.WriteLine("-------------------------------");
-            var result = await api.GetClientsAsync();
-            foreach (var item in result)
-            {
-                Console.WriteLine($"{item.Name} ({item.Id}): {item.OrgNo}");
-            }
-        }
 
-        private static async Task PlotClientProjectsAsync(IPeaApi api)
+        private static async Task PlotSectionAsync<T>(string header, Func<Task<IEnumerable<T>>> getItems, Func<T, string> getItemString)
         {
             Console.WriteLine();
-            Console.WriteLine("Client projects:");
+            Console.WriteLine($"{header}:");
             Console.WriteLine("-------------------------------");
-            var result = await api.GetClientProjectsAsync();
-            foreach (var item in result)
+            var items = await getItems();
+            foreach (var item in items)
             {
-                Console.WriteLine($"{item.Name} ({item.Id}): {item.Comment}");
-            }
-        }
-
-        private static async Task PlotActivitiesAsync(IPeaApi api)
-        {
-            Console.WriteLine();
-            Console.WriteLine("Activities:");
-            Console.WriteLine("-------------------------------");
-            var result = await api.GetActivitiesAsync();
-            foreach (var item in result)
-            {
-                Console.WriteLine($"{item.name} ({item.id.id}): {item.description}");
+                Console.WriteLine(getItemString(item));
             }
         }
     }
