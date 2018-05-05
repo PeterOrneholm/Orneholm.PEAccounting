@@ -38,29 +38,5 @@ namespace Orneholm.PEAccountingNet.Models
                 Status = native.status != null ? EventStatus.FromNative(native.status) : null
             };
         }
-
-        public class EventStatus
-        {
-            public int? RegistrationUserId { get; set; }
-            public DateTime RegistrationDate { get; set; }
-            public EventStatusType Type { get; set; }
-
-            public static EventStatus FromNative(eventstatus native)
-            {
-                return new EventStatus
-                {
-                    RegistrationUserId = native.registrationuser?.id,
-                    RegistrationDate = native.registrationdate,
-                    Type = (EventStatusType)native.type
-                };
-            }
-        }
-
-        public enum EventStatusType
-        {
-            Open,
-            Approved,
-            Certified,
-        }
     }
 }
