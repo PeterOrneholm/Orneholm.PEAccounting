@@ -78,17 +78,17 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Fetch all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        public async Task<IEnumerable<expensereadablesExpense>> GetExpensesAsync()
+        public async Task<IEnumerable<Expense>> GetExpensesAsync()
         {
-            return await GetListAsync<expensereadables, expensereadablesExpense>("/expense", x => x.expense);
+            return await GetListAsync<expensereadables, expensereadablesExpense, Expense>("/expense", x => x.expense, Expense.FromNative);
         }
 
         /// <summary>
         /// Search all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        public async Task<IEnumerable<expensereadablesExpense>> SearchExpensesAsync(string query)
+        public async Task<IEnumerable<Expense>> SearchExpensesAsync(string query)
         {
-            return await GetListAsync<expensereadables, expensereadablesExpense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense);
+            return await GetListAsync<expensereadables, expensereadablesExpense, Expense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense, Expense.FromNative);
         }
 
         // Activities

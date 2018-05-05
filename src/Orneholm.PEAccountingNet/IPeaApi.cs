@@ -19,12 +19,12 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Fetch all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        Task<IEnumerable<expensereadablesExpense>> GetExpensesAsync();
+        Task<IEnumerable<Expense>> GetExpensesAsync();
 
         /// <summary>
         /// Search all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        Task<IEnumerable<expensereadablesExpense>> SearchExpensesAsync(string query);
+        Task<IEnumerable<Expense>> SearchExpensesAsync(string query);
 
         Task<IEnumerable<activityreadable>> GetActivitiesAsync();
         Task<activityreadable> GetActivityAsync(int activityId);
