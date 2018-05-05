@@ -7,14 +7,30 @@ namespace Orneholm.PEAccountingNet
 {
     public interface IPeaApi
     {
+        // Company
+
         Task<CompanyInformation> GetCompanyInfoAsync();
+
+        //User
+
         Task<User> GetMyUserAsync();
         Task<IEnumerable<User>> GetUsersAsync();
         Task<User> GetUserAsync(int userId);
+
+        // Clients
+
         Task<IEnumerable<Client>> GetClientsAsync();
+
+        // Projects
+
         Task<IEnumerable<Project>> GetProjectsAsync();
+
+        // Client projects
+
         Task<IEnumerable<ClientProject>> GetClientProjectsAsync();
         Task<ClientProject> GetClientProjectAsync(int clientProjectId);
+
+        // Expenses
 
         /// <summary>
         /// Fetch all the expenses that belongs to the user, which the token is tied to
@@ -26,10 +42,15 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         Task<IEnumerable<Expense>> SearchExpensesAsync(string query);
 
-        Task<IEnumerable<activityreadable>> GetActivitiesAsync();
-        Task<activityreadable> GetActivityAsync(int activityId);
-        Task<IEnumerable<eventreadable>> GetEventsAsync();
-        Task<eventreadable> GetEventAsync(int eventId);
+        // Activities
+
+        Task<IEnumerable<Activity>> GetActivitiesAsync();
+        Task<Activity> GetActivityAsync(int activityId);
+
+        // Events
+
+        Task<IEnumerable<Event>> GetEventsAsync();
+        Task<Event> GetEventAsync(int eventId);
         Task CreateEventAsync(eventwritable eventItem);
         Task<Deleted> DeleteEventAsync(int eventId);
     }

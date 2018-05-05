@@ -8,7 +8,7 @@
     <Copyright>Peter Örneholm</Copyright>
     <PackageProjectUrl>https://github.com/PeterOrneholm/peaccounting-net/</PackageProjectUrl>
     <RepositoryUrl>https://github.com/PeterOrneholm/peaccounting-net.git</RepositoryUrl>
-    <Description>(Unofficial) API wrapper for p:e accounting (https://www.accounting.pe/) built in C# targeting .NET Standard. Based on the documentation (https://my.accounting.pe/api/v1/doc).</Description>
+    <Description>API wrapper (unofficial) for p:e accounting (https://www.accounting.pe/) built in C# targeting .NET Standard 2.0. Based on the public documentation (https://my.accounting.pe/api/v1/doc).</Description>
     <PackageLicenseUrl>https://github.com/PeterOrneholm/peaccounting-net/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

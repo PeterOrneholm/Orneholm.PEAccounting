@@ -28,7 +28,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public static Client FromNative(client native)
         {
-            return new Client()
+            return new Client
             {
                 Id = native.id,
                 ForeignId = native.foreignid,
@@ -48,7 +48,7 @@ namespace Orneholm.PEAccountingNet.Models
                 ClientInvoiceTemplateId = native.template?.id,
                 ApproverUserId = native.approver?.id,
                 DimensionEntriesId = native.dimensionentries?.Select(x => x.id).ToList() ?? new List<int>(),
-                IsActive = native.activeSpecified ? (bool?)native.active : null
+                IsActive = native.activeSpecified ? (bool?) native.active : null
             };
         }
     }

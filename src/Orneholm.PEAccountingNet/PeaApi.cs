@@ -93,27 +93,27 @@ namespace Orneholm.PEAccountingNet
 
         // Activities
 
-        public async Task<IEnumerable<activityreadable>> GetActivitiesAsync()
+        public async Task<IEnumerable<Activity>> GetActivitiesAsync()
         {
-            return await GetListAsync<activityreadables, activityreadable>("/activity", x => x.activityreadable);
+            return await GetListAsync<activityreadables, activityreadable, Activity>("/activity", x => x.activityreadable, Activity.FromNative);
         }
 
-        public async Task<activityreadable> GetActivityAsync(int activityId)
+        public async Task<Activity> GetActivityAsync(int activityId)
         {
-            return await _httpClient.GetAsync<activityreadable>($"/activity/{activityId}");
+            return await GetSingleAsync<activityreadable, Activity>($"/activity/{activityId}", Activity.FromNative);
         }
 
 
         // Events
 
-        public async Task<IEnumerable<eventreadable>> GetEventsAsync()
+        public async Task<IEnumerable<Event>> GetEventsAsync()
         {
-            return await GetListAsync<eventreadables, eventreadable>("/event", x => x.eventreadable);
+            return await GetListAsync<eventreadables, eventreadable, Event>("/event", x => x.eventreadable, Event.FromNative);
         }
 
-        public async Task<eventreadable> GetEventAsync(int eventId)
+        public async Task<Event> GetEventAsync(int eventId)
         {
-            return await _httpClient.GetAsync<eventreadable>($"/event/{eventId}");
+            return await GetSingleAsync<eventreadable, Event>($"/event/{eventId}", Event.FromNative);
         }
 
         public async Task CreateEventAsync(eventwritable eventItem)
