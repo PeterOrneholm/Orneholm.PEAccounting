@@ -30,6 +30,11 @@ namespace Orneholm.PEAccountingNet
             }
         }
 
+        public PeaApiHttpClient(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
+
         public async Task<T> GetAsync<T>(string url)
         {
             var httpResponseMessage = await _httpClient.GetAsync(CleanUrl(url));
