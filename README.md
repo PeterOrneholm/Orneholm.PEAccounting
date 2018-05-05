@@ -1,8 +1,7 @@
 # peaccounting-net
-API wrapper for [p:e accounting](https://www.accounting.pe/) built in .NET Standard based on the [offical documentation](https://my.accounting.pe/api/v1/doc).
+(Unofficial) API wrapper for [p:e accounting](https://www.accounting.pe/) built in .NET Standard based on the [documentation](https://my.accounting.pe/api/v1/doc).
 
-
-[![NuGet](https://img.shields.io/nuget/dt/Orneholm.PEAccountingNet)](https://www.nuget.org/packages/Orneholm.PEAccountingNet/)
+[![NuGet](https://img.shields.io/nuget/v/Orneholm.PEAccountingNet.svg)](https://www.nuget.org/packages/Orneholm.PEAccountingNet/)
 
 ## Gettings started
 
