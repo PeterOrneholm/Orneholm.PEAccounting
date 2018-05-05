@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Models;
 using Orneholm.PEAccountingNet.Models.Native;
 
 namespace Orneholm.PEAccountingNet.ConsoleAppSamle
@@ -23,17 +24,17 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
             Console.WriteLine("Login:");
             Console.WriteLine("-------------------------------");
             var companies = (await GetCompaniesAsync()).ToList();
-            var mainCompany = companies.First(x => x.main);
+            var mainCompany = companies.First(x => x.IsMain);
 
             Console.WriteLine();
             Console.WriteLine("You have access to:");
             Console.WriteLine("-------------------------------");
             foreach (var company in companies)
             {
-                Console.WriteLine($"{company.name} ({company.id}): {company.token}");
+                Console.WriteLine($"{company.Name} ({company.Id}): {company.Token}");
             }
 
-            var api = new PeaApi(mainCompany.id, mainCompany.token);
+            var api = new PeaApi(mainCompany.Id, mainCompany.Token);
 
             await PlotClientsAsync(api);
             await PlotClientProjectsAsync(api);
@@ -42,7 +43,7 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
             Console.ReadLine();
         }
 
-        private static async Task<IEnumerable<accessiblecompany>> GetCompaniesAsync()
+        private static async Task<IEnumerable<AccessibleCompany>> GetCompaniesAsync()
         {
             Console.WriteLine("Username:");
             var username = Console.ReadLine();

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Models;
 using Orneholm.PEAccountingNet.Models.Native;
 
 namespace Orneholm.PEAccountingNet
@@ -19,7 +20,7 @@ namespace Orneholm.PEAccountingNet
 
         // Authenticate
 
-        public async Task<IEnumerable<accessiblecompany>> GetAccessibleCompaniesAsync(string email, string password)
+        public async Task<IEnumerable<AccessibleCompany>> GetAccessibleCompaniesAsync(string email, string password)
         {
             var result = await _httpClient.PostAsync<userauthentication, accessiblecompanies>("/access/authenticate", new userauthentication()
             {
@@ -27,7 +28,7 @@ namespace Orneholm.PEAccountingNet
                 password = password
             });
 
-            return PeaApiHelpers.TransformListResult(result, x => x.accessiblecompany);
+            return PeaApiHelpers.TransformListResult(result, x => x.accessiblecompany, AccessibleCompany.FromNative);
         }
     }
 }
