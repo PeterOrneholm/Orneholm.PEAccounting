@@ -47,7 +47,7 @@ foreach (var clientProject in clientProjects)
 
 ## Getting started
 
-A console application with a few usecases is available in [Samples](samples/Orneholm.PEAccountingNet.ConsoleAppSamle).
+A console application with a few usecases is available in [Samples](samples/Orneholm.PEAccountingNet.ConsoleAppSample).
 
 ## Models
 

@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9560BE3A-812
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B8DE222B-30F0-41C4-9679-A32580DBDE5C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orneholm.PEAccountingNet.Tests", "test\Orneholm.PEAccountingNet.Tests\Orneholm.PEAccountingNet.Tests.csproj", "{31461B9E-A99A-4613-AD27-8A30F47F9B29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.Tests", "test\Orneholm.PEAccountingNet.Tests\Orneholm.PEAccountingNet.Tests.csproj", "{31461B9E-A99A-4613-AD27-8A30F47F9B29}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{26DA93F5-6917-41BB-B66A-12514D6B6DF7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orneholm.PEAccountingNet.ConsoleAppSamle", "samples\Orneholm.PEAccountingNet.ConsoleAppSamle\Orneholm.PEAccountingNet.ConsoleAppSamle.csproj", "{7F9148FC-779D-417F-B8BA-F88D9776D1CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.ConsoleAppSample", "samples\Orneholm.PEAccountingNet.ConsoleAppSample\Orneholm.PEAccountingNet.ConsoleAppSample.csproj", "{7F9148FC-779D-417F-B8BA-F88D9776D1CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D2D1423-49A7-45BD-82BA-281069F8C452}"
 	ProjectSection(SolutionItems) = preProject
