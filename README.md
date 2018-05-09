@@ -53,7 +53,7 @@ await api.CreateEventAsync(new EventCreate()
     UserId = 12345,
     ActivityId = 67890,
     ClientProjectId = 13579,
-
+	
 	Comment = "Doing work",
     InternalComment = "Work"
 });
