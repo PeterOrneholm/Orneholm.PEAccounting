@@ -5,7 +5,7 @@ namespace Orneholm.PEAccountingNet.Models
 {
     public class EventStatus
     {
-        public int? RegistrationUserId { get; set; }
+        public int RegistrationUserId { get; set; }
         public DateTime RegistrationDate { get; set; }
         public EventStatusType Type { get; set; }
 
@@ -13,7 +13,7 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new EventStatus
             {
-                RegistrationUserId = native.registrationuser?.id,
+                RegistrationUserId = native.registrationuser.id,
                 RegistrationDate = native.registrationdate,
                 Type = (EventStatusType)native.type
             };
