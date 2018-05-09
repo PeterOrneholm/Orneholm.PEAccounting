@@ -47,15 +47,15 @@ foreach (var clientProject in clientProjects)
 // Create event
 await api.CreateEventAsync(new EventCreate()
 {
-    Date = DateTime.Today.Date,
-    Hours = 1,
+	Date = DateTime.Today.Date,
+	Hours = 1,
 
-    UserId = 12345,
-    ActivityId = 67890,
-    ClientProjectId = 13579,
+	UserId = 12345,
+	ActivityId = 67890,
+	ClientProjectId = 13579,
 	
 	Comment = "Doing work",
-    InternalComment = "Work"
+	InternalComment = "Work"
 });
 ```
 
