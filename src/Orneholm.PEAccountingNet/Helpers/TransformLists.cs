@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Orneholm.PEAccountingNet
+namespace Orneholm.PEAccountingNet.Helpers
 {
-    internal static class PeaApiHelpers
+    internal static class TransformLists
     {
         public static IEnumerable<TItem> TransformListResult<TResult, TItem>(TResult result, Func<TResult, IEnumerable<TItem>> getValue)
         {

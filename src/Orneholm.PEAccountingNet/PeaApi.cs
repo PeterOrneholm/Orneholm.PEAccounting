@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Filters;
+using Orneholm.PEAccountingNet.Helpers;
 using Orneholm.PEAccountingNet.Models;
 using Orneholm.PEAccountingNet.Models.Native;
 
@@ -108,7 +111,13 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<Event>> GetEventsAsync()
         {
-            return await _httpClient.GetListAsync<eventreadables, eventreadable, Event>("/event", x => x.eventreadable, Event.FromNative);
+            return await GetEventsAsync(new EventFilter());
+        }
+
+        public async Task<IEnumerable<Event>> GetEventsAsync(EventFilter filter)
+        {
+            var url = QueryStringUrl.GetUrl("/event", filter.ToQueryStringDictionary());
+            return await _httpClient.GetListAsync<eventreadables, eventreadable, Event>(url, x => x.eventreadable, Event.FromNative);
         }
 
         public async Task<Event> GetEventAsync(int eventId)

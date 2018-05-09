@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Models;
-using Orneholm.PEAccountingNet.Models.Native;
+using Orneholm.PEAccountingNet.Filters;
 
 namespace Orneholm.PEAccountingNet
 {
@@ -50,6 +50,7 @@ namespace Orneholm.PEAccountingNet
         // Events
 
         Task<IEnumerable<Event>> GetEventsAsync();
+        Task<IEnumerable<Event>> GetEventsAsync(EventFilter filter);
         Task<Event> GetEventAsync(int eventId);
         Task CreateEventAsync(EventCreate eventItem);
         Task<Deleted> DeleteEventAsync(int eventId);

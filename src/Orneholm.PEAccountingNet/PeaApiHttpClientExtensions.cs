@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Helpers;
 
 namespace Orneholm.PEAccountingNet
 {
@@ -20,7 +21,7 @@ namespace Orneholm.PEAccountingNet
         public static async Task<IEnumerable<TItem>> GetListAsync<TResult, TNativeItem, TItem>(this IPeaApiHttpClient httpClient, string url, Func<TResult, IEnumerable<TNativeItem>> getValue, Func<TNativeItem, TItem> transformItem)
         {
             var result = await httpClient.GetAsync<TResult>(url);
-            return PeaApiHelpers.TransformListResult(result, getValue, transformItem);
+            return TransformLists.TransformListResult(result, getValue, transformItem);
         }
 
         public static async Task<TItem> PutAsync<TRequest, TNativeItem, TItem>(this IPeaApiHttpClient httpClient, string url, TRequest request, Func<TNativeItem, TItem> transformItem)

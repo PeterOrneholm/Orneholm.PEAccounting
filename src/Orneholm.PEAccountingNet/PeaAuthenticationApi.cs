@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Orneholm.PEAccountingNet.Helpers;
 using Orneholm.PEAccountingNet.Models;
 using Orneholm.PEAccountingNet.Models.Native;
 
@@ -28,7 +29,7 @@ namespace Orneholm.PEAccountingNet
                 password = password
             });
 
-            return PeaApiHelpers.TransformListResult(result, x => x.accessiblecompany, AccessibleCompany.FromNative);
+            return TransformLists.TransformListResult(result, x => x.accessiblecompany, AccessibleCompany.FromNative);
         }
     }
 }
