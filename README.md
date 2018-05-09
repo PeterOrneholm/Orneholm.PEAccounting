@@ -28,7 +28,7 @@ foreach (var company in companies)
 
 *Example:*
 ```csharp
-var api = new PeaApi(company.id, company.token);
+var api = new PeaApi(company.Id, company.Token);
 
 // List clients
 var clients = await api.GetClientsAsync();
