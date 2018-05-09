@@ -67,7 +67,13 @@ namespace Orneholm.PEAccountingNet
 
         public async Task<IEnumerable<ClientProject>> GetClientProjectsAsync()
         {
-            return await _httpClient.GetListAsync<clientprojectreadables, clientprojectreadable, ClientProject>("/client-project", x => x.clientprojectreadable, ClientProject.FromNative);
+            return await GetClientProjectsAsync(new ClientProjectFilter());
+        }
+
+        public async Task<IEnumerable<ClientProject>> GetClientProjectsAsync(ClientProjectFilter filter)
+        {
+            var url = QueryStringUrl.GetUrl("/client-project", filter.ToQueryStringDictionary());
+            return await _httpClient.GetListAsync<clientprojectreadables, clientprojectreadable, ClientProject>(url, x => x.clientprojectreadable, ClientProject.FromNative);
         }
 
         public async Task<ClientProject> GetClientProjectAsync(int clientProjectId)
@@ -83,13 +89,13 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         public async Task<IEnumerable<Expense>> GetExpensesAsync()
         {
-            return await _httpClient.GetListAsync<expensereadables, expensereadablesExpense, Expense>("/expense", x => x.expense, Expense.FromNative);
+            return await GetExpensesAsync(new ExpenseFilter());
         }
 
         /// <summary>
         /// Search all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        public async Task<IEnumerable<Expense>> GetExpensesAsync(ExpensesFilter filter)
+        public async Task<IEnumerable<Expense>> GetExpensesAsync(ExpenseFilter filter)
         {
             var url = QueryStringUrl.GetUrl("/expense", filter.ToQueryStringDictionary());
             return await _httpClient.GetListAsync<expensereadables, expensereadablesExpense, Expense>(url, x => x.expense, Expense.FromNative);

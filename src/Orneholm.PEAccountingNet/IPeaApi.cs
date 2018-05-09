@@ -28,6 +28,7 @@ namespace Orneholm.PEAccountingNet
         // Client projects
 
         Task<IEnumerable<ClientProject>> GetClientProjectsAsync();
+        Task<IEnumerable<ClientProject>> GetClientProjectsAsync(ClientProjectFilter filter);
         Task<ClientProject> GetClientProjectAsync(int clientProjectId);
 
         // Expenses
@@ -40,7 +41,7 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Search all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        Task<IEnumerable<Expense>> GetExpensesAsync(ExpensesFilter filter);
+        Task<IEnumerable<Expense>> GetExpensesAsync(ExpenseFilter filter);
 
         // Activities
 
