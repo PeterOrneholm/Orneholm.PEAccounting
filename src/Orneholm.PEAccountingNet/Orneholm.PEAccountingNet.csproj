@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.2.0</Version>
+    <Version>0.3.0</Version>
     <Authors>Peter Örneholm</Authors>
     <Company>Orneholm</Company>
     <Copyright>Peter Örneholm</Copyright>
@@ -12,7 +12,7 @@
     <PackageLicenseUrl>https://github.com/PeterOrneholm/peaccounting-net/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <AssemblyVersion>0.3.0.0</AssemblyVersion>
   </PropertyGroup>
 
 </Project>

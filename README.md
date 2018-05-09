@@ -43,6 +43,20 @@ foreach (var clientProject in clientProjects)
 {
     Console.WriteLine($"{clientProject.Name} ({clientProject.Id}): {clientProject.Comment}");
 }
+
+// Create event
+await api.CreateEventAsync(new EventCreate()
+{
+    Date = DateTime.Today.Date,
+    Hours = 1,
+
+    UserId = 12345,
+    ActivityId = 67890,
+    ClientProjectId = 13579,
+
+	Comment = "Doing work",
+    InternalComment = "Work"
+});
 ```
 
 ## Getting started
