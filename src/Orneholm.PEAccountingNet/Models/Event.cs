@@ -17,7 +17,6 @@ namespace Orneholm.PEAccountingNet.Models
         public decimal Hours { get; set; }
         public string Comment { get; set; }
         public string InternalComment { get; set; }
-        public bool IsApproved { get; set; }
         public EventStatus Status { get; set; }
 
         public static Event FromNative(eventreadable native)
@@ -34,7 +33,6 @@ namespace Orneholm.PEAccountingNet.Models
                 Hours = native.hours,
                 Comment = native.comment,
                 InternalComment = native.internalcomment,
-                IsApproved = native.approved,
                 Status = native.status != null ? EventStatus.FromNative(native.status) : null
             };
         }
