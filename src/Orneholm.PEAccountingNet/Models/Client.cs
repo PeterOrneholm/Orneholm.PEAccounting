@@ -12,8 +12,8 @@ namespace Orneholm.PEAccountingNet.Models
         public string Contact { get; set; }
         public Address Address { get; set; }
         public string Email { get; set; }
+        /// <remarks>ISO 3166-1 alpha-2</remarks>
         public string CountryCode { get; set; }
-        public int AccountNr { get; set; }
         public int PaymentDays { get; set; }
         public string OrgNo { get; set; }
         public string Phone { get; set; }
@@ -37,7 +37,6 @@ namespace Orneholm.PEAccountingNet.Models
                 Address = native.address == null ? null : Address.FromNative(native.address),
                 Email = native.email,
                 CountryCode = native.countrycode,
-                AccountNr = native.accountnr,
                 PaymentDays = native.paymentdays,
                 OrgNo = native.orgno,
                 Phone = native.phone,
