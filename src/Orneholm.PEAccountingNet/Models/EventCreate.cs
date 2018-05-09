@@ -9,7 +9,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public int UserId { get; set; }
         public int ActivityId { get; set; }
-        public int ClientProjectId { get; set; }
+        public int? ClientProjectId { get; set; }
 
         public string Child { get; set; }
         public DateTime Date { get; set; }
@@ -30,10 +30,10 @@ namespace Orneholm.PEAccountingNet.Models
                 {
                     id = ActivityId
                 },
-                clientproject = new clientprojectreference()
+                clientproject = ClientProjectId != null ? new clientprojectreference()
                 {
-                    id = ClientProjectId
-                },
+                    id = ClientProjectId.Value
+                } : null,
                 child = Child,
                 date = Date,
                 hours = Hours,

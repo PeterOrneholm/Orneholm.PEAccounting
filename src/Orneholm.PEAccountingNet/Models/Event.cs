@@ -10,7 +10,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public int UserId { get; set; }
         public int ActivityId { get; set; }
-        public int ClientProjectId { get; set; }
+        public int? ClientProjectId { get; set; }
 
         public string Child { get; set; }
         public DateTime Date { get; set; }
@@ -27,7 +27,7 @@ namespace Orneholm.PEAccountingNet.Models
                 ForeignId = native.foreignid,
                 UserId = native.user.id,
                 ActivityId = native.activity.id,
-                ClientProjectId = native.clientproject.id,
+                ClientProjectId = native.clientproject?.id ?? null,
                 Child = native.child,
                 Date = native.date,
                 Hours = native.hours,
