@@ -89,9 +89,10 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Search all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        public async Task<IEnumerable<Expense>> SearchExpensesAsync(string query)
+        public async Task<IEnumerable<Expense>> GetExpensesAsync(ExpensesFilter filter)
         {
-            return await _httpClient.GetListAsync<expensereadables, expensereadablesExpense, Expense>($"/expense?query=¨{Uri.EscapeDataString(query)}", x => x.expense, Expense.FromNative);
+            var url = QueryStringUrl.GetUrl("/expense", filter.ToQueryStringDictionary());
+            return await _httpClient.GetListAsync<expensereadables, expensereadablesExpense, Expense>(url, x => x.expense, Expense.FromNative);
         }
 
         // Activities

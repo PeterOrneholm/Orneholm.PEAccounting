@@ -40,7 +40,7 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Search all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        Task<IEnumerable<Expense>> SearchExpensesAsync(string query);
+        Task<IEnumerable<Expense>> GetExpensesAsync(ExpensesFilter filter);
 
         // Activities
 

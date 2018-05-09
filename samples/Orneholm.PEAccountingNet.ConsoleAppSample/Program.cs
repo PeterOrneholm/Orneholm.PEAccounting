@@ -28,6 +28,10 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
             var mainCompany = companies.First(x => x.IsMain);
             var api = new PeaApi(mainCompany.Id, mainCompany.Token);
 
+
+
+
+
             PlotHeader("Me");
             var myUser = await api.GetMyUserAsync();
             Console.WriteLine($"{myUser.Name} ({myUser.Id}): {myUser.Email}");

@@ -21,7 +21,7 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new eventwritable
             {
-                foreignid = ForeignId,
+                foreignid = ForeignId ?? string.Empty,
                 user = new userreference()
                 {
                     id = UserId
@@ -37,7 +37,7 @@ namespace Orneholm.PEAccountingNet.Models
                 child = Child,
                 date = Date,
                 hours = Hours,
-                comment = Comment,
+                comment = Comment ?? string.Empty,
                 internalcomment = InternalComment
             };
         }
