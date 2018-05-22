@@ -78,7 +78,7 @@ xsd NativeModels.xsd /c /n:Orneholm.PEAccountingNet.Models.Native
 
 ## Contributions
 
-Contributions are welcome through Pull Requests. But feel free to file an isuue if you have suggestions of improvement.
+Contributions are welcome through Pull Requests. Also feel free to file an isuue if you have suggestions of improvement.
 
 ### Todo
 This project is in a very early release and will have breaking changes before reaching 1.0.
