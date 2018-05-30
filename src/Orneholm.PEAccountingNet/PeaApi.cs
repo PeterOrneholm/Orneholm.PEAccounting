@@ -141,5 +141,19 @@ namespace Orneholm.PEAccountingNet
         {
             return await _httpClient.DeleteAsync<deleted, Deleted>($"/event/{eventId}", Deleted.FromNative);
         }
+
+
+        // Client invoices
+
+        public async Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync()
+        {
+            return await GetClientInvoicesAsync(new ClientInvoiceFilter());
+        }
+
+        public async Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync(ClientInvoiceFilter filter)
+        {
+            var url = QueryStringUrl.GetUrl("/client/invoice", filter.ToQueryStringDictionary());
+            return await _httpClient.GetListAsync<clientinvoices, clientinvoice, ClientInvoice>(url, x => x.clientinvoice, ClientInvoice.FromNative);
+        }
     }
 }
