@@ -44,9 +44,9 @@ namespace Orneholm.PEAccountingNet
         }
 
 
-        public async Task<TResult> PostAsync<TRequest, TResult>(string url, TRequest request)
+        public Task<TResult> PostAsync<TRequest, TResult>(string url, TRequest request)
         {
-            return await PostPutAsync<TRequest, TResult>(url, request,
+            return PostPutAsync<TRequest, TResult>(url, request,
                 (cleanUrl, httpContent) => _httpClient.PostAsync(cleanUrl, httpContent)
             );
         }
@@ -59,9 +59,9 @@ namespace Orneholm.PEAccountingNet
         }
 
 
-        public async Task<TResult> PutAsync<TRequest, TResult>(string url, TRequest request)
+        public Task<TResult> PutAsync<TRequest, TResult>(string url, TRequest request)
         {
-            return await PostPutAsync<TRequest, TResult>(url, request,
+            return PostPutAsync<TRequest, TResult>(url, request,
                 (cleanUrl, httpContent) => _httpClient.PutAsync(cleanUrl, httpContent)
             );
         }

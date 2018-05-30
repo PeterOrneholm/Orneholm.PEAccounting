@@ -25,49 +25,49 @@ namespace Orneholm.PEAccountingNet
 
         // Company
 
-        public async Task<CompanyInformation> GetCompanyInfoAsync()
+        public Task<CompanyInformation> GetCompanyInfoAsync()
         {
-            return await _httpClient.GetSingleAsync<companyinformation, CompanyInformation>("/info", CompanyInformation.FromNative);
+            return _httpClient.GetSingleAsync<companyinformation, CompanyInformation>("/info", CompanyInformation.FromNative);
         }
 
         // Users
 
-        public async Task<User> GetMyUserAsync()
+        public Task<User> GetMyUserAsync()
         {
-            return await _httpClient.GetSingleAsync<user, User>("/user/me", User.FromNative);
+            return _httpClient.GetSingleAsync<user, User>("/user/me", User.FromNative);
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync()
+        public Task<IEnumerable<User>> GetUsersAsync()
         {
-            return await _httpClient.GetListAsync<users, user, User>("/user", x => x.user, User.FromNative);
+            return _httpClient.GetListAsync<users, user, User>("/user", x => x.user, User.FromNative);
         }
 
-        public async Task<User> GetUserAsync(int userId)
+        public Task<User> GetUserAsync(int userId)
         {
-            return await _httpClient.GetSingleAsync<user, User>($"/user/{userId}", User.FromNative);
+            return _httpClient.GetSingleAsync<user, User>($"/user/{userId}", User.FromNative);
         }
 
 
         // Clients
 
-        public async Task<IEnumerable<Client>> GetClientsAsync()
+        public Task<IEnumerable<Client>> GetClientsAsync()
         {
-            return await _httpClient.GetListAsync<clients, client, Client>("/client", x => x.client, Client.FromNative);
+            return _httpClient.GetListAsync<clients, client, Client>("/client", x => x.client, Client.FromNative);
         }
 
         // Projects
 
-        public async Task<IEnumerable<Project>> GetProjectsAsync()
+        public Task<IEnumerable<Project>> GetProjectsAsync()
         {
-            return await _httpClient.GetListAsync<projects, project, Project>("/project", x => x.project, Project.FromNative);
+            return _httpClient.GetListAsync<projects, project, Project>("/project", x => x.project, Project.FromNative);
         }
 
 
         // Client projects
 
-        public async Task<IEnumerable<ClientProject>> GetClientProjectsAsync()
+        public Task<IEnumerable<ClientProject>> GetClientProjectsAsync()
         {
-            return await GetClientProjectsAsync(new ClientProjectFilter());
+            return GetClientProjectsAsync(new ClientProjectFilter());
         }
 
         public async Task<IEnumerable<ClientProject>> GetClientProjectsAsync(ClientProjectFilter filter)
@@ -76,9 +76,9 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.GetListAsync<clientprojectreadables, clientprojectreadable, ClientProject>(url, x => x.clientprojectreadable, ClientProject.FromNative);
         }
 
-        public async Task<ClientProject> GetClientProjectAsync(int clientProjectId)
+        public Task<ClientProject> GetClientProjectAsync(int clientProjectId)
         {
-            return await _httpClient.GetSingleAsync<clientprojectreadable, ClientProject>($"/client-project/{clientProjectId}", ClientProject.FromNative);
+            return _httpClient.GetSingleAsync<clientprojectreadable, ClientProject>($"/client-project/{clientProjectId}", ClientProject.FromNative);
         }
 
 
@@ -87,9 +87,9 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Fetch all the expenses that belongs to the user, which the token is tied to
         /// </summary>
-        public async Task<IEnumerable<Expense>> GetExpensesAsync()
+        public Task<IEnumerable<Expense>> GetExpensesAsync()
         {
-            return await GetExpensesAsync(new ExpenseFilter());
+            return GetExpensesAsync(new ExpenseFilter());
         }
 
         /// <summary>
@@ -103,22 +103,22 @@ namespace Orneholm.PEAccountingNet
 
         // Activities
 
-        public async Task<IEnumerable<Activity>> GetActivitiesAsync()
+        public Task<IEnumerable<Activity>> GetActivitiesAsync()
         {
-            return await _httpClient.GetListAsync<activityreadables, activityreadable, Activity>("/activity", x => x.activityreadable, Activity.FromNative);
+            return _httpClient.GetListAsync<activityreadables, activityreadable, Activity>("/activity", x => x.activityreadable, Activity.FromNative);
         }
 
-        public async Task<Activity> GetActivityAsync(int activityId)
+        public Task<Activity> GetActivityAsync(int activityId)
         {
-            return await _httpClient.GetSingleAsync<activityreadable, Activity>($"/activity/{activityId}", Activity.FromNative);
+            return _httpClient.GetSingleAsync<activityreadable, Activity>($"/activity/{activityId}", Activity.FromNative);
         }
 
 
         // Events
 
-        public async Task<IEnumerable<Event>> GetEventsAsync()
+        public Task<IEnumerable<Event>> GetEventsAsync()
         {
-            return await GetEventsAsync(new EventFilter());
+            return GetEventsAsync(new EventFilter());
         }
 
         public async Task<IEnumerable<Event>> GetEventsAsync(EventFilter filter)
@@ -127,9 +127,9 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.GetListAsync<eventreadables, eventreadable, Event>(url, x => x.eventreadable, Event.FromNative);
         }
 
-        public async Task<Event> GetEventAsync(int eventId)
+        public Task<Event> GetEventAsync(int eventId)
         {
-            return await _httpClient.GetSingleAsync<eventreadable, Event>($"/event/{eventId}", Event.FromNative);
+            return _httpClient.GetSingleAsync<eventreadable, Event>($"/event/{eventId}", Event.FromNative);
         }
 
         public async Task CreateEventAsync(EventCreate eventItem)
@@ -137,17 +137,17 @@ namespace Orneholm.PEAccountingNet
             await _httpClient.PutAsync("/event/", eventItem.ToNative());
         }
 
-        public async Task<Deleted> DeleteEventAsync(int eventId)
+        public Task<Deleted> DeleteEventAsync(int eventId)
         {
-            return await _httpClient.DeleteAsync<deleted, Deleted>($"/event/{eventId}", Deleted.FromNative);
+            return _httpClient.DeleteAsync<deleted, Deleted>($"/event/{eventId}", Deleted.FromNative);
         }
 
 
         // Client invoices
 
-        public async Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync()
+        public Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync()
         {
-            return await GetClientInvoicesAsync(new ClientInvoiceFilter());
+            return GetClientInvoicesAsync(new ClientInvoiceFilter());
         }
 
         public async Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync(ClientInvoiceFilter filter)
