@@ -13,7 +13,7 @@ namespace Orneholm.PEAccountingNet.Models
         /// </summary>
         public int? Id { get; set; }
 
-        public decimal Quanity { get; set; }
+        public decimal Quantity { get; set; }
         /// <summary>
         /// In cent.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Orneholm.PEAccountingNet.Models
             return new ClientInvoiceRow
             {
                 Id = native.id,
-                Quanity = native.quantity,
+                Quantity = native.quantity,
                 Price = native.price,
                 Vat = native.vat,
                 ProductId = native.product.id,
@@ -72,7 +72,7 @@ namespace Orneholm.PEAccountingNet.Models
             {
                 id = Id.GetValueOrDefault(),
                 idSpecified = Id.HasValue,
-                quantity = Quanity,
+                quantity = Quantity,
                 price = Price,
                 vat = Vat,
                 product = new productreference { id = ProductId },
