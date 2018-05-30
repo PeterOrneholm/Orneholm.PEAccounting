@@ -60,6 +60,10 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
                 () => api.GetEventsAsync(),
                 x => $"{x.Date} ({x.Id}): {x.Hours} h, Comment: {x.Comment}, Internal comment: {x.InternalComment}, Child: {x.Child}");
 
+            await PlotSectionAsync("Client invoices",
+                () => api.GetClientInvoicesAsync(),
+                x => $"{x.InvoiceNr} ({x.Id}): {x.Rows.Count} rows");
+
             var now = DateTime.UtcNow;
             var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
