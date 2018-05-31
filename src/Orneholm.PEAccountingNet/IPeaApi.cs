@@ -53,12 +53,14 @@ namespace Orneholm.PEAccountingNet
         Task<IEnumerable<Event>> GetEventsAsync();
         Task<IEnumerable<Event>> GetEventsAsync(EventFilter filter);
         Task<Event> GetEventAsync(int eventId);
-        Task CreateEventAsync(EventCreate eventItem);
+        Task CreateEventAsync(EventCreate item);
         Task<Deleted> DeleteEventAsync(int eventId);
 
         // Client invoices
 
         Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync();
         Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync(ClientInvoiceFilter filter);
+        Task CreateClientInvoiceAsync(ClientInvoice item);
+        Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoice item, ClientInvoiceCreateOptions options);
     }
 }

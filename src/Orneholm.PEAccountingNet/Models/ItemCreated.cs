@@ -2,13 +2,13 @@
 
 namespace Orneholm.PEAccountingNet.Models
 {
-    public class Created
+    public class ItemCreated
     {
         public int Id { get; set; }
 
-        internal static Created FromNative(created native)
+        internal static ItemCreated FromNative(created native)
         {
-            return new Created
+            return new ItemCreated
             {
                 Id = native.id
             };

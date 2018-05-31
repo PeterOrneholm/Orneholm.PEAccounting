@@ -132,9 +132,9 @@ namespace Orneholm.PEAccountingNet
             return _httpClient.GetSingleAsync<eventreadable, Event>($"/event/{eventId}", Event.FromNative);
         }
 
-        public async Task CreateEventAsync(EventCreate eventItem)
+        public async Task CreateEventAsync(EventCreate item)
         {
-            await _httpClient.PutAsync("/event/", eventItem.ToNative());
+            await _httpClient.PutAsync("/event/", item.ToNative());
         }
 
         public Task<Deleted> DeleteEventAsync(int eventId)
@@ -154,6 +154,17 @@ namespace Orneholm.PEAccountingNet
         {
             var url = QueryStringUrl.GetUrl("/client/invoice", filter.ToQueryStringDictionary());
             return await _httpClient.GetListAsync<clientinvoices, clientinvoice, ClientInvoice>(url, x => x.clientinvoice, ClientInvoice.FromNative);
+        }
+
+        public Task CreateClientInvoiceAsync(ClientInvoice item)
+        {
+            return CreateClientInvoiceAsync(item, new ClientInvoiceCreateOptions());
+        }
+
+        public async Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoice item, ClientInvoiceCreateOptions options)
+        {
+            var url = QueryStringUrl.GetUrl("/client/invoice", options.ToQueryStringDictionary());
+            return await _httpClient.PutAsync<clientinvoice, ItemCreated>(url, item.ToNative());
         }
     }
 }
