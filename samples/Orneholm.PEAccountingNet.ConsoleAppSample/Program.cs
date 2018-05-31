@@ -62,7 +62,7 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
 
             await PlotSectionAsync("Client invoices",
                 () => api.GetClientInvoicesAsync(),
-                x => $"{x.InvoiceNr} ({x.Id}): {x.Rows.Count} rows");
+                x => $"{x.YourReference} ({x.Id}): {x.Rows.Count} rows");
 
             var now = DateTime.UtcNow;
             var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
