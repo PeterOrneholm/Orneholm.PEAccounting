@@ -62,5 +62,9 @@ namespace Orneholm.PEAccountingNet
         Task<IEnumerable<ClientInvoice>> GetClientInvoicesAsync(ClientInvoiceFilter filter);
         Task CreateClientInvoiceAsync(ClientInvoice item);
         Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoice item, ClientInvoiceCreateOptions options);
+
+        // Client delivery types
+
+        Task<IEnumerable<ClientDeliveryType>> GetClientDeliveryTypesAsync();
     }
 }

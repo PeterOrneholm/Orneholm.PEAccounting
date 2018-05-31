@@ -166,5 +166,12 @@ namespace Orneholm.PEAccountingNet
             var url = QueryStringUrl.GetUrl("/client/invoice", options.ToQueryStringDictionary());
             return await _httpClient.PutAsync<clientinvoice, ItemCreated>(url, item.ToNative());
         }
+
+        // Client delivery types
+
+        public Task<IEnumerable<ClientDeliveryType>> GetClientDeliveryTypesAsync()
+        {
+            return _httpClient.GetListAsync<clientdeliverytypes, clientdeliverytypesClientdeliverytype, ClientDeliveryType>("/client/deliverytype", x => x.clientdeliverytype, ClientDeliveryType.FromInternal);
+        }
     }
 }

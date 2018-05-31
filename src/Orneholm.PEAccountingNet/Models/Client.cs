@@ -47,7 +47,7 @@ namespace Orneholm.PEAccountingNet.Models
                 ClientInvoiceTemplateId = native.template?.id,
                 ApproverUserId = native.approver?.id,
                 DimensionEntriesId = native.dimensionentries?.Select(x => x.id).ToList() ?? new List<int>(),
-                IsActive = native.activeSpecified ? (bool?) native.active : null
+                IsActive = native.activeSpecified ? (bool?)native.active : null
             };
         }
     }
