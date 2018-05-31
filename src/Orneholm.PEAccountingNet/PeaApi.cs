@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Filters;
 using Orneholm.PEAccountingNet.Helpers;
@@ -171,14 +169,33 @@ namespace Orneholm.PEAccountingNet
 
         public Task<IEnumerable<ClientInvoiceTemplate>> GetClientInvoiceTempatesAsync()
         {
-            return _httpClient.GetListAsync<clientinvoicetemplates, clientinvoicetemplate, ClientInvoiceTemplate>("/client/invoice/template", x => x.clientinvoicetemplate, ClientInvoiceTemplate.FromInternal);
+            return _httpClient.GetListAsync<clientinvoicetemplates, clientinvoicetemplate, ClientInvoiceTemplate>("/client/invoice/template", x => x.clientinvoicetemplate, ClientInvoiceTemplate.FromNative);
         }
 
         // Client delivery types
 
         public Task<IEnumerable<ClientDeliveryType>> GetClientDeliveryTypesAsync()
         {
-            return _httpClient.GetListAsync<clientdeliverytypes, clientdeliverytypesClientdeliverytype, ClientDeliveryType>("/client/deliverytype", x => x.clientdeliverytype, ClientDeliveryType.FromInternal);
+            return _httpClient.GetListAsync<clientdeliverytypes, clientdeliverytypesClientdeliverytype, ClientDeliveryType>("/client/deliverytype", x => x.clientdeliverytype, ClientDeliveryType.FromNative);
+        }
+
+        // Dimensions
+
+
+        /// <summary>
+        /// Dimensions (categories)
+        /// </summary>
+        public Task<IEnumerable<Dimension>> GetDimensionsAsync()
+        {
+            return _httpClient.GetListAsync<dimensions, dimension, Dimension>("/dimension", x => x.dimension, Dimension.FromNative);
+        }
+
+        /// <summary>
+        /// Entries for dimensions (categories)
+        /// </summary>
+        public Task<IEnumerable<DimensionEntry>> GetDimensionEntriesByDimensionIdAsync(int dimensionId)
+        {
+            return _httpClient.GetListAsync<dimensionentries, dimensionentry, DimensionEntry>($"/dimension/{dimensionId}/entry", x => x.dimensionentry, DimensionEntry.FromNative);
         }
     }
 }

@@ -7,7 +7,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Name { get; set; }
         public bool IsDefault { get; set; }
 
-        internal static ClientDeliveryType FromInternal(clientdeliverytypesClientdeliverytype native)
+        internal static ClientDeliveryType FromNative(clientdeliverytypesClientdeliverytype native)
         {
             return new ClientDeliveryType
             {

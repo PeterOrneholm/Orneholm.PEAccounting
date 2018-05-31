@@ -78,5 +78,17 @@ namespace Orneholm.PEAccountingNet
         /// </summary>
         /// <returns></returns>
         Task<IEnumerable<ClientDeliveryType>> GetClientDeliveryTypesAsync();
+
+        // Dimensions
+
+        /// <summary>
+        /// Dimensions (categories)
+        /// </summary>
+        Task<IEnumerable<Dimension>> GetDimensionsAsync();
+
+        /// <summary>
+        /// Entries for dimensions (categories)
+        /// </summary>
+        Task<IEnumerable<DimensionEntry>> GetDimensionEntriesByDimensionIdAsync(int dimensionId);
     }
 }

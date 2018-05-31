@@ -2,22 +2,24 @@
 
 namespace Orneholm.PEAccountingNet.Models
 {
-    public class ClientInvoiceTemplate
+    public class Dimension
     {
         public int Id { get; set; }
         public string ForeignId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public bool IsActive { get; set; }
 
-        internal static ClientInvoiceTemplate FromNative(clientinvoicetemplate native)
+        internal static Dimension FromNative(dimension native)
         {
-            return new ClientInvoiceTemplate
+            return new Dimension
             {
                 Id = native.id,
-                Name = native.name,
                 ForeignId = native.foreignid,
-                Description = native.description
+                Name = native.name,
+                Description = native.description,
+                IsActive = native.active
             };
-        }
+        } 
     }
 }
