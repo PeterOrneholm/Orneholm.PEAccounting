@@ -21,5 +21,17 @@ namespace Orneholm.PEAccountingNet.Models
                 Country = native.country
             };
         }
+
+        internal address ToNative()
+        {
+            return new address()
+            {
+                address1 = Address1,
+                address2 = Address2,
+                zipcode = ZipCode,
+                state = State,
+                country = Country
+            };
+        }
     }
 }

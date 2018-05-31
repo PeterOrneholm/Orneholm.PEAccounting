@@ -70,14 +70,12 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new clientinvoicerow
             {
-                id = Id.GetValueOrDefault(),
-                idSpecified = Id.HasValue,
                 quantity = Quantity,
                 price = Price,
                 vat = Vat,
                 product = new productreference { id = ProductId },
-                unit = Unit,
-                description = Description,
+                unit = Unit ?? string.Empty,
+                description = Description ?? string.Empty,
                 accountnr = AccountNr,
                 dimensions = Dimensions?.Select(x => x.ToNative()).ToArray(),
                 period = AccrualsPeriod?.ToNative(),

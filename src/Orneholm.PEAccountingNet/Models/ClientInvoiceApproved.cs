@@ -21,17 +21,5 @@ namespace Orneholm.PEAccountingNet.Models
                 RegistrationDate = native.registrationdate
             };
         }
-
-        internal clientinvoiceApproved ToNative()
-        {
-            return new clientinvoiceApproved
-            {
-                user = new userreference()
-                {
-                    id = UserId
-                },
-                registrationdate = RegistrationDate
-            };
-        }
     }
 }

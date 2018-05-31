@@ -29,7 +29,6 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new field
             {
-                name = Name,
                 alias = Alias,
                 value = Value
             };

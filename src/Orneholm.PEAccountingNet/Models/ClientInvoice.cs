@@ -31,7 +31,7 @@ namespace Orneholm.PEAccountingNet.Models
         public List<int> CreditInvoicesIds { get; set; }
 
         public string ForeignId { get; set; }
-        public string PoNr { get; set; } // null = ""
+        public string PoNr { get; set; }
 
         public int ClientId { get; set; }
         /// <summary>
@@ -41,21 +41,27 @@ namespace Orneholm.PEAccountingNet.Models
         public int? ClientInvoiceTemplateId { get; set; }
 
         public string YourReference { get; set; }
-        public int? OurReferenceUserId { get; set; } // null = 0
-        public int? ApproverUserId { get; set; } // null = 0
+        public int? OurReferenceUserId { get; set; }
+        public int? ApproverUserId { get; set; }
 
+        public DateTime InvoiceDate { get; set; }
         public Address InvoiceAddress { get; set; }
         public string InvoiceEmail { get; set; }
 
+        public DateTime? DeliveryDate { get; set; }
         public string DeliveryName { get; set; }
         public Address DeliveryAddress { get; set; }
         public string DeliveryEmail { get; set; }
+        /// <summary>
+        /// When creating, leave empty to use default delivery.
+        /// When saving, leave empty to leave original value unchanged.
+        /// </summary>
+        public string DeliveryType { get; set; }
 
-        public DateTime InvoiceDate { get; set; }
+
         public DateTime DueDate { get; set; }
-        public DateTime? DeliveryDate { get; set; } //null == ""
 
-        public ClientInvoicePeriod Period { get; set; } // can be null
+        public ClientInvoicePeriod Period { get; set; }
 
         public string Currency { get; set; }
         /// <summary>
@@ -75,11 +81,6 @@ namespace Orneholm.PEAccountingNet.Models
         public bool IsSent { get; set; }
 
         public string Notes { get; set; }
-        /// <summary>
-        /// When creating, leave empty to use default delivery.
-        /// When saving, leave empty to leave original value unchanged.
-        /// </summary>
-        public string DeliveryType { get; set; }
 
         public string Gln { get; set; }
         /// <summary>
@@ -120,7 +121,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public List<Field> Fields { get; set; }
 
-        public ClientInvoiceApproved Approved { get; set; }  //null
+        public ClientInvoiceApproved Approved { get; set; }
 
         public List<ClientInvoiceFile> Files { get; set; }
 
@@ -145,18 +146,18 @@ namespace Orneholm.PEAccountingNet.Models
                 YourReference = native.yourreference,
                 OurReferenceUserId = native.ourreference?.id > 0 ? native.ourreference?.id : null,
                 ApproverUserId = native.approver?.id > 0 ? native.approver?.id : null,
-                
+
+                InvoiceDate = native.invoicedate,
                 InvoiceAddress = Address.FromNative(native.invoiceaddress),
                 InvoiceEmail = native.invoiceemail,
-                
+
+                DeliveryDate = native.deliverydate != DateTime.MinValue ? native.deliverydate : (DateTime?)null,
                 DeliveryName = native.deliveryname,
                 DeliveryType = native.deliverytype,
                 DeliveryAddress = Address.FromNative(native.deliveryaddress),
                 DeliveryEmail = native.deliveryemail,
 
-                InvoiceDate = native.invoicedate,
                 DueDate = native.duedate,
-                DeliveryDate = native.deliverydate != DateTime.MinValue ? native.deliverydate : (DateTime?)null,
                 LastPaymentDate = native.lastpaymentdate,
 
                 Period = ClientInvoicePeriod.FromNative(native.period),
@@ -166,14 +167,14 @@ namespace Orneholm.PEAccountingNet.Models
 
                 IsCertified = native.certified,
                 IsSent = native.sent,
-                
+
                 Notes = native.notes,
                 Gln = native.gln,
                 VatNr = native.vatnr,
                 CountryCode = native.countrycode,
-                
+
                 ClientAgreementId = native.clientagreementref?.id,
-                
+
                 Remaining = native.remaining,
 
                 IsDisabled = native.disabled,
@@ -192,7 +193,52 @@ namespace Orneholm.PEAccountingNet.Models
         {
             return new clientinvoice
             {
+                debitinvoicenr = DebitInvoiceNr.GetValueOrDefault(),
+                debitinvoicenrSpecified = DebitInvoiceNr.HasValue,
 
+                foreignid = ForeignId ?? string.Empty,
+                ponr = PoNr ?? string.Empty,
+
+                clientref = new clientreference { id = ClientId },
+                clientinvoicetemplateref = ClientInvoiceTemplateId.HasValue ? new clientinvoicetemplatereference { id = ClientInvoiceTemplateId.Value } : null,
+
+                yourreference = YourReference ?? string.Empty,
+                ourreference = new userreference { id = OurReferenceUserId.GetValueOrDefault(0) }, // 0 = not set according to docs
+                approver = new userreference { id = ApproverUserId.GetValueOrDefault(0) }, // 0 = not set according to docs
+
+                invoicedate = InvoiceDate,
+                invoiceaddress = InvoiceAddress != null ? InvoiceAddress.ToNative() : new Address().ToNative(),
+                invoiceemail = InvoiceEmail ?? string.Empty,
+
+                deliverydate = DeliveryDate ?? default(DateTime),
+                deliveryname = DeliveryName ?? string.Empty,
+                deliverytype = DeliveryType ?? string.Empty,
+                deliveryaddress = DeliveryAddress != null ? DeliveryAddress.ToNative() : new Address().ToNative(),
+                deliveryemail = DeliveryEmail ?? string.Empty,
+
+                duedate = DueDate,
+
+                period = Period?.ToNative(),
+                currency = Currency ?? string.Empty,
+                currencyrate = CurrencyRate.GetValueOrDefault(),
+                currencyrateSpecified = CurrencyRate.HasValue,
+
+                certified = IsCertified,
+
+                notes = Notes ?? string.Empty,
+                gln = Gln ?? string.Empty,
+                vatnr = VatNr ?? string.Empty,
+                countrycode = CountryCode ?? string.Empty,
+               
+                disabled = IsDisabled,
+
+                automaticactionsdisabled = IsAutomaticActionsDisabled.GetValueOrDefault(),
+                automaticactionsdisabledSpecified = IsAutomaticActionsDisabled.HasValue,
+                automaticactionsmessage = AutomaticActionsMessage ?? string.Empty,
+
+                fields = Fields?.Select(x => x.ToNative()).ToArray(),
+                files = Files?.Select(x => x.ToNative()).ToArray(),
+                rows = Rows?.Select(x => x.ToNative()).ToArray()
             };
         }
     }
