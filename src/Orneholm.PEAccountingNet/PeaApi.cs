@@ -167,6 +167,13 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.PutAsync<clientinvoice, ItemCreated>(url, item.ToNative());
         }
 
+        // Cluent invoice templates
+
+        public Task<IEnumerable<ClientInvoiceTemplate>> GetClientInvoiceTempatesAsync()
+        {
+            return _httpClient.GetListAsync<clientinvoicetemplates, clientinvoicetemplate, ClientInvoiceTemplate>("/client/invoice/template", x => x.clientinvoicetemplate, ClientInvoiceTemplate.FromInternal);
+        }
+
         // Client delivery types
 
         public Task<IEnumerable<ClientDeliveryType>> GetClientDeliveryTypesAsync()

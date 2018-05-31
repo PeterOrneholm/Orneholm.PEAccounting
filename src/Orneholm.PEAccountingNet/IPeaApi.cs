@@ -63,8 +63,20 @@ namespace Orneholm.PEAccountingNet
         Task CreateClientInvoiceAsync(ClientInvoice item);
         Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoice item, ClientInvoiceCreateOptions options);
 
+        // Client invoice templates
+
+        /// <summary>
+        /// Contains both debit and credit templates
+        /// </summary>
+        /// <returns></returns>
+        Task<IEnumerable<ClientInvoiceTemplate>> GetClientInvoiceTempatesAsync();
+
         // Client delivery types
 
+        /// <summary>
+        /// Supported delivery types
+        /// </summary>
+        /// <returns></returns>
         Task<IEnumerable<ClientDeliveryType>> GetClientDeliveryTypesAsync();
     }
 }
