@@ -2,14 +2,14 @@
 
 namespace Orneholm.PEAccountingNet.Models
 {
-    public class DistributionDimension
+    public class DistributionDimensionEntry
     {
         public int Id { get; set; }
         public decimal? Percentage { get; set; }
 
-        internal static DistributionDimension FromNative(dimensionsdistributionDimensionentry native)
+        internal static DistributionDimensionEntry FromNative(dimensionsdistributionDimensionentry native)
         {
-            return new DistributionDimension
+            return new DistributionDimensionEntry
             {
                 Id = native.id,
                 Percentage = native.percentageSpecified ? native.percentage : (decimal?)null

@@ -33,7 +33,7 @@ namespace Orneholm.PEAccountingNet.Models
         /// </summary>
         public int AccountNr { get; set; }
 
-        public List<DistributionDimension> Dimensions { get; set; }
+        public List<DistributionDimensionEntry> DimensionEntries { get; set; }
 
         public ClientInvoiceRowPeriod AccrualsPeriod { get; set; }
 
@@ -57,7 +57,7 @@ namespace Orneholm.PEAccountingNet.Models
                 Unit = native.unit,
                 Description = native.description,
                 AccountNr = native.accountnr,
-                Dimensions = native.dimensions?.Select(DistributionDimension.FromNative).ToList() ?? new List<DistributionDimension>(),
+                DimensionEntries = native.dimensions?.Select(DistributionDimensionEntry.FromNative).ToList() ?? new List<DistributionDimensionEntry>(),
                 AccrualsPeriod = ClientInvoiceRowPeriod.FromNative(native.period),
                 DeliveryDate = native.deliverydateSpecified ? native.deliverydate : (DateTime?)null,
                 Discount = ClientInvoiceDiscount.FromNative(native.discount),
@@ -77,7 +77,7 @@ namespace Orneholm.PEAccountingNet.Models
                 unit = Unit ?? string.Empty,
                 description = Description ?? string.Empty,
                 accountnr = AccountNr,
-                dimensions = Dimensions?.Select(x => x.ToNative()).ToArray(),
+                dimensions = DimensionEntries?.Select(x => x.ToNative()).ToArray(),
                 period = AccrualsPeriod?.ToNative(),
                 deliverydate = DeliveryDate.GetValueOrDefault(),
                 deliverydateSpecified = DeliveryDate.HasValue,
