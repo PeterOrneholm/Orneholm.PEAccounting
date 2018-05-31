@@ -10,7 +10,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public List<ClientProjectUserActivity> UserActivities { get; set; }
 
-        public static ClientProjectUser FromNative(clientprojectuser native)
+        internal static ClientProjectUser FromNative(clientprojectuser native)
         {
             return new ClientProjectUser
             {

@@ -28,7 +28,7 @@ namespace Orneholm.PEAccountingNet.Models
         }
 
 
-        public static ClientInvoiceDiscount FromNative(clientinvoicerowDiscount native)
+        internal static ClientInvoiceDiscount FromNative(clientinvoicerowDiscount native)
         {
             if (native == null)
             {
@@ -42,7 +42,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public clientinvoicerowDiscount ToNative()
+        internal clientinvoicerowDiscount ToNative()
         {
             if (Absolute.HasValue && Percentage.HasValue)
             {

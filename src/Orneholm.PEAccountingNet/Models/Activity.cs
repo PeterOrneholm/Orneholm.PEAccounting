@@ -8,7 +8,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public static Activity FromNative(activityreadable native)
+        internal static Activity FromNative(activityreadable native)
         {
             return new Activity
             {

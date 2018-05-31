@@ -10,7 +10,7 @@ namespace Orneholm.PEAccountingNet.Models
         public long AccountingAmount { get; set; }
         public string Description { get; set; }
 
-        public static ClientProjectWriteOff FromNative(clientprojectwriteoff native)
+        internal static ClientProjectWriteOff FromNative(clientprojectwriteoff native)
         {
             return new ClientProjectWriteOff
             {

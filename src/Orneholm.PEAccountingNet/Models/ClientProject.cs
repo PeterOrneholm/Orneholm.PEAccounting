@@ -34,7 +34,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public int? DimensionEntryId { get; set; }
 
-        public static ClientProject FromNative(clientprojectreadable native)
+        internal static ClientProject FromNative(clientprojectreadable native)
         {
             return new ClientProject
             {

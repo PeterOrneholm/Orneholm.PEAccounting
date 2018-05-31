@@ -7,7 +7,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Filename { get; set; }
         public byte[] Data { get; set; }
 
-        public static ClientInvoiceFile FromNative(clientinvoiceFile native)
+        internal static ClientInvoiceFile FromNative(clientinvoiceFile native)
         {
             return new ClientInvoiceFile
             {
@@ -16,7 +16,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public clientinvoiceFile ToNative()
+        internal clientinvoiceFile ToNative()
         {
             return new clientinvoiceFile
             {

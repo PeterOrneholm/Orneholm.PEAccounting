@@ -6,7 +6,7 @@ namespace Orneholm.PEAccountingNet.Models
     {
         public int Id { get; set; }
 
-        public static Created FromNative(created native)
+        internal static Created FromNative(created native)
         {
             return new Created
             {

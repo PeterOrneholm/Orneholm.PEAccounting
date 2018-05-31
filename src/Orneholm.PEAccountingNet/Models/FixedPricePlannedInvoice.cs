@@ -11,7 +11,7 @@ namespace Orneholm.PEAccountingNet.Models
         public int? ClientInvoiceId { get; set; }
         public List<FixedPricePlannedInvoiceRow> Rows { get; set; }
 
-        public static FixedPricePlannedInvoice FromNative(fixedpriceplannedinvoice native)
+        internal static FixedPricePlannedInvoice FromNative(fixedpriceplannedinvoice native)
         {
             return new FixedPricePlannedInvoice
             {

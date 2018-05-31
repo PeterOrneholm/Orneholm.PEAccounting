@@ -19,7 +19,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string InternalComment { get; set; }
         public EventStatus Status { get; set; }
 
-        public static Event FromNative(eventreadable native)
+        internal static Event FromNative(eventreadable native)
         {
             return new Event
             {

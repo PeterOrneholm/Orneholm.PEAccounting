@@ -7,7 +7,7 @@ namespace Orneholm.PEAccountingNet.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public static CompanyCard FromNative(companycardreadable native)
+        internal static CompanyCard FromNative(companycardreadable native)
         {
             return new CompanyCard
             {

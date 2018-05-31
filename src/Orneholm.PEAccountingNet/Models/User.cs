@@ -11,7 +11,7 @@ namespace Orneholm.PEAccountingNet.Models
         public bool IsActive { get; set; }
         public int? DimensionEntryId { get; set; }
 
-        public static User FromNative(user native)
+        internal static User FromNative(user native)
         {
             return new User()
             {

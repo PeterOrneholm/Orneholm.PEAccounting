@@ -7,7 +7,7 @@ namespace Orneholm.PEAccountingNet.Models
         public int Id { get; set; }
         public decimal? Percentage { get; set; }
 
-        public static DistributionDimension FromNative(dimensionsdistributionDimensionentry native)
+        internal static DistributionDimension FromNative(dimensionsdistributionDimensionentry native)
         {
             return new DistributionDimension
             {
@@ -16,7 +16,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public dimensionsdistributionDimensionentry ToNative()
+        internal dimensionsdistributionDimensionentry ToNative()
         {
             return new dimensionsdistributionDimensionentry
             {

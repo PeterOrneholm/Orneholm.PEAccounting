@@ -12,7 +12,7 @@ namespace Orneholm.PEAccountingNet.Models
         public DateTime? EndDate { get; set; }
         public bool IsActive { get; set; }
 
-        public static Project FromNative(project native)
+        internal static Project FromNative(project native)
         {
             return new Project()
             {

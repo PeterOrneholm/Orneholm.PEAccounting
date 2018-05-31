@@ -15,7 +15,7 @@ namespace Orneholm.PEAccountingNet.Models
         public bool IsPaid { get; set; }
         public int Entries { get; set; }
 
-        public static Expense FromNative(expensereadablesExpense native)
+        internal static Expense FromNative(expensereadablesExpense native)
         {
             return new Expense
             {

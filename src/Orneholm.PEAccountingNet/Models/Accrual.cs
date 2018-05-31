@@ -7,7 +7,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Month { get; set; }
         public long Sum { get; set; }
 
-        public static Accrual FromNative(accrual native)
+        internal static Accrual FromNative(accrual native)
         {
             return new Accrual
             {
@@ -16,7 +16,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public accrual ToNative()
+        internal accrual ToNative()
         {
             return new accrual
             {

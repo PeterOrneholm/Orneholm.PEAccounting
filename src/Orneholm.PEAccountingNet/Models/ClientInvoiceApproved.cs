@@ -8,7 +8,7 @@ namespace Orneholm.PEAccountingNet.Models
         public int UserId { get; set; }
         public DateTime RegistrationDate { get; set; }
 
-        public static ClientInvoiceApproved FromNative(clientinvoiceApproved native)
+        internal static ClientInvoiceApproved FromNative(clientinvoiceApproved native)
         {
             if (native == null)
             {
@@ -22,7 +22,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public clientinvoiceApproved ToNative()
+        internal clientinvoiceApproved ToNative()
         {
             return new clientinvoiceApproved
             {

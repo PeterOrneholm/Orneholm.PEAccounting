@@ -126,7 +126,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public List<ClientInvoiceRow> Rows { get; set; }
 
-        public static ClientInvoice FromNative(clientinvoice native)
+        internal static ClientInvoice FromNative(clientinvoice native)
         {
             return new ClientInvoice
             {
@@ -188,7 +188,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public clientinvoice ToNative()
+        internal clientinvoice ToNative()
         {
             return new clientinvoice
             {

@@ -13,7 +13,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Token { get; set; }
         private List<AccessType> Accesses { get; set; }
 
-        public static AccessibleCompany FromNative(accessiblecompany native)
+        internal static AccessibleCompany FromNative(accessiblecompany native)
         {
             return new AccessibleCompany()
             {

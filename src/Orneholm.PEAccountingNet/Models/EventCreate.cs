@@ -17,7 +17,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Comment { get; set; }
         public string InternalComment { get; set; }
 
-        public eventwritable ToNative()
+        internal eventwritable ToNative()
         {
             return new eventwritable
             {

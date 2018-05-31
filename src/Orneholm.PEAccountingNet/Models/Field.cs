@@ -15,7 +15,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string Alias { get; set; }
         public string Value { get; set; }
 
-        public static Field FromNative(field native)
+        internal static Field FromNative(field native)
         {
             return new Field
             {
@@ -25,7 +25,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public field ToNative()
+        internal field ToNative()
         {
             return new field
             {

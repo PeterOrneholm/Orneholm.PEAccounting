@@ -10,7 +10,7 @@ namespace Orneholm.PEAccountingNet.Models
         public string State { get; set; }
         public string Country { get; set; }
 
-        public static Address FromNative(address native)
+        internal static Address FromNative(address native)
         {
             return new Address()
             {

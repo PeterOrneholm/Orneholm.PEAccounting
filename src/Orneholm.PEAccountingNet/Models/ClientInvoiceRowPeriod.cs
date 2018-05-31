@@ -8,7 +8,7 @@ namespace Orneholm.PEAccountingNet.Models
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-        public static ClientInvoiceRowPeriod FromNative(clientinvoicerowPeriod native)
+        internal static ClientInvoiceRowPeriod FromNative(clientinvoicerowPeriod native)
         {
             if (native == null)
             {
@@ -22,7 +22,7 @@ namespace Orneholm.PEAccountingNet.Models
             };
         }
 
-        public clientinvoicerowPeriod ToNative()
+        internal clientinvoicerowPeriod ToNative()
         {
             return new clientinvoicerowPeriod
             {

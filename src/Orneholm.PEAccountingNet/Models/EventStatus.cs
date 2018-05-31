@@ -9,7 +9,7 @@ namespace Orneholm.PEAccountingNet.Models
         public DateTime RegistrationDate { get; set; }
         public EventStatusType Type { get; set; }
 
-        public static EventStatus FromNative(eventstatus native)
+        internal static EventStatus FromNative(eventstatus native)
         {
             return new EventStatus
             {

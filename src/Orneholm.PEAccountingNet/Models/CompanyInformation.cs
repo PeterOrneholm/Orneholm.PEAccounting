@@ -10,7 +10,7 @@ namespace Orneholm.PEAccountingNet.Models
         public long? Bankgiro { get; set; }
         public string SupplierInvoiceEmail { get; set; }
 
-        public static CompanyInformation FromNative(companyinformation native)
+        internal static CompanyInformation FromNative(companyinformation native)
         {
             return new CompanyInformation
             {

@@ -8,7 +8,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public long? Price { get; set; }
 
-        public static ClientProjectActivity FromNative(clientprojectactivity native)
+        internal static ClientProjectActivity FromNative(clientprojectactivity native)
         {
             return new ClientProjectActivity
             {

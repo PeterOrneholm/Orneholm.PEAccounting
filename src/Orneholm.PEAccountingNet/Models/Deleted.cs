@@ -6,7 +6,7 @@ namespace Orneholm.PEAccountingNet.Models
     {
         public int? Id { get; set; }
 
-        public static Deleted FromNative(deleted native)
+        internal static Deleted FromNative(deleted native)
         {
             return new Deleted
             {

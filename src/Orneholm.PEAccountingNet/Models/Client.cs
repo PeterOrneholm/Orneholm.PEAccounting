@@ -26,7 +26,7 @@ namespace Orneholm.PEAccountingNet.Models
         public List<int> DimensionEntriesId { get; set; }
         public bool? IsActive { get; set; }
 
-        public static Client FromNative(client native)
+        internal static Client FromNative(client native)
         {
             return new Client
             {

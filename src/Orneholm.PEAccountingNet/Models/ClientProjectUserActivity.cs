@@ -8,7 +8,7 @@ namespace Orneholm.PEAccountingNet.Models
         public long? Price { get; set; }
         public decimal? DimensionUserPercentage { get; set; }
 
-        public static ClientProjectUserActivity FromNative(clientprojectuseractivity native)
+        internal static ClientProjectUserActivity FromNative(clientprojectuseractivity native)
         {
             return new ClientProjectUserActivity
             {
