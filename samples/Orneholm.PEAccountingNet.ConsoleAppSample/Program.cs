@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Filters;
 using Orneholm.PEAccountingNet.Models;
 
-namespace Orneholm.PEAccountingNet.ConsoleAppSamle
+namespace Orneholm.PEAccountingNet.ConsoleAppSample
 {
     class Program
     {
@@ -63,6 +63,30 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSamle
             await PlotSectionAsync("Client invoices",
                 () => api.GetClientInvoicesAsync(),
                 x => $"{x.YourReference} ({x.Id}): {x.Rows.Count} rows");
+
+            await PlotSectionAsync("Client delivery types",
+                () => api.GetClientDeliveryTypesAsync(),
+                x => $"{x.Name}: IsDefault: {x.IsDefault}");
+
+            await PlotSectionAsync("Client invoice templates",
+                () => api.GetClientInvoiceTempatesAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Description}");
+
+            await PlotSectionAsync("Products",
+                () => api.GetProductsAsync(),
+                x => $"{x.Name} ({x.Id}): Price: {x.Price}");
+
+            await PlotSectionAsync("Dimensions",
+                () => api.GetDimensionsAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Description}");
+
+            var dimensions = (await api.GetDimensionsAsync()).ToList();
+            if (dimensions.Any())
+            {
+                await PlotSectionAsync("Dimension entries (for first dimension)",
+                    () => api.GetDimensionEntriesAsync(dimensions.First().Id),
+                    x => $"{x.Name} ({x.Id}): {x.Description}");
+            }
 
             var now = DateTime.UtcNow;
             var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
