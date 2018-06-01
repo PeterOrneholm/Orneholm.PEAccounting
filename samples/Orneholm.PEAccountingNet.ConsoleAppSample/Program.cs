@@ -9,28 +9,40 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSample
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            MainAsync().GetAwaiter().GetResult();
+            var companyId = 0;
+            var companyToken = string.Empty;
+
+            if (args.Length == 2)
+            {
+                int.TryParse(args[0], out companyId);
+                companyToken = args[1];
+            }
+
+            await App(companyId, companyToken);
         }
 
-        static async Task MainAsync()
+        static async Task App(int companyId, string companyToken)
         {
             Console.WriteLine("PEAccountingNet API Testbench");
             Console.WriteLine("##############################");
 
-            PlotHeader("Login");
-            var companies = (await GetCompaniesAsync()).ToList();
-            await PlotSectionAsync("You have access to",
-                () => Task.FromResult(companies.AsEnumerable()),
-                x => $"{x.Name} ({x.Id}): {x.Token}");
+            if (companyId <= 0 || string.IsNullOrWhiteSpace(companyToken))
+            {
+                PlotHeader("Login");
+                var companies = (await GetCompaniesAsync()).ToList();
+                await PlotSectionAsync("You have access to",
+                    () => Task.FromResult(companies.AsEnumerable()),
+                    x => $"{x.Name} ({x.Id}): {x.Token}");
 
-            var mainCompany = companies.First(x => x.IsMain);
-            var api = new PeaApi(mainCompany.Id, mainCompany.Token);
+                var mainCompany = companies.First(x => x.IsMain);
+                companyId = mainCompany.Id;
+                companyToken = mainCompany.Token;
+            }
+            var api = new PeaApi(companyId, companyToken);
 
-
-
-
+            //await CreateInvoice(api, "123");
 
             PlotHeader("Me");
             var myUser = await api.GetMyUserAsync();
@@ -44,14 +56,6 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSample
                 () => api.GetProjectsAsync(),
                 x => $"{x.Name} ({x.Id}): {x.Description}");
 
-            await PlotSectionAsync("Clients",
-                () => api.GetClientsAsync(),
-                x => $"{x.Name} ({x.Id}): {x.OrgNo}");
-
-            await PlotSectionAsync("Client projects",
-                () => api.GetClientProjectsAsync(),
-                x => $"{x.Name} ({x.Id}): {x.Comment}");
-
             await PlotSectionAsync("Activities",
                 () => api.GetActivitiesAsync(),
                 x => $"{x.Name} ({x.Id}): {x.Description}");
@@ -59,6 +63,14 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSample
             await PlotSectionAsync("Events",
                 () => api.GetEventsAsync(),
                 x => $"{x.Date} ({x.Id}): {x.Hours} h, Comment: {x.Comment}, Internal comment: {x.InternalComment}, Child: {x.Child}");
+
+            await PlotSectionAsync("Clients",
+                () => api.GetClientsAsync(),
+                x => $"{x.Name} ({x.Id}): {x.OrgNo}");
+
+            await PlotSectionAsync("Client projects",
+                () => api.GetClientProjectsAsync(),
+                x => $"{x.Name} ({x.Id}): {x.Comment}");
 
             await PlotSectionAsync("Client invoices",
                 () => api.GetClientInvoicesAsync(),
@@ -136,6 +148,54 @@ namespace Orneholm.PEAccountingNet.ConsoleAppSample
             Console.WriteLine();
             Console.WriteLine($"{header}:");
             Console.WriteLine("-------------------------------");
+        }
+
+
+        private static async Task CreateInvoice(IPeaApi api, string clientForeignId)
+        {
+            var clients = await api.GetClientsAsync();
+            var client = clients.First(x => x.ForeignId == clientForeignId);
+
+            var now = DateTime.UtcNow;
+            var firstDayOfMonth = new DateTime(now.Year, now.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+
+            var invoice = new ClientInvoiceCreate
+            {
+                ClientId = client.Id,
+                InvoiceDate = firstDayOfMonth,
+                DueDate = lastDayOfMonth,
+
+                Currency = CurrencyConstants.Sek,
+
+                DeliveryDate = lastDayOfMonth,
+                DeliveryAddress =
+                {
+                    Address1 = "D-Address1",
+                    Address2 = "D-Address2",
+                    State = "D-State",
+                    Country = "D-Country",
+                    ZipCode = "12345"
+                },
+                DeliveryEmail = "DeliveryEmail@example.org",
+                DeliveryName = "DeliveryName",
+                DeliveryType = ClientDeliveryTypeConstants.Email,
+
+                InvoiceAddress =
+                {
+                    Address1 = "I-Address1",
+                    Address2 = "I-Address2",
+                    State = "I-State",
+                    Country = "I-Country",
+                    ZipCode = "23451"
+                },
+                InvoiceEmail = "InvoiceEmail@example.org",
+                Notes = "Notes",
+                YourReference = "YourReference"
+            };
+
+            var result = await api.CreateClientInvoiceAsync(invoice);
+            Console.WriteLine($"Client invoice created: {result.Id}");
         }
     }
 }
