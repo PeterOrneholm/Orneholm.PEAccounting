@@ -13,6 +13,7 @@
     <RepositoryType>git</RepositoryType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <AssemblyVersion>0.3.0.0</AssemblyVersion>
+    <Product>OrneholmPEAccountingNet</Product>
   </PropertyGroup>
 
 </Project>

@@ -1,6 +1,9 @@
 using System;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -24,15 +27,46 @@ namespace Orneholm.PEAccountingNet
                 BaseAddress = _baseUrl
             };
 
+            SetUserAgent();
+
             if (!string.IsNullOrEmpty(accessToken))
             {
                 _httpClient.DefaultRequestHeaders.Add(AccessTokenHeaderName, accessToken);
             }
         }
 
+        private void SetUserAgent()
+        {
+            var product = GetProduct();
+            var version = GetAssemblyVersion();
+            var productInfo = new ProductInfoHeaderValue(product, version);
+            _httpClient.DefaultRequestHeaders.UserAgent.Add(productInfo);
+        }
+
         public PeaApiHttpClient(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+
+        private string GetProduct()
+        {
+            return GetAssembly()
+                        .GetCustomAttribute<AssemblyProductAttribute>()
+                        .Product;
+        }
+
+        private string GetAssemblyVersion()
+        {
+            return GetAssembly()
+                .GetCustomAttribute<AssemblyFileVersionAttribute>()
+                .Version;
+        }
+
+        private static Assembly GetAssembly()
+        {
+            return typeof(IPeaApi)
+                .GetTypeInfo()
+                .Assembly;
         }
 
 
