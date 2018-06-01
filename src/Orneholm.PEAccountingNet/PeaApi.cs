@@ -193,9 +193,22 @@ namespace Orneholm.PEAccountingNet
         /// <summary>
         /// Entries for dimensions (categories)
         /// </summary>
-        public Task<IEnumerable<DimensionEntry>> GetDimensionEntriesByDimensionIdAsync(int dimensionId)
+        public Task<IEnumerable<DimensionEntry>> GetDimensionEntriesAsync(int dimensionId)
         {
             return _httpClient.GetListAsync<dimensionentries, dimensionentry, DimensionEntry>($"/dimension/{dimensionId}/entry", x => x.dimensionentry, DimensionEntry.FromNative);
+        }
+
+
+        // Products
+
+        public Task<IEnumerable<Product>> GetProductsAsync()
+        {
+            return _httpClient.GetListAsync<products, product, Product>("/product", x => x.product, Product.FromNative);
+        }
+
+        public Task<Product> GetProductAsync(int productId)
+        {
+            return _httpClient.GetSingleAsync<product, Product>($"/product/{productId}", Product.FromNative);
         }
     }
 }
