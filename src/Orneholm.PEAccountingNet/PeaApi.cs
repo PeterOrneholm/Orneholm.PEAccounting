@@ -154,12 +154,12 @@ namespace Orneholm.PEAccountingNet
             return await _httpClient.GetListAsync<clientinvoices, clientinvoice, ClientInvoice>(url, x => x.clientinvoice, ClientInvoice.FromNative);
         }
 
-        public Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoice item)
+        public Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoiceCreate item)
         {
             return CreateClientInvoiceAsync(item, new ClientInvoiceCreateOptions());
         }
 
-        public async Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoice item, ClientInvoiceCreateOptions options)
+        public async Task<ItemCreated> CreateClientInvoiceAsync(ClientInvoiceCreate item, ClientInvoiceCreateOptions options)
         {
             var url = QueryStringUrl.GetUrl("/client/invoice", options.ToQueryStringDictionary());
             return await _httpClient.PutAsync<clientinvoice, ItemCreated>(url, item.ToNative());
