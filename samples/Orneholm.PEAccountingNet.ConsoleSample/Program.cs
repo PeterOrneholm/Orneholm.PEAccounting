@@ -72,10 +72,6 @@ namespace Orneholm.PEAccountingNet.ConsoleSample
                 () => api.GetClientProjectsAsync(),
                 x => $"{x.Name} ({x.Id}): {x.Comment}");
 
-            await PlotSectionAsync("Client invoices",
-                () => api.GetClientInvoicesAsync(),
-                x => $"{x.YourReference} ({x.Id}): {x.Rows.Count} rows");
-
             await PlotSectionAsync("Client delivery types",
                 () => api.GetClientDeliveryTypesAsync(),
                 x => $"{x.Name}: IsDefault: {x.IsDefault}");
