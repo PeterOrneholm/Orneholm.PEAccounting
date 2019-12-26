@@ -1,11 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Helpers;
 
 namespace Orneholm.PEAccountingNet
 {
-    public static class PeaApiHttpClientExtensions
+    internal static class PeaApiHttpClientExtensions
     {
         public static async Task<TItem> GetSingleAsync<TNativeItem, TItem>(this IPeaApiHttpClient httpClient, string url, Func<TNativeItem, TItem> transformItem)
         {

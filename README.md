@@ -12,6 +12,52 @@ Unofficial wrapper of the [p:e accounting](https://www.accounting.pe/) API for .
 - :chart_with_upwards_trend: Typed wrappers for the PE Accounting API
 - :penguin: Cross platform: Targets .NET Standard 2.0 (Use from .NET Framework and .NET Core)
 
+## Supported methods
+
+The API-wrapper supports all these methods:
+
+- Company
+    - `GetCompanyInfoAsync()`
+- User
+    - `GetMyUserAsync`
+    - `GetUsersAsync()`
+    - `GetUserAsync(int userId)`
+- Clients
+    - `GetClientsAsync()`
+- Projects
+    - `GetProjectsAsync()`
+- Client projects
+    - `GetClientProjectsAsync()`
+    - `GetClientProjectsAsync(ClientProjectFilter filter)`
+    - `GetClientProjectAsync(int clientProjectId)`
+- Expenses
+    - `GetExpensesAsync()
+    - `GetExpensesAsync(ExpenseFilter filter)`
+- Activities
+    - `GetActivitiesAsync()`
+    - `GetActivityAsync(int activityId)`
+- Events
+    - `GetEventsAsync()`
+    - `GetEventsAsync(EventFilter filter)`
+    - `GetEventAsync(int eventId)`
+    - `CreateEventAsync(EventCreate item)`
+    - `DeleteEventAsync(int eventId)`
+- Client invoices
+    - `GetClientInvoicesAsync()`
+    - `GetClientInvoicesAsync(ClientInvoiceFilter filter)`
+    - `CreateClientInvoiceAsync(ClientInvoiceCreate item)`
+    - `CreateClientInvoiceAsync(ClientInvoiceCreate item, ClientInvoiceCreateOptions options)`
+- Client invoice templates
+    - `GetClientInvoiceTempatesAsync()`
+- Client delivery types
+    - `GetClientDeliveryTypesAsync()`
+- Dimensions
+    - `GetDimensionsAsync()
+    - `GetDimensionEntriesAsync(int dimensionId)`
+- Products
+    - `GetProductsAsync()`
+    - `GetProductAsync(int productId)`
+
 ## Getting started
 
 ### 1. Read the documentation
