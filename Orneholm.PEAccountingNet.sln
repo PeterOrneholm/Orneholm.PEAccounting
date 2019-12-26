@@ -9,8 +9,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9560BE3A-812
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{B8DE222B-30F0-41C4-9679-A32580DBDE5C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.Tests", "test\Orneholm.PEAccountingNet.Tests\Orneholm.PEAccountingNet.Tests.csproj", "{31461B9E-A99A-4613-AD27-8A30F47F9B29}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{26DA93F5-6917-41BB-B66A-12514D6B6DF7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{8D2D1423-49A7-45BD-82BA-281069F8C452}"
@@ -32,6 +30,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{1AE1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.ConsoleSample", "samples\Orneholm.PEAccountingNet.ConsoleSample\Orneholm.PEAccountingNet.ConsoleSample.csproj", "{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.Test", "test\Orneholm.PEAccountingNet.Test\Orneholm.PEAccountingNet.Test.csproj", "{19981D51-F730-419A-91B6-57B62A60E74E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,23 +42,23 @@ Global
 		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}.Release|Any CPU.Build.0 = Release|Any CPU
-		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{31461B9E-A99A-4613-AD27-8A30F47F9B29}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19981D51-F730-419A-91B6-57B62A60E74E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19981D51-F730-419A-91B6-57B62A60E74E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19981D51-F730-419A-91B6-57B62A60E74E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19981D51-F730-419A-91B6-57B62A60E74E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ADB11A8E-048D-4D93-8A9F-E342F9C09C87} = {9560BE3A-8121-42D0-9ABA-5EA20D746CAB}
-		{31461B9E-A99A-4613-AD27-8A30F47F9B29} = {B8DE222B-30F0-41C4-9679-A32580DBDE5C}
 		{1AE140F3-12CB-4617-A45A-885C420619FA} = {8D2D1423-49A7-45BD-82BA-281069F8C452}
 		{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF} = {26DA93F5-6917-41BB-B66A-12514D6B6DF7}
+		{19981D51-F730-419A-91B6-57B62A60E74E} = {B8DE222B-30F0-41C4-9679-A32580DBDE5C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C65CB752-5558-4100-A1D5-E5853F1DE027}
