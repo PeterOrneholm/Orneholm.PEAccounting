@@ -36,7 +36,7 @@ The `PeaAuthenticationApi` provides a simple way of retrieving those companies a
 
 *Example:*
 ```csharp
-var authenticationApi = new PeaAuthenticationApi();
+var authenticationApi = PeaAuthenticationApi.CreateClient();
 var companies = await authenticationApi.GetAccessibleCompaniesAsync("username", "password");
 foreach (var company in companies)
 {
@@ -48,7 +48,7 @@ foreach (var company in companies)
 
 *Example:*
 ```csharp
-var api = new PeaApi(company.Id, company.Token);
+var api = PeaApi.CreateClient(company.Id, company.Token);
 
 // List clients
 var clients = await api.GetClientsAsync();

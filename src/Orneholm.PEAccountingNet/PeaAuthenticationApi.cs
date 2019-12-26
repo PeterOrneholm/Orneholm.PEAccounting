@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Helpers;
 using Orneholm.PEAccountingNet.Models;
@@ -10,14 +11,31 @@ namespace Orneholm.PEAccountingNet
     {
         private readonly IPeaApiHttpClient _httpClient;
 
-        public PeaAuthenticationApi() : this(new PeaApiHttpClient())
+        public PeaAuthenticationApi(HttpClient httpClient)
         {
+            _httpClient = new PeaApiHttpClient(httpClient);
         }
 
-        public PeaAuthenticationApi(IPeaApiHttpClient httpClient)
+        public static PeaAuthenticationApi CreateClient()
         {
-            _httpClient = httpClient;
+            return CreateClient(string.Empty);
         }
+
+        public static PeaAuthenticationApi CreateClient(string accessToken)
+        {
+            var httpClient = new HttpClient
+            {
+                BaseAddress = PeaApiDefaults.ProductionApiBaseUrl
+            };
+
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                httpClient.DefaultRequestHeaders.Add(PeaApiDefaults.AccessTokenHeaderName, accessToken);
+            }
+
+            return new PeaAuthenticationApi(httpClient);
+        }
+
 
         // Authenticate
 

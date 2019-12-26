@@ -3,62 +3,38 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 
 namespace Orneholm.PEAccountingNet
 {
-    internal class PeaApiHttpClient : IPeaApiHttpClient
+    public class PeaApiDefaults
     {
-        private const string AccessTokenHeaderName = "X-Token";
-        private readonly Uri _baseUrl = new Uri("https://my.accounting.pe/api/v1/");
-        private readonly HttpClient _httpClient;
+        public static readonly Uri ProductionApiBaseUrl = new Uri("https://my.accounting.pe/api/v1/");
+        public const string AccessTokenHeaderName = "X-Token";
+    }
 
-        public PeaApiHttpClient() : this(string.Empty)
-        {
-        }
-
-        public PeaApiHttpClient(string accessToken)
-        {
-            _httpClient = new HttpClient
-            {
-                BaseAddress = _baseUrl
-            };
-
-            SetUserAgent();
-
-            if (!string.IsNullOrEmpty(accessToken))
-            {
-                _httpClient.DefaultRequestHeaders.Add(AccessTokenHeaderName, accessToken);
-            }
-        }
-
-        private void SetUserAgent()
+    internal class UserAgentHelper
+    {
+        public static void ApplyUserAgent(HttpClient httpClient)
         {
             var product = GetProduct();
             var version = GetAssemblyVersion();
             var productInfo = new ProductInfoHeaderValue(product, version);
-            _httpClient.DefaultRequestHeaders.UserAgent.Add(productInfo);
+
+            httpClient.DefaultRequestHeaders.UserAgent.Add(productInfo);
         }
 
-        public PeaApiHttpClient(HttpClient httpClient)
+        private static string GetProduct()
         {
-            _httpClient = httpClient;
+            return GetAssembly().GetCustomAttribute<AssemblyProductAttribute>()
+                .Product;
         }
 
-        private string GetProduct()
+        private static string GetAssemblyVersion()
         {
-            return GetAssembly()
-                        .GetCustomAttribute<AssemblyProductAttribute>()
-                        .Product;
-        }
-
-        private string GetAssemblyVersion()
-        {
-            return GetAssembly()
-                .GetCustomAttribute<AssemblyFileVersionAttribute>()
+            return GetAssembly().GetCustomAttribute<AssemblyFileVersionAttribute>()
                 .Version;
         }
 
@@ -67,6 +43,37 @@ namespace Orneholm.PEAccountingNet
             return typeof(IPeaApi)
                 .GetTypeInfo()
                 .Assembly;
+        }
+    }
+
+    internal class PeaApiHttpClient : IPeaApiHttpClient
+    {
+        private readonly HttpClient _httpClient;
+
+        public static PeaApiHttpClient CreateClient()
+        {
+            return CreateClient(string.Empty);
+        }
+
+        public static PeaApiHttpClient CreateClient(string accessToken)
+        {
+            var httpClient = new HttpClient
+            {
+                BaseAddress = PeaApiDefaults.ProductionApiBaseUrl
+            };
+
+            if (!string.IsNullOrEmpty(accessToken))
+            {
+                httpClient.DefaultRequestHeaders.Add(PeaApiDefaults.AccessTokenHeaderName, accessToken);
+            }
+
+            return new PeaApiHttpClient(httpClient);
+        }
+
+        public PeaApiHttpClient(HttpClient httpClient)
+        {
+            UserAgentHelper.ApplyUserAgent(httpClient);
+            _httpClient = httpClient;
         }
 
 
@@ -174,15 +181,15 @@ namespace Orneholm.PEAccountingNet
                 OmitXmlDeclaration = true
             };
 
-            var xmlserializer = new XmlSerializer(typeof(T));
+            var xmlSerializer = new XmlSerializer(typeof(T));
             var stringWriter = new StringWriter();
             using (var writer = XmlWriter.Create(stringWriter, settings))
             {
-                var emptyNamepsaces = new XmlSerializerNamespaces(new[]
+                var emptyNamespaces = new XmlSerializerNamespaces(new[]
                 {
                     XmlQualifiedName.Empty
                 });
-                xmlserializer.Serialize(writer, value, emptyNamepsaces);
+                xmlSerializer.Serialize(writer, value, emptyNamespaces);
                 return stringWriter.ToString();
             }
         }

@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 
 namespace Orneholm.PEAccountingNet
 {
-    public interface IPeaApiHttpClient
+    internal interface IPeaApiHttpClient
     {
         Task<T> GetAsync<T>(string url);
 

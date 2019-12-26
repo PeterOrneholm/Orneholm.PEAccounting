@@ -6,11 +6,6 @@ namespace Orneholm.PEAccountingNet.Helpers
 {
     internal static class TransformLists
     {
-        public static IEnumerable<TItem> TransformListResult<TResult, TItem>(TResult result, Func<TResult, IEnumerable<TItem>> getValue)
-        {
-            return TransformListResult(result, getValue, x => x);
-        }
-
         public static IEnumerable<TItem> TransformListResult<TResult, TNativeItem, TItem>(TResult result, Func<TResult, IEnumerable<TNativeItem>> getValue, Func<TNativeItem, TItem> transformItem)
         {
             if (result == null)

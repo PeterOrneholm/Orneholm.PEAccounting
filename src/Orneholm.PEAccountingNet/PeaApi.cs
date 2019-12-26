@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Orneholm.PEAccountingNet.Filters;
 using Orneholm.PEAccountingNet.Helpers;
@@ -11,14 +12,20 @@ namespace Orneholm.PEAccountingNet
     {
         private readonly IPeaApiHttpClient _httpClient;
 
-        public PeaApi(int companyId, string accessToken)
-            : this(companyId, new PeaApiHttpClient(accessToken))
+        public PeaApi(int companyId, HttpClient httpClient)
         {
+            var apiHttpClient = new PeaApiHttpClient(httpClient);
+            _httpClient = new PeaApiCompanyHttpClient(companyId, apiHttpClient);
         }
 
-        public PeaApi(int companyId, IPeaApiHttpClient httpClient)
+        private PeaApi(int companyId, IPeaApiHttpClient httpClient)
         {
             _httpClient = new PeaApiCompanyHttpClient(companyId, httpClient);
+        }
+
+        public static PeaApi CreateClient(int companyId, string accessToken)
+        {
+            return new PeaApi(companyId, PeaApiHttpClient.CreateClient(accessToken));
         }
 
         // Company

@@ -40,7 +40,7 @@ namespace Orneholm.PEAccountingNet.ConsoleSample
                 companyId = mainCompany.Id;
                 companyToken = mainCompany.Token;
             }
-            var api = new PeaApi(companyId, companyToken);
+            var api = PeaApi.CreateClient(companyId, companyToken);
 
             //await CreateInvoice(api, "123");
 
@@ -127,7 +127,7 @@ namespace Orneholm.PEAccountingNet.ConsoleSample
             Console.WriteLine("Password:");
             var password = Console.ReadLine();
 
-            var authenticationApi = new PeaAuthenticationApi();
+            var authenticationApi = PeaAuthenticationApi.CreateClient();
             var companies = await authenticationApi.GetAccessibleCompaniesAsync(username, password);
 
             return companies;
