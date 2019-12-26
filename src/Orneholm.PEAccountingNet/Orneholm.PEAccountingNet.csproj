@@ -1,20 +1,51 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFrameworks>netstandard2.0</TargetFrameworks>
+        <LangVersion>latest</LangVersion>
+        <!--<Nullable>enable</Nullable>--> 
+        <NeutralLanguage>en</NeutralLanguage>
+        <NoWarn>1701;1702;1591;CS7035</NoWarn>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 
-  <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>0.4.0</Version>
-    <Authors>Peter Örneholm</Authors>
-    <Company>Orneholm</Company>
-    <Copyright>Peter Örneholm</Copyright>
-    <PackageProjectUrl>https://github.com/PeterOrneholm/peaccounting-net/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/PeterOrneholm/peaccounting-net.git</RepositoryUrl>
-    <Description>API wrapper (unofficial) for p:e accounting (https://www.accounting.pe/) built in C# targeting .NET Standard 2.0. Based on the public documentation (https://my.accounting.pe/api/v1/doc).</Description>
-    <PackageLicenseUrl>https://github.com/PeterOrneholm/peaccounting-net/blob/master/LICENSE</PackageLicenseUrl>
-    <RepositoryType>git</RepositoryType>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <AssemblyVersion>0.4.0.0</AssemblyVersion>
-    <Product>OrneholmPEAccountingNet</Product>
-    <FileVersion>0.4.0.0</FileVersion>
-  </PropertyGroup>
+        <AssemblyName>Orneholm.PEAccountingNet</AssemblyName>
+        <PackageId>Orneholm.PEAccountingNet</PackageId>
+        <Product>OrneholmPEAccountingNet</Product>
 
+        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionSuffix>beta-1</VersionSuffix>
+        <AssemblyVersion>1.0.0.0</AssemblyVersion>
+        <FileVersion Condition="'$(BUILD_BUILDNUMBER)' == ''">$(VersionPrefix).0</FileVersion>
+        <FileVersion Condition="'$(BUILD_BUILDNUMBER)' != ''">$(VersionPrefix).$(BUILD_BUILDNUMBER)</FileVersion>
+
+        <SignAssembly>true</SignAssembly>
+        <AssemblyOriginatorKeyFile>StrongNameKey.snk</AssemblyOriginatorKeyFile>
+
+        <Description>Unofficial wrapper of the PE Accounting API for .NET.</Description>
+        <PackageTags>peaccounting;api</PackageTags>
+
+        <Authors>Peter Örneholm</Authors>
+        <Company>Orneholm AB</Company>
+        <Copyright>Copyright © Peter Örneholm</Copyright>
+
+        <PackageProjectUrl>https://github.com/PeterOrneholm/Orneholm.PEAccountingNet</PackageProjectUrl>
+        <PackageIcon>icon.png</PackageIcon>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://github.com/PeterOrneholm/Orneholm.PEAccountingNet.git</RepositoryUrl>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="all" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="..\..\docs\images\orneholm-pe-logo-v1.png" Pack="True" PackagePath="icon.png" />
+        <None Include="..\..\LICENSE.md" Pack="True" PackagePath="LICENSE.md" />
+    </ItemGroup>
 </Project>
