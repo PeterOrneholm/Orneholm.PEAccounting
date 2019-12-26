@@ -156,8 +156,3 @@ Please see our [contribution guidelines](CONTRIBUTING.md) before getting started
 Orneholm.PEAccountingNet is licensed under the very permissive [MIT license](https://opensource.org/licenses/MIT) for you to be able to use it in commercial or non-commercial applications without many restrictions.
 
 The brand PE Accounting belongs to PE Accounting.
-
-
-## Contributions
-
-Contributions are welcome through Pull Requests. Also feel free to file an issue if you have suggestions of improvement.
