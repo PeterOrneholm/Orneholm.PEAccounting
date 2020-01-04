@@ -19,7 +19,7 @@ The API-wrapper supports all these methods:
 - Company
     - `GetCompanyInfoAsync()`
 - User
-    - `GetMyUserAsync`
+    - `GetMyUserAsync()`
     - `GetUsersAsync()`
     - `GetUserAsync(int userId)`
 - Clients
@@ -31,7 +31,7 @@ The API-wrapper supports all these methods:
     - `GetClientProjectsAsync(ClientProjectFilter filter)`
     - `GetClientProjectAsync(int clientProjectId)`
 - Expenses
-    - `GetExpensesAsync()
+    - `GetExpensesAsync()`
     - `GetExpensesAsync(ExpenseFilter filter)`
 - Activities
     - `GetActivitiesAsync()`
