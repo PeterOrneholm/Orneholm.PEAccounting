@@ -3,6 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
 [![Build Status](https://dev.azure.com/orneholm/Orneholm.PEAccounting/_apis/build/status/Orneholm.PEAccounting?branchName=master)](https://dev.azure.com/orneholm/Orneholm.PEAccounting/_build/latest?definitionId=4&branchName=master)
 [![NuGet](https://img.shields.io/nuget/v/Orneholm.PEAccountingNet.svg)](https://www.nuget.org/packages/Orneholm.PEAccountingNet/)
+![Nuget](https://img.shields.io/nuget/dt/Orneholm.PEAccountingNet)
 [![Twitter Follow](https://img.shields.io/badge/Twitter-@PeterOrneholm-blue.svg?logo=twitter)](https://twitter.com/PeterOrneholm)
 
 Unofficial wrapper of the [p:e accounting](https://www.accounting.pe/) API for .NET. Built in C# targeting .NET Standard 2.0. Based on the public [documentation](https://my.accounting.pe/api/v1/doc).
