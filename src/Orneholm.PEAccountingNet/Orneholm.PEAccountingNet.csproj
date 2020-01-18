@@ -11,7 +11,7 @@
         <PackageId>Orneholm.PEAccountingNet</PackageId>
         <Product>OrneholmPEAccountingNet</Product>
 
-        <VersionPrefix>1.0.0</VersionPrefix>
+        <VersionPrefix>1.0.1</VersionPrefix>
         <!--<VersionSuffix>beta-1</VersionSuffix>-->
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <FileVersion Condition="'$(BUILD_BUILDNUMBER)' == ''">$(VersionPrefix).0</FileVersion>
@@ -24,12 +24,12 @@
         <Company>Orneholm AB</Company>
         <Copyright>Copyright © Peter Örneholm</Copyright>
 
-        <PackageProjectUrl>https://github.com/PeterOrneholm/Orneholm.PEAccountingNet</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/PeterOrneholm/Orneholm.PEAccounting</PackageProjectUrl>
         <PackageIcon>icon.png</PackageIcon>
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/PeterOrneholm/Orneholm.PEAccountingNet.git</RepositoryUrl>
+        <RepositoryUrl>https://github.com/PeterOrneholm/Orneholm.PEAccounting.git</RepositoryUrl>
         <PublishRepositoryUrl>true</PublishRepositoryUrl>
 
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
