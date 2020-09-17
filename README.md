@@ -53,7 +53,7 @@ The API-wrapper supports all these methods:
 - Client delivery types
     - `GetClientDeliveryTypesAsync()`
 - Dimensions
-    - `GetDimensionsAsync()
+    - `GetDimensionsAsync()`
     - `GetDimensionEntriesAsync(int dimensionId)`
 - Products
     - `GetProductsAsync()`
