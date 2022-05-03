@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Orneholm.PEAccountingNet.Models.Native;
@@ -74,7 +74,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public List<Field> Fields { get; set; } = new List<Field>();
 
-        public List<ClientInvoiceFile> Files { get; set; } = new List<ClientInvoiceFile>();
+        public List<File> Files { get; set; } = new List<File>();
 
         public List<ClientInvoiceRowCreate> Rows { get; set; } = new List<ClientInvoiceRowCreate>();
 

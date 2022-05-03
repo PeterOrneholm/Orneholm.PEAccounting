@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Orneholm.PEAccountingNet.Models.Native;
@@ -123,7 +123,7 @@ namespace Orneholm.PEAccountingNet.Models
 
         public ClientInvoiceApproved Approved { get; set; }
 
-        public List<ClientInvoiceFile> Files { get; set; }
+        public List<File> Files { get; set; }
 
         public List<ClientInvoiceRow> Rows { get; set; }
 
@@ -182,7 +182,7 @@ namespace Orneholm.PEAccountingNet.Models
                 AutomaticActionsMessage = native.automaticactionsmessage,
 
                 Fields = native.fields?.Select(Field.FromNative).ToList() ?? new List<Field>(),
-                Files = native.files?.Select(ClientInvoiceFile.FromNative).ToList() ?? new List<ClientInvoiceFile>(),
+                Files = native.files?.Select(File.FromNative).ToList() ?? new List<File>(),
                 Rows = native.rows?.Select(ClientInvoiceRow.FromNative).ToList() ?? new List<ClientInvoiceRow>(),
 
                 Approved = ClientInvoiceApproved.FromNative(native.approved)
