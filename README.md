@@ -58,6 +58,8 @@ The API-wrapper supports all these methods:
 - Products
     - `GetProductsAsync()`
     - `GetProductAsync(int productId)`
+- General ledger accounts
+    - `GetGeneralLedgerAccountsAsync(DateTime startDate, DateTime endDate)`
 
 ## Getting started
 
