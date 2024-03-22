@@ -112,6 +112,13 @@ namespace Orneholm.PEAccountingNet.ConsoleSample
                 () => api.GetExpensesAsync(),
                 x => $"{x.Date} ({x.Id}): {x.Amount} {x.CurrencyType}, Nr: {x.Nr}");
 
+            // General ledger accounts for previous quarter
+            var previousQuarterStart = firstDayOfMonth.AddMonths(-3);
+            var previousQuarterEnd = firstDayOfMonth.AddDays(-1);
+            await PlotSectionAsync("General ledger accounts for previous quarter",
+                () => api.GetGeneralLedgerAccountsAsync(previousQuarterStart, previousQuarterEnd),
+                x => $"{x.AccountNr} ({x.Description}): {x.InBalance} in, {x.OutBalance} out, {x.DebitCount} debits, {x.CreditCount} credits, Disabled: {x.Disabled}");
+
             Console.ReadLine();
         }
 
@@ -178,7 +185,7 @@ namespace Orneholm.PEAccountingNet.ConsoleSample
                 {
                     new ClientInvoiceRowCreate()
                     {
-                        
+
                     }
                 }
             };
