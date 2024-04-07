@@ -10,7 +10,7 @@ on:
       - '*'
   release:
     types:
-      - published    # Run the workflow when a new GitHub release is published
+      - published
 
 jobs:
   build-and-test:
@@ -37,16 +37,16 @@ jobs:
       run: dotnet restore --verbosity Detailed
 
     - name: Build
-      run: dotnet build --configuration Release --verbosity Detailed
+      run: dotnet build ${{ github.workspace }}/**/src/**/*.csproj --configuration Release --verbosity Detailed
 
     - name: Test
-      run: dotnet test --configuration Release --verbosity Detailed --collect "Code coverage"
+      run: dotnet test ${{ github.workspace }}/**/src/**/*.csproj --configuration Release --verbosity Detailed --collect "Code coverage"
 
     - name: Pack CI
-      run: dotnet pack --output ${{ github.workspace }}/artifacts/ci --configuration Release --verbosity Detailed /p:VersionSuffix=ci-${{ github.run_number }}
+      run: dotnet pack ${{ github.workspace }}/**/src/**/*.csproj --output ${{ github.workspace }}/artifacts/ci --configuration Release --verbosity Detailed /p:VersionSuffix=ci-${{ github.run_number }}
 
     - name: Pack Release
-      run: dotnet pack --output ${{ github.workspace }}/artifacts/release --configuration Release --verbosity Detailed
+      run: dotnet pack ${{ github.workspace }}/**/src/**/*.csproj --output ${{ github.workspace }}/artifacts/release --configuration Release --verbosity Detailed
 
     - uses: actions/upload-artifact@v3
       with:
