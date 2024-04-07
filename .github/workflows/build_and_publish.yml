@@ -12,6 +12,9 @@ on:
     types:
       - published
 
+env:
+  dotnetVerbosity: 'Detailed'
+
 jobs:
   build-and-test:
     name: Build and Test
@@ -34,24 +37,24 @@ jobs:
       uses: actions/setup-dotnet@v4
 
     - name: Restore dependencies
-      run: dotnet restore --verbosity Detailed
+      run: dotnet restore --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Build
-      run: dotnet build ${{ github.workspace }}/**/src/**/*.csproj --configuration Release --verbosity Detailed
+      run: dotnet build ./src/**/*.csproj --configuration Release --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Test
-      run: dotnet test ${{ github.workspace }}/**/src/**/*.csproj --configuration Release --verbosity Detailed --collect "Code coverage"
+      run: dotnet test ./src/**/*.csproj --configuration Release --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
 
     - name: Pack CI
-      run: dotnet pack ${{ github.workspace }}/**/src/**/*.csproj --output ${{ github.workspace }}/artifacts/ci --configuration Release --verbosity Detailed /p:VersionSuffix=ci-${{ github.run_number }}
+      run: dotnet pack ./src/**/*.csproj --output ./artifacts/ci --configuration Release --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
 
     - name: Pack Release
-      run: dotnet pack ${{ github.workspace }}/**/src/**/*.csproj --output ${{ github.workspace }}/artifacts/release --configuration Release --verbosity Detailed
+      run: dotnet pack ./src/**/*.csproj --output ./artifacts/release --configuration Release --verbosity ${{ env.dotnetVerbosity }}
 
     - uses: actions/upload-artifact@v3
       with:
         name: ${{ matrix.artifactName }}
-        path: ${{ github.workspace }}/artifacts/
+        path: ./artifacts/
 
   build-samples:
     needs: [build-and-test]
@@ -74,12 +77,12 @@ jobs:
       uses: actions/setup-dotnet@v4
 
     - name: Publish Samples
-      run: dotnet publish ${{ github.workspace }}/**/samples/**/*.csproj --configuration Release --output ${{ github.workspace }}/samples/
+      run: dotnet publish ./samples/**/*.csproj --configuration Release --output ./samples/
 
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.artifactName }}
-        path: ${{ github.workspace }}/samples/
+        path: ./samples/
   deploy:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
@@ -88,13 +91,13 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: nuget
-          path: ${{ github.workspace }}/artifacts/
+          path: ./artifacts/
 
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v4
 
       - name: Publish NuGet package
         run: |
-          foreach($file in (Get-ChildItem "${{ github.workspace }}/artifacts/" -Recurse -Include *.nupkg)) {
+          foreach($file in (Get-ChildItem "./artifacts/" -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
           }
