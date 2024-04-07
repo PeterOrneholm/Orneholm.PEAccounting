@@ -1,0 +1,79 @@
+name: Build and Publish to NuGet
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-test:
+    name: Build and Test
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            artifactName: 'nuget-windows'
+          - os: macOS-latest
+            artifactName: 'nuget-macos'
+          - os: ubuntu-latest
+            artifactName: 'nuget-linux'
+      max-parallel: 3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        global-json-file: 'global.json' # assuming you're using a global.json
+
+    - name: Restore dependencies
+      run: dotnet restore ${{ github.workspace }}/**/*.csproj --verbosity Detailed
+
+    - name: Build
+      run: dotnet build ${{ github.workspace }}/**/*.csproj --configuration Release --verbosity Detailed
+
+    - name: Test
+      run: dotnet test ${{ github.workspace }}/**/tests/**/*.csproj --configuration Release --verbosity Detailed --collect "Code coverage"
+
+    - name: Pack CI
+      run: dotnet pack ${{ github.workspace }}/**/src/**/*.csproj --output ${{ github.workspace }}/artifacts/ci --configuration Release --verbosity Detailed /p:VersionSuffix=ci-${{ github.run_number }}
+
+    - name: Pack Release
+      run: dotnet pack ${{ github.workspace }}/**/src/**/*.csproj --output ${{ github.workspace }}/artifacts/release --configuration Release --verbosity Detailed
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.artifactName }}
+        path: ${{ github.workspace }}/artifacts/
+
+  build-samples:
+    needs: [build-and-test]
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: windows-latest
+            artifactName: 'samples-windows'
+          - os: macOS-latest
+            artifactName: 'samples-macos'
+          - os: ubuntu-latest
+            artifactName: 'samples-linux'
+      max-parallel: 3
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET Core SDK
+      uses: actions/setup-dotnet@v1
+      with:
+        global-json-file: 'global.json' # if you're using a global.json
+
+    - name: Publish Samples
+      run: dotnet publish ${{ github.workspace }}/**/samples/**/*.csproj --configuration Release --output ${{ github.workspace }}/samples/
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: ${{ matrix.artifactName }}
+        path: ${{ github.workspace }}/samples/
