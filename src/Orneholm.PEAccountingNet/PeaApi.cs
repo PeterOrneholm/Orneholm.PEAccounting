@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -216,6 +217,14 @@ namespace Orneholm.PEAccountingNet
         public Task<Product> GetProductAsync(int productId)
         {
             return _httpClient.GetSingleAsync<product, Product>($"/product/{productId}", Product.FromNative);
+        }
+
+        /// <summary>
+        /// Fetch all general ledger accounts
+        /// </summary>
+        public Task<IEnumerable<Account>> GetGeneralLedgerAccountsAsync(DateTime startDate, DateTime endDate)
+        {
+            return _httpClient.GetListAsync<accountmetadatas, accountmetadata, Account>($"/accounting/account/{startDate:yyyy-MM-dd}/{endDate:yyyy-MM-dd}/metadata", x => x.account, Account.FromNative);
         }
     }
 }

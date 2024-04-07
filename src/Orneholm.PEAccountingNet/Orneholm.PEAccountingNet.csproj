@@ -11,7 +11,7 @@
         <PackageId>Orneholm.PEAccountingNet</PackageId>
         <Product>OrneholmPEAccountingNet</Product>
 
-        <VersionPrefix>1.2.0</VersionPrefix>
+        <VersionPrefix>1.3.0</VersionPrefix>
         <!--<VersionSuffix>beta-1</VersionSuffix>-->
         <AssemblyVersion>1.0.0.0</AssemblyVersion>
         <FileVersion Condition="'$(BUILD_BUILDNUMBER)' == ''">$(VersionPrefix).0</FileVersion>
@@ -50,3 +50,4 @@
       <Folder Include="Models\Native\" />
     </ItemGroup>
 </Project>
+3
