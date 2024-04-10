@@ -41,15 +41,19 @@ jobs:
 
     - name: Build
       run: dotnet build ./src/**/*.csproj --configuration Release --verbosity ${{ env.dotnetVerbosity }}
+      shell: bash
 
     - name: Test
       run: dotnet test ./src/**/*.csproj --configuration Release --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
+      shell: bash
 
     - name: Pack CI
       run: dotnet pack ./src/**/*.csproj --output ./artifacts/ci --configuration Release --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
+      shell: bash
 
     - name: Pack Release
       run: dotnet pack ./src/**/*.csproj --output ./artifacts/release --configuration Release --verbosity ${{ env.dotnetVerbosity }}
+      shell: bash
 
     - uses: actions/upload-artifact@v3
       with:
@@ -78,6 +82,7 @@ jobs:
 
     - name: Publish Samples
       run: dotnet publish ./samples/**/*.csproj --configuration Release --output ./samples/
+      shell: bash
 
     - uses: actions/upload-artifact@v2
       with:

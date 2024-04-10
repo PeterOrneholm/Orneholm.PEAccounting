@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29519.87
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet", "src\Orneholm.PEAccountingNet\Orneholm.PEAccountingNet.csproj", "{ADB11A8E-048D-4D93-8A9F-E342F9C09C87}"
 EndProject
@@ -32,6 +32,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.Co
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orneholm.PEAccountingNet.Test", "test\Orneholm.PEAccountingNet.Test\Orneholm.PEAccountingNet.Test.csproj", "{19981D51-F730-419A-91B6-57B62A60E74E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{45AE86D0-E81F-455F-8B5E-96CD64306D0D}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build_and_publish.yml = .github\workflows\build_and_publish.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +64,7 @@ Global
 		{1AE140F3-12CB-4617-A45A-885C420619FA} = {8D2D1423-49A7-45BD-82BA-281069F8C452}
 		{1664B19C-6765-4BAF-A99D-C49F3AFBE3CF} = {26DA93F5-6917-41BB-B66A-12514D6B6DF7}
 		{19981D51-F730-419A-91B6-57B62A60E74E} = {B8DE222B-30F0-41C4-9679-A32580DBDE5C}
+		{45AE86D0-E81F-455F-8B5E-96CD64306D0D} = {1AE140F3-12CB-4617-A45A-885C420619FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {C65CB752-5558-4100-A1D5-E5853F1DE027}
