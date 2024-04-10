@@ -14,6 +14,7 @@ on:
 
 env:
   dotnetVerbosity: 'Detailed'
+  dotnetConfiguration: 'Release'
   libraryProjectPath: './src/Orneholm.PEAccountingNet/Orneholm.PEAccountingNet.csproj'
   testProjectPath: './test/Orneholm.PEAccountingNet.Test/Orneholm.PEAccountingNet.Test.csproj'
   samplesProjectPath: './samples/Orneholm.PEAccountingNet.ConsoleSample/Orneholm.PEAccountingNet.ConsoleSample.csproj'
@@ -43,16 +44,16 @@ jobs:
       run: dotnet restore --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Build
-      run: dotnet build ${{ env.libraryProjectPath }} --configuration Release --verbosity ${{ env.dotnetVerbosity }}
+      run: dotnet build ${{ env.libraryProjectPath }} --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Test
-      run: dotnet test ${{ env.testProjectPath }} --configuration Release --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
+      run: dotnet test ${{ env.testProjectPath }} --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
 
     - name: Pack CI
-      run: dotnet pack '${{ env.libraryProjectPath }}' --output ./artifacts/ci --configuration Release --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
+      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/ci --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
 
     - name: Pack Release
-      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/release --configuration Release --verbosity ${{ env.dotnetVerbosity }}
+      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/release --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }}
 
     - uses: actions/upload-artifact@v3
       with:
@@ -79,14 +80,8 @@ jobs:
     - name: Setup .NET Core SDK
       uses: actions/setup-dotnet@v4
 
-    - name: Publish Samples
-      run: dotnet publish ${{ env.samplesProjectPath }} --configuration Release --output ./samples/
-      shell: bash
-
-    - uses: actions/upload-artifact@v2
-      with:
-        name: ${{ matrix.artifactName }}
-        path: ./samples/
+    - name: Build Samples
+      run: dotnet build ${{ env.samplesProjectPath }} --configuration ${{ dotnetConfiguration }}
   deploy:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
