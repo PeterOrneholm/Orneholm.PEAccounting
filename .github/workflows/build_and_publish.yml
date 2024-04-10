@@ -14,6 +14,9 @@ on:
 
 env:
   dotnetVerbosity: 'Detailed'
+  libraryProjectPath: './src/Orneholm.PEAccountingNet/Orneholm.PEAccountingNet.csproj'
+  testProjectPath: './test/Orneholm.PEAccountingNet.Test/Orneholm.PEAccountingNet.Test.csproj'
+  samplesProjectPath: './samples/Orneholm.PEAccountingNet.ConsoleSample/Orneholm.PEAccountingNet.ConsoleSample.csproj'
 
 jobs:
   build-and-test:
@@ -40,19 +43,18 @@ jobs:
       run: dotnet restore --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Build
-      run: dotnet build ./src/**/*.csproj --configuration Release --verbosity ${{ env.dotnetVerbosity }}
-      shell: bash
+      run: dotnet build ${{ env.libraryProjectPath }} --configuration Release --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Test
-      run: dotnet test ./src/**/*.csproj --configuration Release --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
+      run: dotnet test ${{ env.testProjectPath }} --configuration Release --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
       shell: bash
 
     - name: Pack CI
-      run: dotnet pack ./src/**/*.csproj --output ./artifacts/ci --configuration Release --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
+      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/ci --configuration Release --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
       shell: bash
 
     - name: Pack Release
-      run: dotnet pack ./src/**/*.csproj --output ./artifacts/release --configuration Release --verbosity ${{ env.dotnetVerbosity }}
+      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/release --configuration Release --verbosity ${{ env.dotnetVerbosity }}
       shell: bash
 
     - uses: actions/upload-artifact@v3
@@ -81,7 +83,7 @@ jobs:
       uses: actions/setup-dotnet@v4
 
     - name: Publish Samples
-      run: dotnet publish ./samples/**/*.csproj --configuration Release --output ./samples/
+      run: dotnet publish ${{ env.samplesProjectPath }} --configuration Release --output ./samples/
       shell: bash
 
     - uses: actions/upload-artifact@v2
