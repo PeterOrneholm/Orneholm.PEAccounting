@@ -44,16 +44,16 @@ jobs:
       run: dotnet restore --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Build
-      run: dotnet build ${{ env.libraryProjectPath }} --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }}
+      run: dotnet build ${{ env.libraryProjectPath }} --configuration ${{ env.dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }}
 
     - name: Test
-      run: dotnet test ${{ env.testProjectPath }} --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
+      run: dotnet test ${{ env.testProjectPath }} --configuration ${{ env.dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }} --collect "Code coverage"
 
     - name: Pack CI
-      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/ci --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
+      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/ci --configuration ${{ env.dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }} /p:VersionSuffix=ci-${{ github.run_number }}
 
     - name: Pack Release
-      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/release --configuration ${{ dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }}
+      run: dotnet pack ${{ env.libraryProjectPath }} --output ./artifacts/release --configuration ${{ env.dotnetConfiguration }} --verbosity ${{ env.dotnetVerbosity }}
 
     - uses: actions/upload-artifact@v3
       with:
@@ -81,7 +81,7 @@ jobs:
       uses: actions/setup-dotnet@v4
 
     - name: Build Samples
-      run: dotnet build ${{ env.samplesProjectPath }} --configuration ${{ dotnetConfiguration }}
+      run: dotnet build ${{ env.samplesProjectPath }} --configuration ${{ env.dotnetConfiguration }}
   deploy:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
