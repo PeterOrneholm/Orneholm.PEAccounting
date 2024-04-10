@@ -83,13 +83,13 @@ jobs:
     - name: Build Samples
       run: dotnet build ${{ env.samplesProjectPath }} --configuration ${{ env.dotnetConfiguration }}
   deploy:
-    if: github.event_name == 'release'
+    # if: github.event_name == 'release'
     runs-on: ubuntu-latest
     needs: [ build-and-test, build-samples ]
     steps:
       - uses: actions/download-artifact@v3
         with:
-          name: nuget
+          name: nuget-linux
           path: ./artifacts/
 
       - name: Setup .NET Core
