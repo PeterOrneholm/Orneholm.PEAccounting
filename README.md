@@ -1,8 +1,7 @@
 # Orneholm.PEAccountingNet
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-orange.svg)](https://opensource.org/licenses/MIT)
-[![Build Status](https://dev.azure.com/orneholm/Orneholm.PEAccounting/_apis/build/status/Orneholm.PEAccounting?branchName=master)](https://dev.azure.com/orneholm/Orneholm.PEAccounting/_build/latest?definitionId=4&branchName=master)
-[![NuGet](https://img.shields.io/nuget/v/Orneholm.PEAccountingNet.svg)](https://www.nuget.org/packages/Orneholm.PEAccountingNet/)
+[![Build Status](https://github.com/PeterOrneholm/Orneholm.PEAccounting/actions/workflows/build_and_publish.yml/badge.svg)](https://github.com/PeterOrneholm/Orneholm.PEAccounting/actions/workflows/build_and_publish.yml)[![NuGet](https://img.shields.io/nuget/v/Orneholm.PEAccountingNet.svg)](https://www.nuget.org/packages/Orneholm.PEAccountingNet/)
 ![Nuget](https://img.shields.io/nuget/dt/Orneholm.PEAccountingNet)
 [![Twitter Follow](https://img.shields.io/badge/Twitter-@PeterOrneholm-blue.svg?logo=twitter)](https://twitter.com/PeterOrneholm)
 
